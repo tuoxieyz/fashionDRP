@@ -17,4 +17,4 @@
 * [在线升级](https://www.cnblogs.com/newton/archive/2013/01/13/2857722.html)
 * [即时通讯](https://www.cnblogs.com/newton/archive/2013/01/26/2877500.html)
 
-希望这个系统对您有所帮助。
+希望这个系统对您有所帮助（若要商用得先获得[telerik wpf组件](https://www.telerik.com/products/wpf/overview.aspx)的商用许可）。
