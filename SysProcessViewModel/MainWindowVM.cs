@@ -94,7 +94,7 @@ namespace SysProcessViewModel
                 OnPropertyChanged("MenuTreeVM");
                 result.IsSucceed = true;
             }
-            if (CustomerInfo == null || !(CustomerInfo.Name.Contains("铭吉") || CustomerInfo.Name.Contains("蝶讯") || CustomerInfo.Name.Contains("乔治") || CustomerInfo.Name.Contains("德融") || CustomerInfo.Name.Contains("慕之淇") || CustomerInfo.Name.Contains("加布瑞尔")))
+            if (CustomerInfo == null || !CustomerInfo.Name.Contains("tx"))
                 throw new Exception("非授权客户");
             return result;
         }

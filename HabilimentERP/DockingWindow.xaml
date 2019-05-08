@@ -6,7 +6,7 @@
         xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
         xmlns:vm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
         WindowState="Maximized"
-        Title="蝶讯服饰分销系统" Height="350" Width="525">
+        Title="tx服饰分销系统" Height="350" Width="525">
     <Window.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource {telerik:ThemeResourceKey ThemeType=telerik:Windows7Theme, ElementType=TextBox}}" />
         <Style TargetType="PasswordBox" BasedOn="{StaticResource {telerik:ThemeResourceKey ThemeType=telerik:Windows7Theme, ElementType=PasswordBox}}" />
