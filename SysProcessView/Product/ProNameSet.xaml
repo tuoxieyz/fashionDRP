@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="SysProcessView.ProNameSet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:local="clr-namespace:SysProcessView"
+             xmlns:vm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <view:StateConvertor x:Key="stateCvt" />
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="315" />
+        </Grid.ColumnDefinitions>
+
+        <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding SynEntities}" ValidatesOnDataErrors="InEditMode"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True"
+                             AutoGenerateColumns="False" BorderThickness="0" ShowGroupPanel="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="类型名称" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Flag, Converter={StaticResource stateCvt}}" Header="状态" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <GridSplitter Width="4" Grid.Column="1" ResizeBehavior="PreviousAndNext" />
+        <telerik:RadDataForm x:Name="myRadDataForm" ItemsSource="{Binding SynEntities}" BorderThickness="0"
+                             AutoGenerateFields="False" Grid.Column="2"
+                             EditEnding="myRadDataForm_EditEnding" DeletingItem="myRadDataForm_DeletingItem">
+            <telerik:RadDataForm.Resources>
+                <local:UserIDNameConvertor x:Key="userIDNameCvt" />
+            </telerik:RadDataForm.Resources>
+            <telerik:RadDataForm.ReadOnlyTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,Mode=OneWay}" Label="名称" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Flag,Mode=OneWay,Converter={StaticResource stateCvt}}" Label="状态" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding CreatorID,Mode=OneWay,Converter={StaticResource userIDNameCvt}}" Label="创建人" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding CreateTime,Mode=OneWay,StringFormat={}{0:yyyy-MM-dd HH:mm}}" Label="创建时间" IsReadOnly="True" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.ReadOnlyTemplate>
+            <telerik:RadDataForm.EditTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="名称" />
+                        <telerik:DataFormComboBoxField ItemsSource="{Binding Source={x:Static vm:VMGlobal.States}}" 
+                                                       DataMemberBinding="{Binding Flag}" SelectedValuePath="Flag" DisplayMemberPath="Name" Label="状态"/>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.EditTemplate>
+            <telerik:RadDataForm.NewItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="名称" />
+                        <telerik:DataFormComboBoxField ItemsSource="{Binding Source={x:Static vm:VMGlobal.States}}" 
+                                                       DataMemberBinding="{Binding Flag}" SelectedValuePath="Flag" DisplayMemberPath="Name" Label="状态"/>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.NewItemTemplate>
+        </telerik:RadDataForm>
+
+    </Grid>
+</UserControl>

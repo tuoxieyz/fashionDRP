@@ -1,0 +1,67 @@
+﻿<Window x:Class="IMServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:IMServer"
+        Title="蝶讯系统控制中心[IM服务端]" Height="550" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid MinWidth="250">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Margin="4 4 0 4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="广播" VerticalAlignment="Center" />
+                <TextBox x:Name="tbBroadcastMessage" HorizontalAlignment="Stretch" Grid.Column="1" Margin="4 0 4 0" />
+                <Image Source="pack://application:,,,/IMServer;Component/speaker.gif" ToolTip="给所有在线用户发送讯息" MouseLeftButtonDown="broadcast_MouseLeftButtonDown" Grid.Column="2"></Image>
+            </Grid>
+            <GroupBox Header="用户上下线消息(最近1000条)" Grid.Row="1">
+                <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding UserIOs}"></ItemsControl>
+                </ScrollViewer>                
+            </GroupBox>
+        </Grid>        
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="450" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <GroupBox Header="{Binding OnlineUserCount}" HeaderStringFormat="当前在线用户({0})">
+                <DataGrid CanUserSortColumns="True" 
+                          CanUserAddRows="False" 
+                          CanUserDeleteRows="False"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding Source={x:Static local:MainWindowVM.OnlineUsers}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="用户名" Binding="{Binding UserName}" />
+                        <DataGridTextColumn Header="所属机构" Binding="{Binding OrganizationName}" />
+                        <DataGridTextColumn Header="终端IP:端口" Binding="{Binding NetPointAddress}" />
+                        <DataGridTextColumn Header="上线时间" Binding="{Binding LoginTime,StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" />
+                        <DataGridTextColumn Header="在线时长" Binding="{Binding OnlineDuration,StringFormat={}{0:hh\\:mm}}" />
+                        <DataGridTemplateColumn Header="操作">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="pack://application:,,,/IMServer;Component/socket.png" ToolTip="踢TA下线" MouseLeftButtonDown="kickoff_MouseLeftButtonDown"></Image>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <StackPanel Grid.Row="1">
+                <!--似乎MultiBinding才需要在前面格式化字符串的最前面加上一个{}，DataGrid中也要，其它集合控件呢？-->
+                <TextBlock Text="{Binding StartTime,StringFormat=启动时间: {0:yyyy-MM-dd HH:mm:ss}}" />
+                <TextBlock Text="{Binding RunDuration,StringFormat=运行时长: {0:hh\\:mm}}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

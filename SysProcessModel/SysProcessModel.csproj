@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{522D227D-139F-4E59-983B-339198A9FDAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SysProcessModel</RootNamespace>
+    <AssemblyName>SysProcessModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.UniqueCode|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug.UniqueCode\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Certification\CertCarriedStandard.cs" />
+    <Compile Include="Certification\CertGrade.cs" />
+    <Compile Include="Certification\Certification.cs" />
+    <Compile Include="Certification\CertMateriel.cs" />
+    <Compile Include="Certification\CertMaterielKind.cs" />
+    <Compile Include="Certification\CertSafetyTech.cs" />
+    <Compile Include="Locations.cs" />
+    <Compile Include="Organization\OrganizationArea.cs" />
+    <Compile Include="Organization\OrganizationBrand.cs" />
+    <Compile Include="Organization\OrganizationPriceFloat.cs" />
+    <Compile Include="ProductInfo\ProBoduan.cs" />
+    <Compile Include="ProductInfo\ProBrand.cs" />
+    <Compile Include="ProductInfo\ProBYQ.cs" />
+    <Compile Include="ProductInfo\ProColor.cs" />
+    <Compile Include="ProductInfo\Product.cs" />
+    <Compile Include="ProductInfo\ProName.cs" />
+    <Compile Include="ProductInfo\ProSCPicture.cs" />
+    <Compile Include="ProductInfo\ProSize.cs" />
+    <Compile Include="ProductInfo\ProStyle.cs" />
+    <Compile Include="ProductInfo\ProStyleChange.cs" />
+    <Compile Include="ProductInfo\ProStyleMatching.cs" />
+    <Compile Include="ProductInfo\ProUnit.cs" />
+    <Compile Include="ProductInfo\ProQuarter.cs" />
+    <Compile Include="ProductUniqueCodeMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysApplication.cs" />
+    <Compile Include="SysModule.cs" />
+    <Compile Include="Organization\SysOrganization.cs" />
+    <Compile Include="Organization\SysOrganizationType.cs" />
+    <Compile Include="SysRole.cs" />
+    <Compile Include="SysRoleModule.cs" />
+    <Compile Include="SysUser.cs" />
+    <Compile Include="SysUserModule.cs" />
+    <Compile Include="SysUserRole.cs" />
+    <Compile Include="UserBrand.cs" />
+    <Compile Include="View\ViewOrganization.cs" />
+    <Compile Include="View\ViewProColor.cs" />
+    <Compile Include="View\ViewProduct.cs" />
+    <Compile Include="View\ViewProSize.cs" />
+    <Compile Include="View\ViewUser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBLinqProvider\DBLinqProvider.csproj">
+      <Project>{284BC2E0-944C-41DE-8366-5347525096A5}</Project>
+      <Name>DBLinqProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Extension\Model.Extension.csproj">
+      <Project>{3E5D357D-E7A9-4BF5-9079-0484E303FB6E}</Project>
+      <Name>Model.Extension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

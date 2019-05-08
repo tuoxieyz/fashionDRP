@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@section Head{
+    <link href="@Url.Content("~/Styles/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/js/kendo.dataviz.min.js")"></script>
+}
+@RenderBody()

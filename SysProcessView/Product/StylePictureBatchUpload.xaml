@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="SysProcessView.StylePictureBatchUpload"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <WrapPanel Orientation="Horizontal" x:Name="wpBar">
+            <!--<StackPanel>
+                <telerik:DataFormComboBoxField x:Name="cbxBrand" Label="品牌" SelectedValuePath="ID" DisplayMemberPath="Name" Width="180" />
+                <telerik:DataFormDataField Label="年份" Width="180" x:Name="SYear">
+                    <telerik:DataFormDataField.Content>
+                        <telerik:RadDatePicker DateSelectionMode="Year" DateTimeWatermarkContent = "选择年份" SelectionChanged="RadDatePicker_SelectionChanged" />
+                    </telerik:DataFormDataField.Content>
+                </telerik:DataFormDataField>
+                <telerik:DataFormComboBoxField x:Name="cbxQuarter" Label="季度" SelectedValuePath="ID" DisplayMemberPath="Name" Width="180" />
+            </StackPanel>-->
+            <telerik:RadButton x:Name="btnSelect" Content="选择图片" VerticalAlignment="Bottom" Click="btnSelect_Click" Margin="5" />
+            <telerik:RadButton x:Name="btnBatchUpload" Content="批量上传" VerticalAlignment="Bottom" Click="btnBatchUpload_Click" Margin="5" />
+        </WrapPanel>
+        <ScrollViewer  Margin="4 0 4 4" Grid.Row="1">
+            <ItemsControl x:Name="lvPictures" BorderThickness="1" BorderBrush="LightBlue">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" Width="{Binding ElementName=wpBar,Mode=OneWay,Path=ActualWidth,Converter={StaticResource NumericPlusCvt},ConverterParameter=-30}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5" Height="160" Width="310">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Stretch="Uniform" Source="{Binding FilePath}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <telerik:DataFormDataField  Label="款色编号">
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}-{1}">
+                                                <Binding Path="StyleCode"/>
+                                                <Binding Path="ColorCode"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField  Label="大小">
+                                    <TextBlock Text="{Binding FileSize, StringFormat={}{0:F2}KB,Mode=OneTime}" />
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField Label="状态">
+                                    <TextBlock x:Name="tbStatus" Text="{Binding UploadStatus,Mode=TwoWay}" />
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField  Label="上传进度">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding UploadProgress, Mode=OneWay,StringFormat={}{0}%}" />
+                                        <telerik:RadProgressBar x:Name="pbProgress" Minimum="0" Maximum="100" Value="{Binding UploadProgress, Mode=TwoWay}" Height="10" />
+                                    </StackPanel>
+                                </telerik:DataFormDataField>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <telerik:RadButton x:Name="btnRemove" Content="移除" Click="btnRemove_Click" />
+                                    <telerik:RadButton x:Name="btnSingleUpload" Content="上传" Margin="5 0 0 0" Click="btnSingleUpload_Click" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

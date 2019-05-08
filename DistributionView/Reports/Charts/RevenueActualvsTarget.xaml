@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="DistributionView.Reports.Charts.RevenueActualvsTarget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:chartView="clr-namespace:Telerik.Windows.Controls.ChartView;assembly=Telerik.Windows.Controls.Chart"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:vm="clr-namespace:DistributionViewModel;assembly=DistributionViewModel"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.DataContext>
+                <vm:RevenueActualvsTargetVM />
+            </Grid.DataContext>
+            <Grid.Resources>
+                <view:VisibilityBooleanConvertor x:Key="visibilityCvt" />
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="320" />
+                <RowDefinition Height="*" MinHeight="230"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.Resources>
+                    <DataTemplate x:Key="OrganizationEditorTemplate">
+                        <sysv:OrganizationSelector IDValue="{Binding Value,Mode=TwoWay}" FilterCurrent="False" MinWidth="100"  />
+                    </DataTemplate>
+                    <DataTemplate x:Key="YearMonthEditorTemplate">
+                        <telerik:RadDatePicker DateSelectionMode="Month" 
+                                        SelectedValue="{Binding Value}"
+                                        DateTimeWatermarkContent="选择年月"
+                                        SelectionChanged="RadDatePicker_SelectionChanged" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="MonthEditorTemplate">
+                        <telerik:RadNumericUpDown Value="{Binding Value}" IsInteger="True" CustomUnit="月" Minimum="1" Maximum="12" />
+                    </DataTemplate>
+                    <view:ExtEditorTemplateSelector x:Key="MyEditorTemplateSelector">
+                        <view:ExtEditorTemplateSelector.EditorTemplateRules>
+                            <view:EditorTemplateRule PropertyName="OrganizationID" DataTemplate="{StaticResource OrganizationEditorTemplate}"/>
+                            <view:EditorTemplateRule PropertyName="YearMonth" DataTemplate="{StaticResource YearMonthEditorTemplate}"/>
+                        </view:ExtEditorTemplateSelector.EditorTemplateRules>
+                    </view:ExtEditorTemplateSelector>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <telerik:RadDataFilter Name="radDataFilter" EditorCreated="billFilter_EditorCreated"
+                                   view:ItemPropertyDefinitionBindingBehavior.ItemPropertyDefinitions="{Binding ItemPropertyDefinitions}"
+                                   view:FilterDescriptorBindingBehavior.FilterDescriptors="{Binding FilterDescriptors}"
+                                   EditorTemplateSelector="{StaticResource MyEditorTemplateSelector}" />
+                <StackPanel Grid.Column="1" Margin="10 0 0 0">
+                    <TextBlock Text="注意:该报表是为查看单月份多机构或多月份单机构的指标完成情况而设计的." Foreground="Red" Margin="0 5" />
+                    <CheckBox Content="不显示没有相关指标的零售数据" IsChecked="{Binding OnlyShowHasTarget}" />
+                </StackPanel>
+                <telerik:RadButton x:Name="btnSearch" Content="查询" Width="70" Command="{Binding SearchCommand}"
+                               Grid.Column="2" Margin="0 5 5 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+            </Grid>
+            <telerik:RadCartesianChart Grid.Row="1" Palette="Metro" SelectionPalette="Natural" EmptyContent="【指标完成情况】没有可显示的数据" 
+                                       VerticalAlignment="Stretch" Visibility="{Binding ShowSingleOrganization, Converter={StaticResource visibilityCvt}}">
+                <telerik:RadCartesianChart.Behaviors>
+                    <telerik:ChartSelectionBehavior DataPointSelectionMode="Single" SelectionChanged="ChartSelectionBehavior_SelectionChanged" />
+                </telerik:RadCartesianChart.Behaviors>
+                <chartView:BarSeries ItemsSource="{Binding Entities}" ValueBinding="SaleActual" CategoryBinding="YearMonth" ShowLabels="True">
+                </chartView:BarSeries>
+                <chartView:LineSeries ItemsSource="{Binding Entities}" ValueBinding="SaleTaget" CategoryBinding="YearMonth" ShowLabels="True">
+                </chartView:LineSeries>
+                <telerik:RadCartesianChart.HorizontalAxis>
+                    <chartView:DateTimeCategoricalAxis LabelFormat="yyyy-MM" PlotMode="OnTicksPadded" />
+                </telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:RadCartesianChart.VerticalAxis>
+                    <chartView:LinearAxis />
+                </telerik:RadCartesianChart.VerticalAxis>
+            </telerik:RadCartesianChart>
+            <telerik:RadGridView Grid.Row="1"
+                                 ItemsSource="{Binding Entities}" 
+                                 RowIndicatorVisibility="Collapsed" 
+                                 AutoGenerateColumns="False" 
+                                 BorderThickness="0" 
+                                 CanUserFreezeColumns="False"
+                                 SelectionMode="Single"
+                                 SelectionChanged="RadGridView_SelectionChanged"
+                                 IsReadOnly="True"
+                                 ValidatesOnDataErrors="None"
+                                 Visibility="{Binding ShowSingleMonth, Converter={StaticResource visibilityCvt}}">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationCode}" Header="机构编号" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationName}" Header="机构名称" />
+                    <telerik:GridViewDataColumn MinWidth="260" HeaderTextAlignment="Center" TextAlignment="Center" Header="完成情况" >
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <telerik:RadHorizontalBulletGraph QuantitativeScaleVisibility="Collapsed" 
+                                                                      ProjectedValue="{Binding SaleTaget}" 
+                                                                      FeaturedMeasure="{Binding SaleActual}" 
+                                                                      Height="20" 
+                                                                      ComparativeMeasureThickness="0" 
+                                                                      Minimum="0" 
+                                                                      Margin="16,3,8,3" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding SaleTaget}" Header="指标" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding SaleActual}" Header="实际业绩" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+
+            <telerik:RadCartesianChart Grid.Row="2" Palette="Metro" EmptyContent="【月度零售明细】没有可显示的数据" VerticalAlignment="Stretch" 
+                                       Margin="0 20 0 0" Background="#66A1D8E6">
+                <chartView:BarSeries x:Name="barDetails" ValueBinding="CostMoney" CategoryBinding="CreateDate" ShowLabels="True">
+                </chartView:BarSeries>
+                <telerik:RadCartesianChart.HorizontalAxis>
+                    <!--DateTimeCategoricalAxis是按绑定的数据集来生成时间轴的，并不会自动填充缺失的时间,而且生成的时间间隔是一样的，并不会自动匹配真实的时间轴距离-->
+                    <!--DateTimeComponent的作用：当为day(应该是date吧,它们两个应该有区别，未测试)时以day为单位分开显示，当为month时同一个month的各个day的值挤到一块(并不是相加,而是间隙为0),看上去就是一个整体-->
+                    <!--<chartView:DateTimeCategoricalAxis LabelFormat="dd" PlotMode="OnTicksPadded" DateTimeComponent="Day" />-->
+                    <!--DateTimeContinuousAxis会按一定规律自动生成缺失的时间，这个规律应该是数据集合最小时间差为一个单位，因此原数据集合里的数据时间可能并不能恰好匹配到生成之后的时间轴标度上-->
+                    <!--不过设置MajorStep="1" MajorStepUnit="Day"好像就解决了上述问题-->
+                    <chartView:DateTimeContinuousAxis x:Name="xAxis" LabelFormat="dd" PlotMode="OnTicksPadded" MajorStep="1" MajorStepUnit="Day" />
+                </telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:RadCartesianChart.VerticalAxis>
+                    <chartView:LinearAxis />
+                </telerik:RadCartesianChart.VerticalAxis>
+            </telerik:RadCartesianChart>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

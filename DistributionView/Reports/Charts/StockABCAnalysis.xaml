@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="DistributionView.Reports.StockABCAnalysis"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:DistributionView"
+             xmlns:vext="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary Source="pack://application:,,,/DistributionView;component/ABCChartRes.xaml" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridFilter">
+            <Grid.Resources>
+                <DataTemplate x:Key="ComboboxFilterEditorTemplate">
+                    <telerik:RadComboBox SelectedValue="{Binding Value, Mode=TwoWay, FallbackValue=-1}" 
+                                         SelectedValuePath="ID" DisplayMemberPath="Name" MinWidth="100"/>
+                </DataTemplate>
+                <DataTemplate x:Key="YearFilterEditorTemplate">
+                    <telerik:RadDatePicker DateSelectionMode="Year" IsTooltipEnabled="True" ErrorTooltipContent="输入格式不正确" 
+                                           DateTimeWatermarkContent="选择年份" DateTimeText="{Binding Value,Mode=TwoWay}" MinWidth="100" />
+                </DataTemplate>
+                <vext:ExtEditorTemplateSelector x:Key="MyEditorTemplateSelector">
+                    <vext:ExtEditorTemplateSelector.EditorTemplateRules>
+                        <vext:EditorTemplateRule PropertyName="BrandID" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                        <vext:EditorTemplateRule PropertyName="NameID" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                        <vext:EditorTemplateRule PropertyName="Quarter" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                        <vext:EditorTemplateRule PropertyName="StorageID" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                        <vext:EditorTemplateRule PropertyName="Year" DataTemplate="{StaticResource YearFilterEditorTemplate}"/>
+                    </vext:ExtEditorTemplateSelector.EditorTemplateRules>
+                </vext:ExtEditorTemplateSelector>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" MinWidth="60" />
+            </Grid.ColumnDefinitions>
+            <telerik:RadDataFilter Name="radDataFilter" 
+                                   vext:ItemPropertyDefinitionBindingBehavior.ItemPropertyDefinitions="{Binding ItemPropertyDefinitions}"
+                                   vext:FilterDescriptorBindingBehavior.FilterDescriptors="{Binding FilterDescriptors}"
+                                   EditorTemplateSelector="{StaticResource MyEditorTemplateSelector}"
+                                   EditorCreated="radDataFilter_EditorCreated"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <telerik:RadButton x:Name="btnSearch" Content="查询" MinWidth="70" Click="btnSearch_Click" />
+                <telerik:RadButton x:Name="btnExcel" Content="导出Excel" MinWidth="70" Click="btnExcel_Click" />
+            </StackPanel>
+        </Grid>
+        <Grid Margin="5 10 5 0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="telerik:RadRadioButton" BasedOn="{StaticResource {telerik:ThemeResourceKey ThemeType=telerik:Windows8Theme, ElementType=telerik:RadRadioButton}}">
+                    </Style>
+                </StackPanel.Resources>
+                <telerik:RadRadioButton x:Name="btnMoney" IsChecked="True" VerticalAlignment="Center" Checked="btnMoney_Checked" Unchecked="btnMoney_Checked">
+                    <TextBlock Text="{Binding AmountCostMoney,StringFormat=总额: {0:C2}}" />
+                </telerik:RadRadioButton>
+                <telerik:RadRadioButton VerticalAlignment="Center" Margin="5 0">
+                    <TextBlock Text="{Binding AmountQuantity,StringFormat=数量: {0}件}" />
+                </telerik:RadRadioButton>
+            </StackPanel>
+            <telerik:RadListBox x:Name="radListBox" HorizontalAlignment="Center" SelectedIndex="0"
+                                SelectionChanged="radListBox_SelectionChanged"
+                            Background="Transparent" BorderBrush="Transparent">
+                <telerik:RadListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </telerik:RadListBox.ItemsPanel>
+                <telerik:RadListBoxItem Content="款式" />
+                <telerik:RadListBoxItem Content="颜色" />
+                <telerik:RadListBoxItem Content="品类" />
+            </telerik:RadListBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Rectangle Fill="Green" Height="10" Width="10" Margin="5 0" />
+                <TextBlock Text="主要(A)" VerticalAlignment="Center" />
+                <Rectangle Fill="Yellow" Height="10" Width="10" Margin="5 0" />
+                <TextBlock Text="次要(B)" VerticalAlignment="Center" />
+                <Rectangle Fill="Red" Height="10" Width="10" Margin="5 0" />
+                <TextBlock Text="一般(C)" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <telerik:RadCartesianChart x:Name="chart" Palette="Windows8" ClipToBounds="False" EmptyContent="" Grid.Row="1">
+                <telerik:BarSeries x:Name="barSeries">
+                    <telerik:BarSeries.PointTemplate>
+                        <DataTemplate>
+                            <Rectangle Fill="{Binding Path=DataItem,Converter={StaticResource abcAnalysisBarColorCvt}}"/>
+                        </DataTemplate>
+                    </telerik:BarSeries.PointTemplate>
+                </telerik:BarSeries>
+                <telerik:LineSeries x:Name="lineSeries" ValueBinding="AccuProportion">
+                    <telerik:LineSeries.VerticalAxis>
+                        <telerik:LinearAxis Title="累计占比" Maximum="1" LabelFormat="{}0%"
+                                        ElementBrush="{Binding ElementName=chart, Path=Palette.GlobalEntries[1].Fill}" 
+                                        HorizontalLocation="Right" />
+                    </telerik:LineSeries.VerticalAxis>
+                </telerik:LineSeries>
+                <telerik:RadCartesianChart.HorizontalAxis>
+                    <telerik:CategoricalAxis x:Name="horizontalAxis_Style" LabelFitMode="Rotate" PlotMode="OnTicksPadded" />
+                </telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:RadCartesianChart.VerticalAxis>
+                    <telerik:LinearAxis x:Name="leftAxis" Title="金额(元)"
+                                    ElementBrush="{Binding ElementName=chart, Path=Palette.GlobalEntries[0].Fill}" />
+                </telerik:RadCartesianChart.VerticalAxis>
+                <telerik:RadCartesianChart.Grid>
+                    <telerik:CartesianChartGrid MajorLinesVisibility="Y" />
+                </telerik:RadCartesianChart.Grid>
+                <telerik:RadCartesianChart.Behaviors>
+                    <telerik:ChartTooltipBehavior Placement="Top" VerticalOffset="20" />
+                    <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" PanMode="Horizontal" />
+                </telerik:RadCartesianChart.Behaviors>
+                <telerik:RadCartesianChart.TooltipTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Path Data="M-1236,-441 L-1180,-441 -1180,-424 -1228,-424 -1230.5,-420 -1233,-424 -1236,-424 z"
+                                  Stretch="Fill" Fill="#FFFFFF" Stroke="#FF767676" StrokeThickness="1"/>
+                            <StackPanel Margin="5,5,5,18">
+                                <TextBlock Text="{Binding DataItem.CostMoney,StringFormat=金额: {0:C2}}" />
+                                <TextBlock Text="{Binding DataItem.Quantity,StringFormat=数量: {0}件}" />
+                                <TextBlock Text="{Binding DataItem.Proportion,StringFormat=占比: {0:0.00%}}" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </telerik:RadCartesianChart.TooltipTemplate>
+            </telerik:RadCartesianChart>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,2577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBEncapsulation.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DBEncapsulationStoreContainer">
+          <EntitySet Name="BillAllocate" EntityType="DBEncapsulation.Store.BillAllocate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillAllocateDetails" EntityType="DBEncapsulation.Store.BillAllocateDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillCannibalize" EntityType="DBEncapsulation.Store.BillCannibalize" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillCannibalizeDetails" EntityType="DBEncapsulation.Store.BillCannibalizeDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillDelivery" EntityType="DBEncapsulation.Store.BillDelivery" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillDeliveryDetails" EntityType="DBEncapsulation.Store.BillDeliveryDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillGoodReturn" EntityType="DBEncapsulation.Store.BillGoodReturn" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillGoodReturnDetails" EntityType="DBEncapsulation.Store.BillGoodReturnDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillOrder" EntityType="DBEncapsulation.Store.BillOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillOrderChange" EntityType="DBEncapsulation.Store.BillOrderChange" store:Type="Tables" store:Schema="dbo" store:Name="BillOrderChange">
+            <DefiningQuery>SELECT 
+      [BillOrderChange].[BillID] AS [BillID], 
+      [BillOrderChange].[Description] AS [Description], 
+      [BillOrderChange].[CreatorID] AS [CreatorID], 
+      [BillOrderChange].[CreateTime] AS [CreateTime]
+      FROM [dbo].[BillOrderChange] AS [BillOrderChange]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BillOrderDetails" EntityType="DBEncapsulation.Store.BillOrderDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillRetail" EntityType="DBEncapsulation.Store.BillRetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillRetailDetails" EntityType="DBEncapsulation.Store.BillRetailDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillSnapshot" EntityType="DBEncapsulation.Store.BillSnapshot" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillSnapshotDetailsWithUniqueCode" EntityType="DBEncapsulation.Store.BillSnapshotDetailsWithUniqueCode" store:Type="Tables" store:Schema="dbo" store:Name="BillSnapshotDetailsWithUniqueCode">
+            <DefiningQuery>SELECT 
+      [BillSnapshotDetailsWithUniqueCode].[SnapshotID] AS [SnapshotID], 
+      [BillSnapshotDetailsWithUniqueCode].[ProductID] AS [ProductID], 
+      [BillSnapshotDetailsWithUniqueCode].[UniqueCode] AS [UniqueCode]
+      FROM [dbo].[BillSnapshotDetailsWithUniqueCode] AS [BillSnapshotDetailsWithUniqueCode]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BillStocktake" EntityType="DBEncapsulation.Store.BillStocktake" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillStocktakeContrast" EntityType="DBEncapsulation.Store.BillStocktakeContrast" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillStocktakeContrastDetails" EntityType="DBEncapsulation.Store.BillStocktakeContrastDetails" store:Type="Tables" store:Schema="dbo" store:Name="BillStocktakeContrastDetails">
+            <DefiningQuery>SELECT 
+      [BillStocktakeContrastDetails].[BillID] AS [BillID], 
+      [BillStocktakeContrastDetails].[QuaStocktake] AS [QuaStocktake], 
+      [BillStocktakeContrastDetails].[QuaStockOrig] AS [QuaStockOrig], 
+      [BillStocktakeContrastDetails].[ProductID] AS [ProductID], 
+      [BillStocktakeContrastDetails].[Quantity] AS [Quantity]
+      FROM [dbo].[BillStocktakeContrastDetails] AS [BillStocktakeContrastDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BillStocktakeDetails" EntityType="DBEncapsulation.Store.BillStocktakeDetails" store:Type="Tables" store:Schema="dbo" store:Name="BillStocktakeDetails">
+            <DefiningQuery>SELECT 
+      [BillStocktakeDetails].[BillID] AS [BillID], 
+      [BillStocktakeDetails].[ProductID] AS [ProductID], 
+      [BillStocktakeDetails].[Quantity] AS [Quantity]
+      FROM [dbo].[BillStocktakeDetails] AS [BillStocktakeDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BillStoreMove" EntityType="DBEncapsulation.Store.BillStoreMove" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillStoreMoveDetails" EntityType="DBEncapsulation.Store.BillStoreMoveDetails" store:Type="Tables" store:Schema="dbo" store:Name="BillStoreMoveDetails">
+            <DefiningQuery>SELECT 
+      [BillStoreMoveDetails].[BillID] AS [BillID], 
+      [BillStoreMoveDetails].[ProductID] AS [ProductID], 
+      [BillStoreMoveDetails].[Quantity] AS [Quantity]
+      FROM [dbo].[BillStoreMoveDetails] AS [BillStoreMoveDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BillStoreOut" EntityType="DBEncapsulation.Store.BillStoreOut" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillStoreOutDetails" EntityType="DBEncapsulation.Store.BillStoreOutDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillStoring" EntityType="DBEncapsulation.Store.BillStoring" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BillStoringDetails" EntityType="DBEncapsulation.Store.BillStoringDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrganizationAllocationGrade" EntityType="DBEncapsulation.Store.OrganizationAllocationGrade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrganizationContractDiscount" EntityType="DBEncapsulation.Store.OrganizationContractDiscount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrganizationCredit" EntityType="DBEncapsulation.Store.OrganizationCredit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrganizationFundAccount" EntityType="DBEncapsulation.Store.OrganizationFundAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrganizationGoodReturnRate" EntityType="DBEncapsulation.Store.OrganizationGoodReturnRate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrganizationGoodReturnRatePerQuarter" EntityType="DBEncapsulation.Store.OrganizationGoodReturnRatePerQuarter" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RetailMonthTaget" EntityType="DBEncapsulation.Store.RetailMonthTaget" store:Type="Tables" store:Schema="dbo" store:Name="RetailMonthTaget">
+            <DefiningQuery>SELECT 
+      [RetailMonthTaget].[ID] AS [ID], 
+      [RetailMonthTaget].[OrganizationID] AS [OrganizationID], 
+      [RetailMonthTaget].[Year] AS [Year], 
+      [RetailMonthTaget].[Month] AS [Month], 
+      [RetailMonthTaget].[SaleTaget] AS [SaleTaget], 
+      [RetailMonthTaget].[CreatorID] AS [CreatorID], 
+      [RetailMonthTaget].[CreateTime] AS [CreateTime]
+      FROM [dbo].[RetailMonthTaget] AS [RetailMonthTaget]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RetailShift" EntityType="DBEncapsulation.Store.RetailShift" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RetailShoppingGuide" EntityType="DBEncapsulation.Store.RetailShoppingGuide" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RetailTactic" EntityType="DBEncapsulation.Store.RetailTactic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RetailTacticProStyleMapping" EntityType="DBEncapsulation.Store.RetailTacticProStyleMapping" store:Type="Tables" store:Schema="dbo" store:Name="RetailTacticProStyleMapping">
+            <DefiningQuery>SELECT 
+      [RetailTacticProStyleMapping].[StyleID] AS [StyleID], 
+      [RetailTacticProStyleMapping].[TacticID] AS [TacticID]
+      FROM [dbo].[RetailTacticProStyleMapping] AS [RetailTacticProStyleMapping]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Stock" EntityType="DBEncapsulation.Store.Stock" store:Type="Tables" store:Schema="dbo" store:Name="Stock">
+            <DefiningQuery>SELECT 
+      [Stock].[StorageID] AS [StorageID], 
+      [Stock].[ProductID] AS [ProductID], 
+      [Stock].[Quantity] AS [Quantity]
+      FROM [dbo].[Stock] AS [Stock]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Storage" EntityType="DBEncapsulation.Store.Storage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPBirthdayConsumption" EntityType="DBEncapsulation.Store.VIPBirthdayConsumption" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPBirthdayTactic" EntityType="DBEncapsulation.Store.VIPBirthdayTactic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPCard" EntityType="DBEncapsulation.Store.VIPCard" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPCardKindMapping" EntityType="DBEncapsulation.Store.VIPCardKindMapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPKind" EntityType="DBEncapsulation.Store.VIPKind" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPPointTrack" EntityType="DBEncapsulation.Store.VIPPointTrack" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPPredepositTrack" EntityType="DBEncapsulation.Store.VIPPredepositTrack" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPUpTactic" EntityType="DBEncapsulation.Store.VIPUpTactic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VoucherDeductMoney" EntityType="DBEncapsulation.Store.VoucherDeductMoney" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VoucherItemKind" EntityType="DBEncapsulation.Store.VoucherItemKind" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VoucherReceiveMoney" EntityType="DBEncapsulation.Store.VoucherReceiveMoney" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ViewOrganization" EntityType="DBEncapsulation.Store.ViewOrganization" store:Type="Views" store:Schema="dbo" store:Name="ViewOrganization">
+            <DefiningQuery>SELECT 
+      [ViewOrganization].[ID] AS [ID], 
+      [ViewOrganization].[Code] AS [Code], 
+      [ViewOrganization].[ParentID] AS [ParentID], 
+      [ViewOrganization].[Name] AS [Name], 
+      [ViewOrganization].[TypeId] AS [TypeId], 
+      [ViewOrganization].[AreaID] AS [AreaID], 
+      [ViewOrganization].[ProvienceID] AS [ProvienceID], 
+      [ViewOrganization].[CityID] AS [CityID], 
+      [ViewOrganization].[Address] AS [Address], 
+      [ViewOrganization].[Telephone] AS [Telephone], 
+      [ViewOrganization].[Linkman] AS [Linkman], 
+      [ViewOrganization].[Flag] AS [Flag], 
+      [ViewOrganization].[CreatorID] AS [CreatorID], 
+      [ViewOrganization].[CreateTime] AS [CreateTime], 
+      [ViewOrganization].[Description] AS [Description], 
+      [ViewOrganization].[Latitude] AS [Latitude], 
+      [ViewOrganization].[Longitude] AS [Longitude], 
+      [ViewOrganization].[MapCityName] AS [MapCityName]
+      FROM [dbo].[ViewOrganization] AS [ViewOrganization]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewProColor" EntityType="DBEncapsulation.Store.ViewProColor" store:Type="Views" store:Schema="dbo" store:Name="ViewProColor">
+            <DefiningQuery>SELECT 
+      [ViewProColor].[ID] AS [ID], 
+      [ViewProColor].[Code] AS [Code], 
+      [ViewProColor].[Name] AS [Name], 
+      [ViewProColor].[RGBCode] AS [RGBCode], 
+      [ViewProColor].[CreatorID] AS [CreatorID], 
+      [ViewProColor].[CreateTime] AS [CreateTime]
+      FROM [dbo].[ViewProColor] AS [ViewProColor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewProduct" EntityType="DBEncapsulation.Store.ViewProduct" store:Type="Views" store:Schema="dbo" store:Name="ViewProduct">
+            <DefiningQuery>SELECT 
+      [ViewProduct].[ProductID] AS [ProductID], 
+      [ViewProduct].[ProductCode] AS [ProductCode], 
+      [ViewProduct].[StyleCode] AS [StyleCode], 
+      [ViewProduct].[StyleID] AS [StyleID], 
+      [ViewProduct].[CostPrice] AS [CostPrice], 
+      [ViewProduct].[ColorID] AS [ColorID], 
+      [ViewProduct].[BrandID] AS [BrandID], 
+      [ViewProduct].[BYQID] AS [BYQID], 
+      [ViewProduct].[Price] AS [Price], 
+      [ViewProduct].[NameID] AS [NameID], 
+      [ViewProduct].[SizeID] AS [SizeID]
+      FROM [dbo].[ViewProduct] AS [ViewProduct]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewProSize" EntityType="DBEncapsulation.Store.ViewProSize" store:Type="Views" store:Schema="dbo" store:Name="ViewProSize">
+            <DefiningQuery>SELECT 
+      [ViewProSize].[ID] AS [ID], 
+      [ViewProSize].[Code] AS [Code], 
+      [ViewProSize].[Name] AS [Name], 
+      [ViewProSize].[Description] AS [Description], 
+      [ViewProSize].[CreatorID] AS [CreatorID], 
+      [ViewProSize].[CreateTime] AS [CreateTime], 
+      [ViewProSize].[Flag] AS [Flag]
+      FROM [dbo].[ViewProSize] AS [ViewProSize]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewUser" EntityType="DBEncapsulation.Store.ViewUser" store:Type="Views" store:Schema="dbo" store:Name="ViewUser">
+            <DefiningQuery>SELECT 
+      [ViewUser].[ID] AS [ID], 
+      [ViewUser].[Code] AS [Code], 
+      [ViewUser].[Name] AS [Name], 
+      [ViewUser].[Password] AS [Password], 
+      [ViewUser].[OrganizationID] AS [OrganizationID], 
+      [ViewUser].[Flag] AS [Flag], 
+      [ViewUser].[CreatorID] AS [CreatorID], 
+      [ViewUser].[CreateTime] AS [CreateTime]
+      FROM [dbo].[ViewUser] AS [ViewUser]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="BillAllocate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="HandlerID" Type="int" />
+          <Property Name="HandleTime" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillAllocateDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillAllocateDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillCannibalize">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="ToOrganizationID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillCannibalizeDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillCannibalizeDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillDelivery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="ToOrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="BillAllocateCode" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsWriteDownOrder" Type="bit" Nullable="false" />
+          <Property Name="DeliveryKind" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillDeliveryDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillDeliveryDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            
+            
+            <PropertyRef Name="ProductID" />
+            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillGoodReturn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDefective" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillGoodReturnDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillGoodReturnDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="BillOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillOrderChange”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillOrderChange">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillOrderDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="QuaCancel" Type="int" Nullable="false" />
+          <Property Name="QuaDelivered" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillRetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="VIPID" Type="int" />
+          <Property Name="GuideID" Type="int" />
+          <Property Name="ShiftID" Type="int" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CostMoney" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="PredepositPay" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ReceiveMoney" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ReceiveTicket" Type="int" Nullable="false" />
+          <Property Name="TicketMoney" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="TicketKind" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillRetailDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillRetailDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="numeric" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="CutMoney" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="BillSnapshot">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="BillCode" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="BillTypeName" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="OrganizationName" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="CreatorName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillSnapshotDetailsWithUniqueCode”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillSnapshotDetailsWithUniqueCode">
+          <Key>
+            <PropertyRef Name="SnapshotID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="UniqueCode" />
+          </Key>
+          <Property Name="SnapshotID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="UniqueCode" Type="char" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="BillStocktake">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStocktakeContrast">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillStocktakeContrastDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillStocktakeContrastDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="QuaStocktake" />
+            <PropertyRef Name="QuaStockOrig" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="QuaStocktake" Type="int" Nullable="false" />
+          <Property Name="QuaStockOrig" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillStocktakeDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillStocktakeDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStoreMove">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="StorageIDOut" Type="int" Nullable="false" />
+          <Property Name="StorageIDIn" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillStoreMoveDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillStoreMoveDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStoreOut">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="RefrenceBillCode" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="BillType" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillStoreOutDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillStoreOutDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStoring">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="RefrenceBillCode" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="BillType" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.BillStoringDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillStoringDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            
+          </Key>
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationAllocationGrade">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="Grade" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationContractDiscount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BYQID" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationCredit">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="CreditMoney" Type="int" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.OrganizationFundAccount”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="OrganizationFundAccount">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="NeedIn" />
+            <PropertyRef Name="AlreadyIn" />
+            <PropertyRef Name="BillKind" />
+            <PropertyRef Name="RefrenceBillCode" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="NeedIn" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="AlreadyIn" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="BillKind" Type="int" Nullable="false" />
+          <Property Name="RefrenceBillCode" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationGoodReturnRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="GoodReturnRate" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationGoodReturnRatePerQuarter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RateID" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Quarter" Type="int" Nullable="false" />
+          <Property Name="GoodReturnRate" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.RetailMonthTaget”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="RetailMonthTaget">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Month" />
+            <PropertyRef Name="SaleTaget" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Month" Type="int" Nullable="false" />
+          <Property Name="SaleTaget" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RetailShift">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RetailShoppingGuide">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="ShiftID" Type="int" />
+          <Property Name="OnBoardDate" Type="date" Nullable="false" />
+          <Property Name="DimissionDate" Type="date" />
+          <Property Name="State" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RetailTactic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="Kind" Type="int" Nullable="false" />
+          <Property Name="BeginDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="CostMoney" Type="int" />
+          <Property Name="CutMoney" Type="int" />
+          <Property Name="Discount" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="CanVIPApply" Type="bit" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.RetailTacticProStyleMapping”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="RetailTacticProStyleMapping">
+          <Key>
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="TacticID" />
+          </Key>
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="TacticID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.Stock”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StorageID" />
+            <PropertyRef Name="ProductID" />
+            
+          </Key>
+          <Property Name="StorageID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.VIPBirthdayConsumption”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="VIPBirthdayConsumption">
+          <Key>
+            <PropertyRef Name="VIPID" />
+            
+            
+            <PropertyRef Name="ConsumeDay" />
+          </Key>
+          <Property Name="VIPID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CostMoney" Type="int" Nullable="false" />
+          <Property Name="ConsumeDay" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIPBirthdayTactic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Discount" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="IsMultDiscount" Type="bit" Nullable="false" />
+          <Property Name="PointTimes" Type="int" Nullable="false" />
+          <Property Name="QuantityLimit" Type="int" />
+          <Property Name="MoneyLimit" Type="int" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIPCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="15" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDCard" Type="varchar" MaxLength="30" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="PrestorePassword" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VIPCardKindMapping">
+          <Key>
+            <PropertyRef Name="CardID" />
+            <PropertyRef Name="KindID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="int" Nullable="false" />
+          <Property Name="KindID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIPKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.VIPPointTrack”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="VIPPointTrack">
+          <Key>
+            <PropertyRef Name="VIPID" />
+            
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="VIPID" Type="int" Nullable="false" />
+          <Property Name="Point" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.VIPPredepositTrack”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="VIPPredepositTrack">
+          <Key>
+            
+            
+            
+            
+            
+            
+            <PropertyRef Name="RefrenceBillCode" />
+            
+            
+          </Key>
+          <Property Name="VIPID" Type="int" Nullable="false" />
+          <Property Name="StoreMoney" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="FreeMoney" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ConsumeMoney" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Kind" Type="bit" Nullable="false" />
+          <Property Name="RefrenceBillCode" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VIPUpTactic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="FormerKindID" Type="int" Nullable="false" />
+          <Property Name="AfterKindID" Type="int" Nullable="false" />
+          <Property Name="OnceConsume" Type="int" />
+          <Property Name="DateSpan" Type="int" />
+          <Property Name="SpanConsume" Type="int" />
+          <Property Name="CutPoint" Type="int" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoucherDeductMoney">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="DeductMoney" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="OccurDate" Type="date" Nullable="false" />
+          <Property Name="ItemKindID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CheckerID" Type="int" />
+          <Property Name="CheckTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VoucherItemKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Kind" Type="int" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoucherReceiveMoney">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="ReceiveMoney" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="OccurDate" Type="date" Nullable="false" />
+          <Property Name="ReceiveKindID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="IsMoneyFrozen" Type="bit" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CheckerID" Type="int" />
+          <Property Name="CheckTime" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.ViewOrganization”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewOrganization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="AreaID" Type="int" Nullable="false" />
+          <Property Name="ProvienceID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="Linkman" Type="nvarchar" MaxLength="10" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Latitude" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="MapCityName" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.ViewProBYQ”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.ViewProColor”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewProColor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="RGBCode" Type="char" Nullable="false" MaxLength="9" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.ViewProduct”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="StyleCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="CostPrice" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="BYQID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="NameID" Type="int" Nullable="false" />
+          <Property Name="SizeID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.ViewProSize”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewProSize">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Description" Type="varchar" MaxLength="20" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Distribution.dbo.ViewUser”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="Flag" />
+            <PropertyRef Name="CreatorID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBEncapsulation" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="BillAllocate" EntityType="DBEncapsulation.BillAllocate" />
+          <EntitySet Name="BillAllocateDetails" EntityType="DBEncapsulation.BillAllocateDetails" />
+          <EntitySet Name="BillCannibalize" EntityType="DBEncapsulation.BillCannibalize" />
+          <EntitySet Name="BillCannibalizeDetails" EntityType="DBEncapsulation.BillCannibalizeDetails" />
+          <EntitySet Name="BillDelivery" EntityType="DBEncapsulation.BillDelivery" />
+          <EntitySet Name="BillDeliveryDetails" EntityType="DBEncapsulation.BillDeliveryDetails" />
+          <EntitySet Name="BillGoodReturn" EntityType="DBEncapsulation.BillGoodReturn" />
+          <EntitySet Name="BillGoodReturnDetails" EntityType="DBEncapsulation.BillGoodReturnDetails" />
+          <EntitySet Name="BillOrder" EntityType="DBEncapsulation.BillOrder" />
+          <EntitySet Name="BillOrderChange" EntityType="DBEncapsulation.BillOrderChange" />
+          <EntitySet Name="BillOrderDetails" EntityType="DBEncapsulation.BillOrderDetails" />
+          <EntitySet Name="BillRetail" EntityType="DBEncapsulation.BillRetail" />
+          <EntitySet Name="BillRetailDetails" EntityType="DBEncapsulation.BillRetailDetails" />
+          <EntitySet Name="BillSnapshot" EntityType="DBEncapsulation.BillSnapshot" />
+          <EntitySet Name="BillSnapshotDetailsWithUniqueCode" EntityType="DBEncapsulation.BillSnapshotDetailsWithUniqueCode" />
+          <EntitySet Name="BillStocktake" EntityType="DBEncapsulation.BillStocktake" />
+          <EntitySet Name="BillStocktakeContrast" EntityType="DBEncapsulation.BillStocktakeContrast" />
+          <EntitySet Name="BillStocktakeContrastDetails" EntityType="DBEncapsulation.BillStocktakeContrastDetails" />
+          <EntitySet Name="BillStocktakeDetails" EntityType="DBEncapsulation.BillStocktakeDetails" />
+          <EntitySet Name="BillStoreMove" EntityType="DBEncapsulation.BillStoreMove" />
+          <EntitySet Name="BillStoreMoveDetails" EntityType="DBEncapsulation.BillStoreMoveDetails" />
+          <EntitySet Name="BillStoreOut" EntityType="DBEncapsulation.BillStoreOut" />
+          <EntitySet Name="BillStoreOutDetails" EntityType="DBEncapsulation.BillStoreOutDetails" />
+          <EntitySet Name="BillStoring" EntityType="DBEncapsulation.BillStoring" />
+          <EntitySet Name="OrganizationAllocationGrade" EntityType="DBEncapsulation.OrganizationAllocationGrade" />
+          <EntitySet Name="OrganizationContractDiscount" EntityType="DBEncapsulation.OrganizationContractDiscount" />
+          <EntitySet Name="OrganizationCredit" EntityType="DBEncapsulation.OrganizationCredit" />
+          <EntitySet Name="OrganizationFundAccount" EntityType="DBEncapsulation.OrganizationFundAccount" />
+          <EntitySet Name="OrganizationGoodReturnRate" EntityType="DBEncapsulation.OrganizationGoodReturnRate" />
+          <EntitySet Name="OrganizationGoodReturnRatePerQuarter" EntityType="DBEncapsulation.OrganizationGoodReturnRatePerQuarter" />
+          <EntitySet Name="RetailMonthTaget" EntityType="DBEncapsulation.RetailMonthTaget" />
+          <EntitySet Name="RetailShift" EntityType="DBEncapsulation.RetailShift" />
+          <EntitySet Name="RetailShoppingGuide" EntityType="DBEncapsulation.RetailShoppingGuide" />
+          <EntitySet Name="RetailTactic" EntityType="DBEncapsulation.RetailTactic" />
+          <EntitySet Name="RetailTacticProStyleMapping" EntityType="DBEncapsulation.RetailTacticProStyleMapping" />
+          <EntitySet Name="Stock" EntityType="DBEncapsulation.Stock" />
+          <EntitySet Name="Storage" EntityType="DBEncapsulation.Storage" />
+          <EntitySet Name="VIPBirthdayConsumption" EntityType="DBEncapsulation.VIPBirthdayConsumption" />
+          <EntitySet Name="VIPBirthdayTactic" EntityType="DBEncapsulation.VIPBirthdayTactic" />
+          <EntitySet Name="VIPCard" EntityType="DBEncapsulation.VIPCard" />
+          <EntitySet Name="VIPCardKindMapping" EntityType="DBEncapsulation.VIPCardKindMapping" />
+          <EntitySet Name="VIPKind" EntityType="DBEncapsulation.VIPKind" />
+          <EntitySet Name="VIPPointTrack" EntityType="DBEncapsulation.VIPPointTrack" />
+          <EntitySet Name="VIPPredepositTrack" EntityType="DBEncapsulation.VIPPredepositTrack" />
+          <EntitySet Name="VIPUpTactic" EntityType="DBEncapsulation.VIPUpTactic" />
+          <EntitySet Name="VoucherDeductMoney" EntityType="DBEncapsulation.VoucherDeductMoney" />
+          <EntitySet Name="VoucherItemKind" EntityType="DBEncapsulation.VoucherItemKind" />
+          <EntitySet Name="VoucherReceiveMoney" EntityType="DBEncapsulation.VoucherReceiveMoney" />
+          <EntitySet Name="ViewOrganization" EntityType="DBEncapsulation.ViewOrganization" />
+          <EntitySet Name="ViewProduct" EntityType="DBEncapsulation.ViewProduct" />
+          <EntitySet Name="ViewUser" EntityType="DBEncapsulation.ViewUser" />
+          <EntitySet Name="BillStoringDetails" EntityType="DBEncapsulation.BillStoringDetails" />
+          <EntitySet Name="ViewProColor" EntityType="DBEncapsulation.ViewProColor" />
+          <EntitySet Name="ViewProSize" EntityType="DBEncapsulation.ViewProSize" />
+        </EntityContainer>
+        <EntityType Name="BillAllocate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HandlerID" Type="Int32" />
+          <Property Name="HandleTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillAllocateDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillCannibalize">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="ToOrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillCannibalizeDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillDelivery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="ToOrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="BillAllocateCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsWriteDownOrder" Type="Boolean" Nullable="false" />
+          <Property Name="DeliveryKind" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillDeliveryDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillGoodReturn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+<Property Type="Boolean" Name="IsDefective" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillGoodReturnDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="BillOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillOrderChange">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillOrderDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="QuaCancel" Type="Int32" Nullable="false" />
+          <Property Name="QuaDelivered" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillRetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="VIPID" Type="Int32" />
+          <Property Name="GuideID" Type="Int32" />
+          <Property Name="ShiftID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="CostMoney" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="PredepositPay" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ReceiveMoney" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ReceiveTicket" Type="Int32" Nullable="false" />
+          <Property Name="TicketMoney" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="TicketKind" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillRetailDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Nullable="false" Type="Int32" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="CutMoney" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="BillSnapshot">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="BillCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BillTypeName" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="OrganizationName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="BillSnapshotDetailsWithUniqueCode">
+          <Key>
+            <PropertyRef Name="SnapshotID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="UniqueCode" />
+          </Key>
+          <Property Name="SnapshotID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="UniqueCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="BillStocktake">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStocktakeContrast">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="BillStocktakeContrastDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="QuaStocktake" />
+            <PropertyRef Name="QuaStockOrig" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="QuaStocktake" Type="Int32" Nullable="false" />
+          <Property Name="QuaStockOrig" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStocktakeDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStoreMove">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="StorageIDOut" Type="Int32" Nullable="false" />
+          <Property Name="StorageIDIn" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="BillStoreMoveDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStoreOut">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="RefrenceBillCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BillType" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="BillStoreOutDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillStoring">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="RefrenceBillCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BillType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationAllocationGrade">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="Grade" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OrganizationContractDiscount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BYQID" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OrganizationCredit">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="CreditMoney" Type="Int32" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="OrganizationFundAccount">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="NeedIn" />
+            <PropertyRef Name="AlreadyIn" />
+            <PropertyRef Name="BillKind" />
+            <PropertyRef Name="RefrenceBillCode" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="NeedIn" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AlreadyIn" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Remark" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="BillKind" Type="Int32" Nullable="false" />
+          <Property Name="RefrenceBillCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OrganizationGoodReturnRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="GoodReturnRate" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OrganizationGoodReturnRatePerQuarter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RateID" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Quarter" Type="Int32" Nullable="false" />
+          <Property Name="GoodReturnRate" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RetailMonthTaget">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Month" />
+            <PropertyRef Name="SaleTaget" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Month" Type="Int32" Nullable="false" />
+          <Property Name="SaleTaget" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RetailShift">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RetailShoppingGuide">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="ShiftID" Type="Int32" />
+          <Property Name="OnBoardDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DimissionDate" Type="DateTime" Precision="0" />
+          <Property Name="State" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RetailTactic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="Kind" Type="Int32" Nullable="false" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="CostMoney" Type="Int32" />
+          <Property Name="CutMoney" Type="Int32" />
+          <Property Name="Discount" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="CanVIPApply" Type="Boolean" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RetailTacticProStyleMapping">
+          <Key>
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="TacticID" />
+          </Key>
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="TacticID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StorageID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIPBirthdayConsumption">
+          <Key>
+            <PropertyRef Name="VIPID" />
+            <PropertyRef Name="ConsumeDay" />
+          </Key>
+          <Property Name="VIPID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="CostMoney" Type="Int32" Nullable="false" />
+          <Property Name="ConsumeDay" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="VIPBirthdayTactic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="IsMultDiscount" Type="Boolean" Nullable="false" />
+          <Property Name="PointTimes" Type="Int32" Nullable="false" />
+          <Property Name="QuantityLimit" Type="Int32" />
+          <Property Name="MoneyLimit" Type="Int32" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VIPCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="MobilePhone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IDCard" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+<Property Type="String" Name="PrestorePassword" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VIPCardKindMapping">
+          <Key>
+            <PropertyRef Name="CardID" />
+            <PropertyRef Name="KindID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="Int32" Nullable="false" />
+          <Property Name="KindID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIPKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VIPPointTrack">
+          <Key>
+            <PropertyRef Name="VIPID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="VIPID" Type="Int32" Nullable="false" />
+          <Property Name="Point" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VIPPredepositTrack">
+          <Key>
+            <PropertyRef Name="RefrenceBillCode" />
+          </Key>
+          <Property Name="VIPID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Type="Decimal" Name="StoreMoney" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="FreeMoney" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="ConsumeMoney" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="OrganizationID" Nullable="false" />
+          <Property Type="Boolean" Name="Kind" Nullable="false" />
+          <Property Type="String" Name="RefrenceBillCode" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CreatorID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIPUpTactic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="FormerKindID" Type="Int32" Nullable="false" />
+          <Property Name="AfterKindID" Type="Int32" Nullable="false" />
+          <Property Name="OnceConsume" Type="Int32" />
+          <Property Name="DateSpan" Type="Int32" />
+          <Property Name="SpanConsume" Type="Int32" />
+          <Property Name="CutPoint" Type="Int32" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VoucherDeductMoney">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="DeductMoney" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OccurDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ItemKindID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CheckerID" Type="Int32" />
+          <Property Name="CheckTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VoucherItemKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Kind" Type="Int32" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VoucherReceiveMoney">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="ReceiveMoney" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OccurDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReceiveKindID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="IsMoneyFrozen" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CheckerID" Type="Int32" />
+          <Property Name="CheckTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewOrganization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ParentID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TypeId" Nullable="false" />
+          <Property Type="Int32" Name="AreaID" Nullable="false" />
+          <Property Type="Int32" Name="ProvienceID" Nullable="false" />
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <Property Type="String" Name="Address" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Telephone" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Linkman" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Flag" Nullable="false" />
+          <Property Type="Int32" Name="CreatorID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Description" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Latitude" Precision="12" Scale="6" />
+          <Property Type="Decimal" Name="Longitude" Precision="12" Scale="6" />
+          <Property Type="String" Name="MapCityName" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StyleCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="StyleID" Nullable="false" />
+          <Property Type="Int32" Name="ColorID" Nullable="false" />
+          <Property Type="Int32" Name="BrandID" Nullable="false" />
+          <Property Type="Int32" Name="BYQID" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="NameID" Nullable="false" />
+          <Property Type="Decimal" Name="CostPrice" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="SizeID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="Flag" />
+            <PropertyRef Name="CreatorID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrganizationID" Nullable="false" />
+          <Property Type="Boolean" Name="Flag" Nullable="false" />
+          <Property Type="Int32" Name="CreatorID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillStoringDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Type="Int32" Name="BillID" Nullable="false" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewProColor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RGBCode" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="CreatorID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewProSize">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CreatorID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Flag" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBEncapsulationStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="BillAllocate">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillAllocate">
+              <MappingFragment StoreEntitySet="BillAllocate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="HandlerID" ColumnName="HandlerID" />
+                <ScalarProperty Name="HandleTime" ColumnName="HandleTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillAllocateDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillAllocateDetails">
+              <MappingFragment StoreEntitySet="BillAllocateDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillCannibalize">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillCannibalize">
+              <MappingFragment StoreEntitySet="BillCannibalize">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="ToOrganizationID" ColumnName="ToOrganizationID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillCannibalizeDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillCannibalizeDetails">
+              <MappingFragment StoreEntitySet="BillCannibalizeDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillDelivery">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillDelivery">
+              <MappingFragment StoreEntitySet="BillDelivery">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="ToOrganizationID" ColumnName="ToOrganizationID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="BillAllocateCode" ColumnName="BillAllocateCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsWriteDownOrder" ColumnName="IsWriteDownOrder" />
+                <ScalarProperty Name="DeliveryKind" ColumnName="DeliveryKind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillDeliveryDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillDeliveryDetails">
+              <MappingFragment StoreEntitySet="BillDeliveryDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillGoodReturn">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillGoodReturn">
+              <MappingFragment StoreEntitySet="BillGoodReturn">
+<ScalarProperty Name="IsDefective" ColumnName="IsDefective" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillGoodReturnDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillGoodReturnDetails">
+              <MappingFragment StoreEntitySet="BillGoodReturnDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillOrder">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillOrder">
+              <MappingFragment StoreEntitySet="BillOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillOrderChange">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillOrderChange">
+              <MappingFragment StoreEntitySet="BillOrderChange">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillOrderDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillOrderDetails">
+              <MappingFragment StoreEntitySet="BillOrderDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="QuaCancel" ColumnName="QuaCancel" />
+                <ScalarProperty Name="QuaDelivered" ColumnName="QuaDelivered" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillRetail">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillRetail">
+              <MappingFragment StoreEntitySet="BillRetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="VIPID" ColumnName="VIPID" />
+                <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CostMoney" ColumnName="CostMoney" />
+                <ScalarProperty Name="PredepositPay" ColumnName="PredepositPay" />
+                <ScalarProperty Name="ReceiveMoney" ColumnName="ReceiveMoney" />
+                <ScalarProperty Name="ReceiveTicket" ColumnName="ReceiveTicket" />
+                <ScalarProperty Name="TicketMoney" ColumnName="TicketMoney" />
+                <ScalarProperty Name="TicketKind" ColumnName="TicketKind" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillRetailDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillRetailDetails">
+              <MappingFragment StoreEntitySet="BillRetailDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CutMoney" ColumnName="CutMoney" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillSnapshot">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillSnapshot">
+              <MappingFragment StoreEntitySet="BillSnapshot">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
+                <ScalarProperty Name="BillTypeName" ColumnName="BillTypeName" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="CreatorName" ColumnName="CreatorName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillSnapshotDetailsWithUniqueCode">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillSnapshotDetailsWithUniqueCode">
+              <MappingFragment StoreEntitySet="BillSnapshotDetailsWithUniqueCode">
+                <ScalarProperty Name="SnapshotID" ColumnName="SnapshotID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStocktake">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStocktake">
+              <MappingFragment StoreEntitySet="BillStocktake">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStocktakeContrast">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStocktakeContrast">
+              <MappingFragment StoreEntitySet="BillStocktakeContrast">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStocktakeContrastDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStocktakeContrastDetails">
+              <MappingFragment StoreEntitySet="BillStocktakeContrastDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="QuaStocktake" ColumnName="QuaStocktake" />
+                <ScalarProperty Name="QuaStockOrig" ColumnName="QuaStockOrig" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStocktakeDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStocktakeDetails">
+              <MappingFragment StoreEntitySet="BillStocktakeDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStoreMove">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStoreMove">
+              <MappingFragment StoreEntitySet="BillStoreMove">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="StorageIDOut" ColumnName="StorageIDOut" />
+                <ScalarProperty Name="StorageIDIn" ColumnName="StorageIDIn" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStoreMoveDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStoreMoveDetails">
+              <MappingFragment StoreEntitySet="BillStoreMoveDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStoreOut">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStoreOut">
+              <MappingFragment StoreEntitySet="BillStoreOut">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="RefrenceBillCode" ColumnName="RefrenceBillCode" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStoreOutDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStoreOutDetails">
+              <MappingFragment StoreEntitySet="BillStoreOutDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStoring">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStoring">
+              <MappingFragment StoreEntitySet="BillStoring">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="RefrenceBillCode" ColumnName="RefrenceBillCode" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationAllocationGrade">
+            <EntityTypeMapping TypeName="DBEncapsulation.OrganizationAllocationGrade">
+              <MappingFragment StoreEntitySet="OrganizationAllocationGrade">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationContractDiscount">
+            <EntityTypeMapping TypeName="DBEncapsulation.OrganizationContractDiscount">
+              <MappingFragment StoreEntitySet="OrganizationContractDiscount">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BYQID" ColumnName="BYQID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationCredit">
+            <EntityTypeMapping TypeName="DBEncapsulation.OrganizationCredit">
+              <MappingFragment StoreEntitySet="OrganizationCredit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="CreditMoney" ColumnName="CreditMoney" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationFundAccount">
+            <EntityTypeMapping TypeName="DBEncapsulation.OrganizationFundAccount">
+              <MappingFragment StoreEntitySet="OrganizationFundAccount">
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="NeedIn" ColumnName="NeedIn" />
+                <ScalarProperty Name="AlreadyIn" ColumnName="AlreadyIn" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="BillKind" ColumnName="BillKind" />
+                <ScalarProperty Name="RefrenceBillCode" ColumnName="RefrenceBillCode" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationGoodReturnRate">
+            <EntityTypeMapping TypeName="DBEncapsulation.OrganizationGoodReturnRate">
+              <MappingFragment StoreEntitySet="OrganizationGoodReturnRate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="GoodReturnRate" ColumnName="GoodReturnRate" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationGoodReturnRatePerQuarter">
+            <EntityTypeMapping TypeName="DBEncapsulation.OrganizationGoodReturnRatePerQuarter">
+              <MappingFragment StoreEntitySet="OrganizationGoodReturnRatePerQuarter">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RateID" ColumnName="RateID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="GoodReturnRate" ColumnName="GoodReturnRate" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RetailMonthTaget">
+            <EntityTypeMapping TypeName="DBEncapsulation.RetailMonthTaget">
+              <MappingFragment StoreEntitySet="RetailMonthTaget">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="SaleTaget" ColumnName="SaleTaget" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RetailShift">
+            <EntityTypeMapping TypeName="DBEncapsulation.RetailShift">
+              <MappingFragment StoreEntitySet="RetailShift">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RetailShoppingGuide">
+            <EntityTypeMapping TypeName="DBEncapsulation.RetailShoppingGuide">
+              <MappingFragment StoreEntitySet="RetailShoppingGuide">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="OnBoardDate" ColumnName="OnBoardDate" />
+                <ScalarProperty Name="DimissionDate" ColumnName="DimissionDate" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RetailTactic">
+            <EntityTypeMapping TypeName="DBEncapsulation.RetailTactic">
+              <MappingFragment StoreEntitySet="RetailTactic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CostMoney" ColumnName="CostMoney" />
+                <ScalarProperty Name="CutMoney" ColumnName="CutMoney" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CanVIPApply" ColumnName="CanVIPApply" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RetailTacticProStyleMapping">
+            <EntityTypeMapping TypeName="DBEncapsulation.RetailTacticProStyleMapping">
+              <MappingFragment StoreEntitySet="RetailTacticProStyleMapping">
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="TacticID" ColumnName="TacticID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock">
+            <EntityTypeMapping TypeName="DBEncapsulation.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storage">
+            <EntityTypeMapping TypeName="DBEncapsulation.Storage">
+              <MappingFragment StoreEntitySet="Storage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPBirthdayConsumption">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPBirthdayConsumption">
+              <MappingFragment StoreEntitySet="VIPBirthdayConsumption">
+                <ScalarProperty Name="VIPID" ColumnName="VIPID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CostMoney" ColumnName="CostMoney" />
+                <ScalarProperty Name="ConsumeDay" ColumnName="ConsumeDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPBirthdayTactic">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPBirthdayTactic">
+              <MappingFragment StoreEntitySet="VIPBirthdayTactic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="IsMultDiscount" ColumnName="IsMultDiscount" />
+                <ScalarProperty Name="PointTimes" ColumnName="PointTimes" />
+                <ScalarProperty Name="QuantityLimit" ColumnName="QuantityLimit" />
+                <ScalarProperty Name="MoneyLimit" ColumnName="MoneyLimit" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPCard">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPCard">
+              <MappingFragment StoreEntitySet="VIPCard">
+<ScalarProperty Name="PrestorePassword" ColumnName="PrestorePassword" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPCardKindMapping">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPCardKindMapping">
+              <MappingFragment StoreEntitySet="VIPCardKindMapping">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="KindID" ColumnName="KindID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPKind">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPKind">
+              <MappingFragment StoreEntitySet="VIPKind">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPPointTrack">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPPointTrack">
+              <MappingFragment StoreEntitySet="VIPPointTrack">
+                <ScalarProperty Name="VIPID" ColumnName="VIPID" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPPredepositTrack">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPPredepositTrack">
+              <MappingFragment StoreEntitySet="VIPPredepositTrack">
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="RefrenceBillCode" ColumnName="RefrenceBillCode" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="ConsumeMoney" ColumnName="ConsumeMoney" />
+                <ScalarProperty Name="FreeMoney" ColumnName="FreeMoney" />
+                <ScalarProperty Name="StoreMoney" ColumnName="StoreMoney" />
+                <ScalarProperty Name="VIPID" ColumnName="VIPID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPUpTactic">
+            <EntityTypeMapping TypeName="DBEncapsulation.VIPUpTactic">
+              <MappingFragment StoreEntitySet="VIPUpTactic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="FormerKindID" ColumnName="FormerKindID" />
+                <ScalarProperty Name="AfterKindID" ColumnName="AfterKindID" />
+                <ScalarProperty Name="OnceConsume" ColumnName="OnceConsume" />
+                <ScalarProperty Name="DateSpan" ColumnName="DateSpan" />
+                <ScalarProperty Name="SpanConsume" ColumnName="SpanConsume" />
+                <ScalarProperty Name="CutPoint" ColumnName="CutPoint" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoucherDeductMoney">
+            <EntityTypeMapping TypeName="DBEncapsulation.VoucherDeductMoney">
+              <MappingFragment StoreEntitySet="VoucherDeductMoney">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="DeductMoney" ColumnName="DeductMoney" />
+                <ScalarProperty Name="OccurDate" ColumnName="OccurDate" />
+                <ScalarProperty Name="ItemKindID" ColumnName="ItemKindID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CheckerID" ColumnName="CheckerID" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoucherItemKind">
+            <EntityTypeMapping TypeName="DBEncapsulation.VoucherItemKind">
+              <MappingFragment StoreEntitySet="VoucherItemKind">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoucherReceiveMoney">
+            <EntityTypeMapping TypeName="DBEncapsulation.VoucherReceiveMoney">
+              <MappingFragment StoreEntitySet="VoucherReceiveMoney">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="ReceiveMoney" ColumnName="ReceiveMoney" />
+                <ScalarProperty Name="OccurDate" ColumnName="OccurDate" />
+                <ScalarProperty Name="ReceiveKindID" ColumnName="ReceiveKindID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsMoneyFrozen" ColumnName="IsMoneyFrozen" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CheckerID" ColumnName="CheckerID" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOrganization">
+            <EntityTypeMapping TypeName="DBEncapsulation.ViewOrganization">
+              <MappingFragment StoreEntitySet="ViewOrganization">
+                <ScalarProperty Name="MapCityName" ColumnName="MapCityName" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Linkman" ColumnName="Linkman" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ProvienceID" ColumnName="ProvienceID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewProduct">
+            <EntityTypeMapping TypeName="DBEncapsulation.ViewProduct">
+              <MappingFragment StoreEntitySet="ViewProduct">
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="NameID" ColumnName="NameID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BYQID" ColumnName="BYQID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="StyleCode" ColumnName="StyleCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewUser">
+            <EntityTypeMapping TypeName="DBEncapsulation.ViewUser">
+              <MappingFragment StoreEntitySet="ViewUser">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillStoringDetails">
+            <EntityTypeMapping TypeName="DBEncapsulation.BillStoringDetails">
+              <MappingFragment StoreEntitySet="BillStoringDetails">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewProColor">
+            <EntityTypeMapping TypeName="DBEncapsulation.ViewProColor">
+              <MappingFragment StoreEntitySet="ViewProColor">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="RGBCode" ColumnName="RGBCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewProSize">
+            <EntityTypeMapping TypeName="DBEncapsulation.ViewProSize">
+              <MappingFragment StoreEntitySet="ViewProSize">
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

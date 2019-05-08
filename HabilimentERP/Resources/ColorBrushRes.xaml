@@ -1,0 +1,102 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Color x:Key="ForegroundColor_Base">#4971A3</Color>
+    <Color x:Key="Workarea_BackgroundColor">#CCFFFFFF</Color>
+    <Color x:Key="BorderColor_Base">#88000000</Color>
+    <SolidColorBrush x:Key="LineButtonBrush" Color="#FF14273D"/>
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="{StaticResource BorderColor_Base}"/>
+
+    <LinearGradientBrush x:Key="ButtonNormalBackgroundBrush" 
+                           StartPoint="0,0" EndPoint="1,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#5FFF" Offset="0.0"/>
+                <GradientStop Color="#5CCC" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonNormalBorderBrush" 
+                           StartPoint="0,0" EndPoint="1,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#5CCC" Offset="0.0"/>
+                <GradientStop Color="#5444" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonHoverBackgroundBrush" 
+                           StartPoint="0,1" EndPoint="1,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFDF2B1E" Offset="0.0"/>
+                <GradientStop Color="#FFA41F00" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonPressedBorderBrush" 
+                           StartPoint="0,0" EndPoint="1,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#5444" Offset="0.0"/>
+                <GradientStop Color="#5CCC" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonPressedBackgroundBrush" 
+                           StartPoint="0,0" EndPoint="1,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFA41F00" Offset="0.0"/>
+                <GradientStop Color="#FFDF2B1E" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="ButtonNormalForegroundBrush" Color="{StaticResource ForegroundColor_Base}"/>
+    <SolidColorBrush x:Key="ButtonHoverForegroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="ButtonPressedForegroundBrush" Color="#EEEE"/>
+    <SolidColorBrush x:Key="Workarea_BackgroundBrush" Color="{StaticResource Workarea_BackgroundColor}"/>
+
+    <SolidColorBrush x:Key="LineButtonBorderBrush" Color="#FF8693BD"/>
+    <Color x:Key="LineButtonBackgroundColor_Bright">LightGoldenrodYellow</Color>
+    <Color x:Key="LineButtonBackgroundColor_Dark">#FAEEB1</Color>
+    <Color x:Key="LineButtonBackgroundColorDisabled_Bright">#EEE</Color>
+    <Color x:Key="LineButtonBackgroundColorDisabled_Dark">#999</Color>
+
+    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" x:Key="LineButtonBackgroundBrush">
+        <GradientStop Offset="0.3" Color="{StaticResource LineButtonBackgroundColor_Bright}"/>
+        <GradientStop Offset="0.4" Color="{StaticResource LineButtonBackgroundColor_Dark}"/>
+        <GradientStop Offset="1" Color="{StaticResource LineButtonBackgroundColor_Bright}"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="LineButtonHoverBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#FFFFD5A0" Offset="0.3"/>
+        <GradientStop Color="#FFFFA335" Offset="0.51"/>
+        <GradientStop Color="#FFFFC14A" Offset="0.986"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" x:Key="LineButtonPressedBrush">
+        <GradientStop Offset="0" Color="{StaticResource LineButtonBackgroundColor_Bright}"/>
+        <GradientStop Offset="0.6" Color="{StaticResource LineButtonBackgroundColor_Dark}"/>
+        <GradientStop Offset="0.7" Color="{StaticResource LineButtonBackgroundColor_Bright}"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" x:Key="LineButtonDisabledBrush">
+        <GradientStop Offset="0" Color="{StaticResource LineButtonBackgroundColorDisabled_Bright}"/>
+        <GradientStop Offset="1" Color="{StaticResource LineButtonBackgroundColorDisabled_Dark}"/>
+    </LinearGradientBrush>
+
+    <!--弹出菜单背景-->
+    <LinearGradientBrush x:Key="PopupBackcolor" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0" Color="White"/>
+        <GradientStop Offset="1" Color="#EEE"/>
+    </LinearGradientBrush>
+
+    <!--列表异常行背景色-->
+    <LinearGradientBrush x:Key="GridViewRowThrowColor" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFFCDCDC"/>
+        <GradientStop Color="#FFFCC1C1" Offset="1"/>
+    </LinearGradientBrush>
+</ResourceDictionary>

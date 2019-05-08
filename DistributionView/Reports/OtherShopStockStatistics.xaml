@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="DistributionView.Reports.OtherShopStockStatistics"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="gridLayout">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridFilter">
+            <Grid.Resources>
+                <DataTemplate x:Key="OrganizationEditorTemplate">
+                    <sysv:OrganizationSelector IDValue="{Binding Value,Mode=OneWayToSource}" MinWidth="100" FilterCurrent="True" />
+                </DataTemplate>
+                <DataTemplate x:Key="ComboboxFilterEditorTemplate">
+                    <telerik:RadComboBox SelectedValue="{Binding Value, Mode=TwoWay, FallbackValue=-1}"
+                                         SelectedValuePath="ID" DisplayMemberPath="Name" MinWidth="100"/>
+                </DataTemplate>
+                <view:ExtEditorTemplateSelector x:Key="MyEditorTemplateSelector">
+                    <view:ExtEditorTemplateSelector.EditorTemplateRules>
+                        <view:EditorTemplateRule PropertyName="OrganizationID" DataTemplate="{StaticResource OrganizationEditorTemplate}"/>
+                        <view:EditorTemplateRule PropertyName="BrandID" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                    </view:ExtEditorTemplateSelector.EditorTemplateRules>
+                </view:ExtEditorTemplateSelector>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" MinWidth="100" />
+            </Grid.ColumnDefinitions>
+            <telerik:RadDataFilter Name="billFilter" EditorTemplateSelector="{StaticResource MyEditorTemplateSelector}" EditorCreated="billFilter_EditorCreated" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 5 5 5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <telerik:RadButton x:Name="btnSearch" Content="查询" MinWidth="70" Click="btnSearch_Click" />
+                <telerik:RadButton x:Name="btnExcel" Content="导出Excel" MinWidth="70" Click="btnExcel_Click" />
+            </StackPanel>
+        </Grid>
+
+        <telerik:RadGridView x:Name="RadGridView1" IsFilteringAllowed="False" ShowGroupFooters="True" ShowColumnFooters="True" AutoGenerateColumns="False"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" Grid.Row="1" IsReadOnly="True" BorderThickness="0">
+            <telerik:RadGridView.GroupRowStyle>
+                <Style TargetType="telerik:GridViewGroupRow">
+                    <Setter Property="ShowHeaderAggregates" Value="False" />
+                </Style>
+            </telerik:RadGridView.GroupRowStyle>
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ProductCode}" Header="SKU码" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationName}" Header="店铺名称" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandCode}" Header="品牌" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding StyleCode}" Header="款号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorCode}" Header="色号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SizeName}" Header="尺码" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="数量" IsGroupable="False">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction ResultFormatString="{}{0}件" SourceField="Quantity" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

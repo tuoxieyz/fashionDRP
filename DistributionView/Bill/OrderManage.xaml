@@ -1,0 +1,207 @@
+﻿<UserControl x:Class="DistributionView.Bill.OrderManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:DistributionView"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:vm="clr-namespace:DistributionViewModel;assembly=DistributionViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="gridLayout">
+        <Grid.Resources>
+            <local:OrderStateCvt x:Key="orderStateCvt" />
+            <local:RevertButtonVisibleWithOrderStateCvt x:Key="revertButtonVisibleWithOrderStateCvt" />
+            <local:ButtonVisibleWithOrderStateCvt x:Key="buttonVisibleWithOrderStateCvt" />
+            <local:ZeroButtonVisibleWithOrderStateCvt x:Key="zeroButtonVisibleWithOrderStateCvt" />
+            <local:OrderMaxCancelQuantityCvt x:Key="orderMaxCancelQuantityCvt" />
+            <sysv:UserIDNameConvertor x:Key="userIDNameConvertor" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridFilter">
+            <Grid.Resources>
+                <DataTemplate x:Key="OrganizationEditorTemplate">
+                    <sysv:OrganizationSelector IDValue="{Binding Value,Mode=TwoWay}" MinWidth="100"  />
+                </DataTemplate>
+                <DataTemplate x:Key="ComboboxFilterEditorTemplate">
+                    <telerik:RadComboBox SelectedValue="{Binding Value, Mode=TwoWay, FallbackValue=-1}" 
+                                                       SelectedValuePath="ID" DisplayMemberPath="Name" MinWidth="100"/>
+                </DataTemplate>
+                <view:ExtEditorTemplateSelector x:Key="MyEditorTemplateSelector">
+                    <view:ExtEditorTemplateSelector.EditorTemplateRules>
+                        <view:EditorTemplateRule PropertyName="BrandID" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                    </view:ExtEditorTemplateSelector.EditorTemplateRules>
+                </view:ExtEditorTemplateSelector>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <sysv:MultiOrganizationSelector Name="oselector" CanUserToggleShowAllLower="False" FilterCurrent="False" SelectedOrganizationArray="{Binding Path=OrganizationArray,Mode=OneWayToSource}" Margin="5 5 5 0" Grid.ColumnSpan="3" />
+            <telerik:RadDataFilter Name="billFilter" Grid.Row="1" 
+                                   view:ItemPropertyDefinitionBindingBehavior.ItemPropertyDefinitions="{Binding ItemPropertyDefinitions}"
+                                   view:FilterDescriptorBindingBehavior.FilterDescriptors="{Binding FilterDescriptors}"
+                                   EditorTemplateSelector="{StaticResource MyEditorTemplateSelector}" 
+                                   EditorCreated="billFilter_EditorCreated" />
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="10 0 0 0">
+                <TextBlock Text="根据详单筛选" Margin="0 5" />
+                <telerik:RadDataFilter Name="detailsFilter" CanUserCreateCompositeFilters="False"
+                                       view:ItemPropertyDefinitionBindingBehavior.ItemPropertyDefinitions="{Binding DetailsPropertyDefinitions}"
+                                       view:FilterDescriptorBindingBehavior.FilterDescriptors="{Binding DetailsDescriptors}"/>
+            </StackPanel>
+            <telerik:RadButton x:Name="btnSearch" Content="查询" MinWidth="70" Command="{Binding SearchCommand}" Grid.Row="1"
+                               Grid.Column="2" Margin="0 5 5 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+        </Grid>
+
+        <telerik:RadGridView x:Name="RadGridView1" IsFilteringAllowed="False" ShowGroupFooters="True" ShowColumnFooters="True" AutoGenerateColumns="False"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" Grid.Row="1" IsReadOnly="True" BorderThickness="0" 
+                             RowDetailsVisibilityMode="Collapsed"
+                             EnableRowVirtualization="False" EnableColumnVirtualization="False" ItemsSource="{Binding Entities}">
+            <telerik:RadGridView.GroupRowStyle>
+                <Style TargetType="telerik:GridViewGroupRow">
+                    <Setter Property="ShowHeaderAggregates" Value="False" />
+                </Style>
+            </telerik:RadGridView.GroupRowStyle>
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewToggleRowDetailsColumn />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding BillID}" Header="BillID" IsVisible="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 单据编号}" Header="单据编号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandName}" Header="订货品牌" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 开单人}" Header="开单人" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 机构名称}" Header="机构名称" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd HH:mm}}" Header="开单时间" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 订货数量}" Header="订货数量" IsGroupable="False">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction ResultFormatString="{}{0}件" SourceField="订货数量" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 取消量}" Header="取消量" IsGroupable="False">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction ResultFormatString="{}{0}件" SourceField="取消量" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 已发数量}" Header="已发数量" IsGroupable="False">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction ResultFormatString="{}{0}件" SourceField="已发数量" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 发货状态}" Header="发货状态" />                
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 订单状态, Converter={StaticResource orderStateCvt},Mode=OneWay}" Header="订单状态" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding 备注}" Header="备注" IsGroupable="False" />
+                <!--通过数据绑定控制列中元素的显示与隐藏，列的宽度仍为所有元素的宽度总和，即使隐藏方式为Collapsed，这是个bug，因此我们需要在绑定完毕后手动设置列宽-->
+                <!--手动设置列宽有bug，可能会导致界面layout的递归调用，出现短时间的界面闪烁，具体请参考后台代码的-->
+                <!--因此我干脆在绑定转换中把Collapsed改为Hidden，占空间就让它们占着吧，懒得折腾了-->
+                <telerik:GridViewColumn Header="操作" x:Name="colOperate">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel x:Name="spOperate" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <telerik:RadButton x:Name="btnDeleteAll" Height="16" ToolTip="整单作废" Click="btnDeleteAll_Click">
+                                    <telerik:RadButton.Content>
+                                        <Image Source="pack://application:,,,/HabilimentERP;Component/Images/cross.png" />
+                                    </telerik:RadButton.Content>
+                                    <telerik:RadButton.Visibility>
+                                        <MultiBinding Converter="{StaticResource buttonVisibleWithOrderStateCvt}" ConverterParameter="整单作废">
+                                            <Binding Path="订单状态"/>
+                                            <Binding Path="发货状态"/>
+                                        </MultiBinding>
+                                    </telerik:RadButton.Visibility>
+                                </telerik:RadButton>
+                                <telerik:RadButton ToolTip="整单还原" Height="16" Visibility="{Binding 订单状态,Converter={StaticResource revertButtonVisibleWithOrderStateCvt}}" Click="btnRevert_Click">
+                                    <telerik:RadButton.Content>
+                                        <Image Source="pack://application:,,,/HabilimentERP;Component/Images/wand.png" />
+                                    </telerik:RadButton.Content>
+                                </telerik:RadButton>
+                                <telerik:RadButton ToolTip="取消未完成数量" Height="16" Click="btnCancel_Click">
+                                    <telerik:RadButton.Content>
+                                        <Image Source="pack://application:,,,/HabilimentERP;Component/Images/vcard_minus.png" />
+                                    </telerik:RadButton.Content>
+                                    <telerik:RadButton.Visibility>
+                                        <MultiBinding Converter="{StaticResource buttonVisibleWithOrderStateCvt}" ConverterParameter="取消未完成数量">
+                                            <Binding Path="订单状态"/>
+                                            <Binding Path="发货状态"/>
+                                        </MultiBinding>
+                                    </telerik:RadButton.Visibility>
+                                </telerik:RadButton>
+                                <telerik:RadButton ToolTip="取消量归零" Height="16" Click="btnCancelZero_Click">
+                                    <telerik:RadButton.Content>
+                                        <Image Source="pack://application:,,,/HabilimentERP;Component/Images/vcard_plus.png" />
+                                    </telerik:RadButton.Content>
+                                    <telerik:RadButton.Visibility>
+                                        <MultiBinding Converter="{StaticResource zeroButtonVisibleWithOrderStateCvt}">
+                                            <Binding Path="订单状态"/>
+                                            <Binding Path="取消量"/>
+                                        </MultiBinding>
+                                    </telerik:RadButton.Visibility>
+                                </telerik:RadButton>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+            </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowDetailsTemplate>
+                <DataTemplate>
+                    <telerik:RadTabControl DisplayMemberPath="Content" DropDownDisplayMode="Collapsed" BorderThickness="0">
+                        <telerik:RadTabItem Header="明细" >
+                            <telerik:RadTabItem.Content>
+                                <telerik:RadGridView BorderThickness="0,0,0,1" BorderBrush="Green" GridLinesVisibility="None" CanUserFreezeColumns="False" RowIndicatorVisibility="Hidden" 
+                                         AutoGenerateColumns="False" ShowGroupPanel="False" IsReadOnly="False" IsFilteringAllowed="False" 
+                                         BeginningEdit="gvDetails_BeginningEdit" CellEditEnded="gvDetails_CellEditEnded" ItemsSource="{Binding Details}">
+                                    <telerik:RadGridView.Columns>
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding ProductCode}" Header="SKU码" IsGroupable="False" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandCode}" Header="品牌" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding StyleCode}" Header="款号" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorCode}" Header="色号" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding SizeName}" Header="尺码" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Price}" Header="单价" DataFormatString="{}{0:C2}" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="订货数量" IsGroupable="False" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding QuaCancel, Mode=OneWay}" Header="取消量" IsGroupable="False">
+                                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                                <DataTemplate>
+                                                    <telerik:RadNumericUpDown ValueFormat="Numeric" Minimum="0" IsInteger="True"
+													   Value="{Binding QuaCancel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                        <telerik:RadNumericUpDown.Maximum>
+                                                            <MultiBinding Converter="{StaticResource orderMaxCancelQuantityCvt}">
+                                                                <Binding Path="Quantity"/>
+                                                                <Binding Path="QuaDelivered"/>
+                                                            </MultiBinding>
+                                                        </telerik:RadNumericUpDown.Maximum>
+                                                    </telerik:RadNumericUpDown>
+                                                </DataTemplate>
+                                            </telerik:GridViewDataColumn.CellEditTemplate>
+                                        </telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding QuaDelivered}" Header="已发数量" IsGroupable="False" IsReadOnly="True" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Status}" Header="状态" UniqueName="Status" IsReadOnly="True" />
+                                    </telerik:RadGridView.Columns>
+                                </telerik:RadGridView>
+                            </telerik:RadTabItem.Content>
+                        </telerik:RadTabItem>
+                        <telerik:RadTabItem Header="变更记录" >
+                            <telerik:RadTabItem.Content>
+                                <telerik:RadGridView BorderThickness="0,0,0,1" BorderBrush="Green" GridLinesVisibility="None" CanUserFreezeColumns="False" RowIndicatorVisibility="Hidden" 
+                                         AutoGenerateColumns="False" ShowGroupPanel="False" IsReadOnly="True" IsFilteringAllowed="False" ItemsSource="{Binding Changes}">
+                                    <telerik:RadGridView.Columns>
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="变更内容" IsGroupable="False" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding CreatorID,Converter={StaticResource userIDNameConvertor}}" Header="操作人" />
+                                        <telerik:GridViewDataColumn DataMemberBinding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd HH:mm}}" Header="变更时间" />
+                                    </telerik:RadGridView.Columns>
+                                </telerik:RadGridView>
+                            </telerik:RadTabItem.Content>
+                        </telerik:RadTabItem>
+                    </telerik:RadTabControl>
+                </DataTemplate>
+            </telerik:RadGridView.RowDetailsTemplate>
+        </telerik:RadGridView>
+        <telerik:RadDataPager x:Name="pager" PageSize="{Binding PageSize}" PageIndex="{Binding PageIndex,Mode=TwoWay}" ItemCount="{Binding TotalCount}" Grid.Row="2" DisplayMode="FirstLastPreviousNextNumeric" />
+    </Grid>
+</UserControl>

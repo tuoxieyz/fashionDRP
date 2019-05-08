@@ -1,0 +1,39 @@
+﻿<Window x:Class="VersionManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:VersionManager"
+        WindowState="Maximized"
+        Title="软件版本发布系统"
+        Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {telerik:ThemeResourceKey ThemeType=telerik:Windows7Theme, ElementType=TextBox}}" />
+    </Window.Resources>
+    <Grid>        
+        <telerik:RadTabControl x:Name="tab" VerticalAlignment="Stretch" Grid.Row="1"
+                               DisplayMemberPath="Content" DropDownDisplayMode="WhenNeeded" BorderThickness="0">
+            <telerik:RadTabItem DropDownContent="软件目录" Header="软件目录" >
+                <telerik:RadTabItem.Content>
+                    <local:SoftList />
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem DropDownContent="客户目录" Header="客户目录" >
+                <telerik:RadTabItem.Content>
+                    <local:CustomerList />
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+        <telerik:RadMenu x:Name="radMenu" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <telerik:RadMenu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Right" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </telerik:RadMenu.ItemsPanel>
+            <telerik:RadMenuItem Header="刷新" x:Name="btnRefresh" Click="btnRefresh_Click">
+                <telerik:RadMenuItem.Icon>
+                    <Image Source="Images/arrow_refresh.png" Stretch="None" />
+                </telerik:RadMenuItem.Icon>
+            </telerik:RadMenuItem>
+        </telerik:RadMenu>
+    </Grid>
+</Window>

@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="DistributionView.Reports.RetailABCAnalysis"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:view="clr-namespace:DistributionView"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:sysvm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary Source="pack://application:,,,/DistributionView;component/ABCChartRes.xaml" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridFilter">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" MinWidth="100" />
+            </Grid.ColumnDefinitions>
+            <sysv:MultiOrganizationSelector CanUserToggleShowAllLower="True" FilterCurrent="False" SelectedOrganizationArray="{Binding Path=OrganizationArray,Mode=OneWayToSource}" Margin="5 5 5 0" Grid.ColumnSpan="2" Visibility="{Binding OrganizationSeletorVisibility}" />
+            <Grid Margin="5 5 5 0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="品牌" VerticalAlignment="Center" Margin="0 0 0 5" />
+                <telerik:RadComboBox ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}"
+                                     SelectedValue="{Binding BrandID}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Width="100"
+                                     Margin="5 0 0 5"
+                                     Grid.Column="1"/>
+                <TextBlock Text="年份" VerticalAlignment="Center" Margin="5 0 0 5" Grid.Column="2" />
+                <telerik:RadDatePicker DateSelectionMode="Year" IsTooltipEnabled="True" ErrorTooltipContent="输入格式不正确" 
+                                       DateTimeWatermarkContent="选择年份" DateTimeText="{Binding Year,Mode=TwoWay}" 
+                                       MinWidth="100" Margin="5 0 0 5"
+                                       Grid.Column="3" />
+                <TextBlock Text="季度" VerticalAlignment="Center" Margin="5 0 0 5" Grid.Column="4" />
+                <telerik:RadComboBox SelectedValue="{Binding Quarter, Mode=TwoWay, FallbackValue=-1}" 
+                                     ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.Quarters}}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name" Width="100"
+                                     Margin="5 0 0 5"
+                                     Grid.Column="5"/>
+                <TextBlock Text="起始日期" VerticalAlignment="Center" Grid.Row="1" />
+                <telerik:RadDateTimePicker InputMode="DatePicker" SelectedDate="{Binding BeginDate,Mode=TwoWay}" VerticalAlignment="Center" Margin="5 0" Grid.Row="1" Grid.Column="1" />
+                <TextBlock Text="结束日期" VerticalAlignment="Center" Margin="5 0" Grid.Row="1" Grid.Column="2" />
+                <telerik:RadDateTimePicker InputMode="DatePicker" SelectedDate="{Binding EndDate,Mode=TwoWay}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" />
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="0 5 5 0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1">
+                <telerik:RadButton x:Name="btnSearch" Content="查询" MinWidth="70" Click="btnSearch_Click" />
+                <telerik:RadButton x:Name="btnExcel" Content="导出Excel" MinWidth="70" Click="btnExcel_Click" />
+            </StackPanel>
+        </Grid>
+        <Grid Margin="5 10 5 0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding AmountCostMoney,StringFormat=总额: {0:C2}}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <telerik:RadListBox x:Name="radListBox" HorizontalAlignment="Center" SelectedIndex="0"
+                                SelectionChanged="radListBox_SelectionChanged"
+                            Background="Transparent" BorderBrush="Transparent">
+                <telerik:RadListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </telerik:RadListBox.ItemsPanel>
+                <telerik:RadListBoxItem Content="款式" />
+                <telerik:RadListBoxItem Content="颜色" />
+                <telerik:RadListBoxItem Content="品类" />
+            </telerik:RadListBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Rectangle Fill="Green" Height="10" Width="10" Margin="5 0" />
+                <TextBlock Text="主要(A)" VerticalAlignment="Center" />
+                <Rectangle Fill="Yellow" Height="10" Width="10" Margin="5 0" />
+                <TextBlock Text="次要(B)" VerticalAlignment="Center" />
+                <Rectangle Fill="Red" Height="10" Width="10" Margin="5 0" />
+                <TextBlock Text="一般(C)" VerticalAlignment="Center" />
+            </StackPanel>
+            
+            <telerik:RadCartesianChart x:Name="chart" Palette="Windows8" ClipToBounds="False" EmptyContent="" Grid.Row="1">
+                <telerik:BarSeries x:Name="barSeries" ValueBinding="CostMoney">
+                    <telerik:BarSeries.PointTemplate>
+                        <DataTemplate>
+                            <Rectangle Fill="{Binding Path=DataItem,Converter={StaticResource abcAnalysisBarColorCvt}}" />
+                        </DataTemplate>
+                    </telerik:BarSeries.PointTemplate>
+                </telerik:BarSeries>
+                <telerik:LineSeries x:Name="lineSeries" ValueBinding="AccuProportion">
+                    <telerik:LineSeries.VerticalAxis>
+                        <telerik:LinearAxis Title="累计占比" Maximum="1" LabelFormat="{}0%"
+                                        ElementBrush="{Binding ElementName=chart, Path=Palette.GlobalEntries[1].Fill}" 
+                                        HorizontalLocation="Right" />
+                    </telerik:LineSeries.VerticalAxis>
+                </telerik:LineSeries>
+                <telerik:RadCartesianChart.HorizontalAxis>
+                    <telerik:CategoricalAxis x:Name="horizontalAxis_Style" LabelFitMode="Rotate" PlotMode="OnTicksPadded" />
+                </telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:RadCartesianChart.VerticalAxis>
+                    <telerik:LinearAxis Title="金额(元)"
+                                    ElementBrush="{Binding ElementName=chart, Path=Palette.GlobalEntries[0].Fill}" />
+                </telerik:RadCartesianChart.VerticalAxis>
+                <telerik:RadCartesianChart.Grid>
+                    <telerik:CartesianChartGrid MajorLinesVisibility="Y" />
+                </telerik:RadCartesianChart.Grid>
+                <telerik:RadCartesianChart.Behaviors>
+                    <telerik:ChartTooltipBehavior Placement="Top" VerticalOffset="20" />
+                    <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" PanMode="Horizontal" />
+                </telerik:RadCartesianChart.Behaviors>
+                <telerik:RadCartesianChart.TooltipTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Path Data="M-1236,-441 L-1180,-441 -1180,-424 -1228,-424 -1230.5,-420 -1233,-424 -1236,-424 z"
+                                  Stretch="Fill" Fill="#FFFFFF" Stroke="#FF767676" StrokeThickness="1"/>
+                            <StackPanel Margin="5,5,5,18">
+                                <TextBlock Text="{Binding DataItem.CostMoney,StringFormat=金额: {0:C2}}" />
+                                <TextBlock Text="{Binding DataItem.Proportion,StringFormat=占比: {0:0.00%}}" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </telerik:RadCartesianChart.TooltipTemplate>
+            </telerik:RadCartesianChart>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="DistributionView.Bill.Stocktake"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:DistributionView"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <telerik:DataFormDateField Label="开单日期" Width="220" IsReadOnly="True"
+                                           DataMemberBinding="{Binding Master.CreateTime,Mode=TwoWay,StringFormat={}{0:yyyy-MM-dd}}" />
+                <telerik:DataFormComboBoxField x:Name="cbxStorage" Label="盘点仓库"
+                                           DataMemberBinding="{Binding Master.StorageID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                           SelectedValuePath="ID" DisplayMemberPath="Name" Width="220" />
+                <telerik:DataFormComboBoxField x:Name="cbxBrand" Label="盘点品牌"
+                                           DataMemberBinding="{Binding Master.BrandID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                           SelectedValuePath="ID" DisplayMemberPath="Name" Width="220" />
+            </StackPanel>
+            <Grid Grid.Column="1" Margin="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Margin="0 0 0 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="备注" VerticalAlignment="Center" Margin="0 0 15 0" />
+                    <TextBox x:Name="txtRemark" Grid.Column="1" Text="{Binding Master.Remark}" HorizontalAlignment="Stretch" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding InputLabelString}" FontSize="16" VerticalAlignment="Center" Margin="0 0 15 0" />
+                    <TextBox x:Name="txtProductCode" FontSize="20" Grid.Column="1" Width="200" VerticalAlignment="Center" HorizontalAlignment="Left" KeyDown="txtProductCode_KeyUp" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--EnableRowVirtualization默认为true,当行数超过显示范围时,gvDatas.ItemContainerGenerator.ContainerFromItem得到的可能就是null,需注意-->
+        <telerik:RadGridView x:Name="gvDatas" Grid.Row="1" IsFilteringAllowed="False" ShowColumnFooters="True"
+                             CanUserFreezeColumns="False" EnableRowVirtualization="False"
+                             RowIndicatorVisibility="Visible" RowDetailsVisibilityMode="Visible" 
+                             AutoGenerateColumns="False" BorderThickness="0" ItemsSource="{Binding GridDataItems}">
+            <telerik:RadGridView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Foreground="#FFFF6900" Text="{Binding Group.Key}" />
+                </DataTemplate>
+            </telerik:RadGridView.GroupHeaderTemplate>
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ProductCode}" Header="SKU码" IsGroupable="False" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandCode}" Header="品牌" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding StyleCode}" Header="款号" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorCode}" Header="色号" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SizeName}" Header="尺码" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Price}" Header="单价" DataFormatString="{}{0:C2}" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="数量" IsGroupable="False" IsReadOnly="False">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction Caption="数量合计:" ResultFormatString="{}{0}件" SourceField="Quantity" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewExpressionColumn Header="单价小计" DataFormatString="{}{0:C2}" Expression="Price * Quantity" IsGroupable="False" IsReadOnly="True">
+                    <telerik:GridViewExpressionColumn.AggregateFunctions>
+                        <local:TotalPriceFunction />
+                    </telerik:GridViewExpressionColumn.AggregateFunctions>
+                </telerik:GridViewExpressionColumn>
+                <telerik:GridViewColumn Header="操作" x:Name="colOperate">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <telerik:RadButton x:Name="btnDelete" ToolTip="删除" Click="btnDelete_Click" Height="16">
+                                <telerik:RadButton.Content>
+                                    <Image Source="pack://application:,,,/HabilimentERP;Component/Images/minus.png" />
+                                </telerik:RadButton.Content>
+                            </telerik:RadButton>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <telerik:RadButton x:Name="btnSave" Content="保存" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5 0" Width="60" />
+    </Grid>
+</UserControl>

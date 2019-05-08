@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="55029fdcfe284242acb86eadbd7e2ad1" Name="关系图1" ZoomLevel="72">
+        <EntityTypeShape EntityType="DBEncapsulation.BillAllocate" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillAllocateDetails" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillCannibalize" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillCannibalizeDetails" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillDelivery" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillDeliveryDetails" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillGoodReturn" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillGoodReturnDetails" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillOrder" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillOrderChange" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillOrderDetails" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillRetail" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillRetailDetails" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillSnapshot" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillSnapshotDetailsWithUniqueCode" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStocktake" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStocktakeContrast" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStocktakeContrastDetails" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStocktakeDetails" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStoreMove" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStoreMoveDetails" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStoreOut" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStoreOutDetails" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStoring" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.OrganizationAllocationGrade" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.OrganizationContractDiscount" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.OrganizationCredit" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.OrganizationFundAccount" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.OrganizationGoodReturnRate" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.OrganizationGoodReturnRatePerQuarter" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.RetailMonthTaget" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.RetailShift" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.RetailShoppingGuide" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.RetailTactic" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.RetailTacticProStyleMapping" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.Stock" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.Storage" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPBirthdayConsumption" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPBirthdayTactic" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPCard" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPCardKindMapping" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPKind" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPPointTrack" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPPredepositTrack" Width="1.5" PointX="18.875" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VIPUpTactic" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VoucherDeductMoney" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VoucherItemKind" Width="1.5" PointX="10.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.VoucherReceiveMoney" Width="1.5" PointX="18.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEncapsulation.ViewOrganization" Width="1.5" PointX="2.2968658200916208" PointY="30.169557913285473" />
+        <EntityTypeShape EntityType="DBEncapsulation.ViewProduct" Width="1.5" PointX="5.2672623643964815" PointY="21.748835707897708" />
+        <EntityTypeShape EntityType="DBEncapsulation.ViewUser" Width="1.5" PointX="0.5" PointY="4.875" />
+        <EntityTypeShape EntityType="DBEncapsulation.BillStoringDetails" Width="1.5" PointX="13.375" PointY="19.75" />
+        <EntityTypeShape EntityType="DBEncapsulation.ViewProColor" Width="1.5" PointX="0.625" PointY="15.375" />
+        <EntityTypeShape EntityType="DBEncapsulation.ViewProSize" Width="1.5" PointX="5.9195799724755709" PointY="26.62733433890498" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

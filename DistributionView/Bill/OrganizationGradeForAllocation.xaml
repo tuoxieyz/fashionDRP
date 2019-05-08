@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="DistributionView.Bill.OrganizationGradeForAllocation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:DistributionView"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:sysvm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:vm="clr-namespace:DistributionViewModel;assembly=DistributionViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <sysv:BrandIDNameOfOrganizationCvt x:Key="brandIDNameOfOrganizationCvt" />
+            <sysv:OrganizationIDNameCvt x:Key="organizationIDNameCvt" />
+            <sysv:OrganizationIDCodeCvt x:Key="organizationIDCodeCvt" />
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="320" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="未设置的客户等级默认为0" Foreground="Red" VerticalAlignment="Center" />
+                <telerik:RadButton x:Name="btnBatchSet" Content="批量设置" MinWidth="70" Click="btnBatchSet_Click" Margin="5 0 5 0" VerticalAlignment="Center" />
+            </StackPanel>
+            <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding SynEntities}" ValidatesOnDataErrors="InEditMode"
+                                 CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True"
+                                 AutoGenerateColumns="False" BorderThickness="0" Grid.Row="1">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationID,Mode=OneWay,Converter={StaticResource organizationIDCodeCvt}}" Header="机构编号" IsFilterable="False" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationID,Mode=OneWay,Converter={StaticResource organizationIDNameCvt}}" Header="机构名称" IsFilterable="False" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandID,Converter={StaticResource brandIDNameOfOrganizationCvt}}" Header="品牌" IsFilterable="False" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Grade}" Header="等级" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </Grid>
+        <GridSplitter Width="4" Grid.Column="1" ResizeBehavior="PreviousAndNext" />
+
+        <telerik:RadDataForm x:Name="myRadDataForm" ItemsSource="{Binding SynEntities}" BorderThickness="0"
+                             AutoGenerateFields="False" EditEnding="myRadDataForm_EditEnding" DeletingItem="myRadDataForm_DeletingItem" Grid.Column="2">
+            <telerik:RadDataForm.Resources>
+                <sysv:UserIDNameCvt x:Key="userIDNameCvt" />
+            </telerik:RadDataForm.Resources>
+            <telerik:RadDataForm.ReadOnlyTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding OrganizationID,Mode=OneWay,Converter={StaticResource organizationIDNameCvt}}" Label="分支机构" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding BrandID,Mode=OneWay,Converter={StaticResource brandIDNameOfOrganizationCvt}}" Label="品牌" IsReadOnly="True" />
+                        <telerik:DataFormDataField  Label="等级" DataMemberBinding="{Binding Grade,Mode=OneWay}" IsReadOnly="True"/>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding CreatorID,Mode=OneWay,Converter={StaticResource userIDNameCvt}}" Label="创建人" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding CreateTime,Mode=OneWay,StringFormat={}{0:yyyy-MM-dd HH:mm}}" Label="创建时间" IsReadOnly="True" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.ReadOnlyTemplate>
+            <telerik:RadDataForm.EditTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField  Label="分支机构">
+                            <telerik:DataFormDataField.Content>
+                                <sysv:OrganizationSelector FilterCurrent="True" IDValue="{Binding OrganizationID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormComboBoxField Label="品牌" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}"
+                                                       DataMemberBinding="{Binding BrandID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                       SelectedValuePath="ID" DisplayMemberPath="Name" />
+                        <telerik:DataFormDataField Label="等级">
+                            <telerik:RadNumericUpDown IsInteger="True" Value="{Binding Grade}" />
+                        </telerik:DataFormDataField>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.EditTemplate>
+            <telerik:RadDataForm.NewItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField  Label="分支机构">
+                            <telerik:DataFormDataField.Content>
+                                <sysv:OrganizationSelector FilterCurrent="True" IDValue="{Binding OrganizationID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormComboBoxField Label="品牌" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}" 
+                                                                       DataMemberBinding="{Binding BrandID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                       SelectedValuePath="ID" DisplayMemberPath="Name" />
+                        <telerik:DataFormDataField Label="等级">
+                            <telerik:RadNumericUpDown IsInteger="True" Value="{Binding Grade}" />
+                        </telerik:DataFormDataField>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.NewItemTemplate>
+        </telerik:RadDataForm>
+    </Grid>
+</UserControl>

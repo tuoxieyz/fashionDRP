@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="SysProcessView.StylePicturesShowPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:local="clr-namespace:SysProcessView"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <local:ColorIDNameCvt x:Key="colorIDNameCvt" />
+            <ItemsPanelTemplate x:Key="itemsPanelTemplate">
+                <StackPanel Orientation="Horizontal" IsItemsHost="True" />
+            </ItemsPanelTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <telerik:RadTransitionControl Content="{Binding Path=SelectedStyle.SelectedPicture}" Transition="FlipWarp" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <telerik:RadTransitionControl.ContentTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Source="{Binding Path=Picture}" Stretch="Uniform" HorizontalAlignment="Left" />
+                        <TextBlock Text="{Binding ColorID,Converter={StaticResource colorIDNameCvt}}"
+                                   FontSize="18" FontWeight="Bold" Margin="5" />
+                    </Grid>
+                </DataTemplate>
+            </telerik:RadTransitionControl.ContentTemplate>
+        </telerik:RadTransitionControl>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <telerik:RadListBox ItemsSource="{Binding Path=SelectedStyle.Pictures}" SelectedItem="{Binding Path=SelectedStyle.SelectedPicture,Mode=TwoWay}" 
+                            BorderThickness="0"
+                            Background="Transparent"
+                            HorizontalAlignment="Right"
+                            ItemsPanel="{StaticResource itemsPanelTemplate}">
+                <telerik:RadListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="70" Margin="5 0" ToolTip="{Binding ColorID,Converter={StaticResource colorIDNameCvt}}">
+                            <Image Source="{Binding Mode=OneWay,Path=ThumbnailPicture}" Stretch="Uniform" />
+                        </Grid>
+                    </DataTemplate>
+                </telerik:RadListBox.ItemTemplate>
+            </telerik:RadListBox>
+            <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightBlue" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Margin="0 5 3 5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <telerik:RadButton x:Name="btnAddMatching" DataContext="{Binding SelectedStyle}" Width="100" HorizontalAlignment="Right" Margin="5 5 5 0" Click="btnAddMatching_Click">
+                        <telerik:RadButton.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="增加搭配组" VerticalAlignment="Center" />
+                                <Image Source="pack://application:,,,/HabilimentERP;Component/Images/add.png" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </telerik:RadButton.Content>
+                    </telerik:RadButton>
+                    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" Grid.Row="1" Margin="5">
+                        <ItemsControl ItemsSource="{Binding SelectedStyle.SelectedPicture.Matchings}">
+                            <!--<ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Vertical" IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>-->
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0 2 0 2" Background="Transparent" MouseEnter="matchingOperationStateChange" MouseLeave="matchingOperationStateChange">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Opacity" To="1" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <ItemsControl ItemsPanel="{StaticResource itemsPanelTemplate}"
+                                      ItemsSource="{Binding MatchPictures}"
+                                      BorderThickness="1"
+                                      BorderBrush="LightBlue"
+                                      Padding="5">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Height="70" Margin="5 0" ToolTip="{Binding SCCode}">
+                                                        <Image Source="{Binding Mode=OneWay,Path=ThumbnailPicture}" Stretch="Uniform" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <StackPanel x:Name="MouseOverVisual" Opacity="0"
+                                        Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="3">
+                                            <telerik:RadButton Height="16" ToolTip="编辑" Click="btnEditMatching_Click">
+                                                <Image Source="pack://application:,,,/HabilimentERP;Component/Images/pencil.png" />
+                                            </telerik:RadButton>
+                                            <telerik:RadButton Height="16" Margin="2 0 0 0" ToolTip="删除" Click="btnDeleteMatching_Click">
+                                                <Image Source="pack://application:,,,/HabilimentERP;Component/Images/bin_closed.png" />
+                                            </telerik:RadButton>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+        <!--Path=Code, Source=SelectedStyle的写法有个问题：在SelectedStyle更改时将不会反馈到界面-->
+        <TextBlock Text="{Binding Path=SelectedStyle.Code}" FontSize="18" VerticalAlignment="Bottom" Margin="5" />
+        <!--<view:RichTextBox Text="{Binding Description}" BorderThickness="0" IsReadOnly="True" Background="Transparent" Padding="0" />-->
+        <telerik:RadListBox ItemsSource="{Binding Path=Styles}" SelectedItem="{Binding SelectedStyle,Mode=TwoWay}"
+                            Background="Transparent"
+                            ItemsPanel="{StaticResource itemsPanelTemplate}"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2">
+            <telerik:RadListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="70" Margin="5 0" ToolTip="{Binding Code}">
+                        <Image Source="{Binding Mode=OneWay,Path=SelectedPicture.ThumbnailPicture}" Stretch="Uniform" />
+                    </Grid>
+                </DataTemplate>
+            </telerik:RadListBox.ItemTemplate>
+        </telerik:RadListBox>
+    </Grid>
+</UserControl>

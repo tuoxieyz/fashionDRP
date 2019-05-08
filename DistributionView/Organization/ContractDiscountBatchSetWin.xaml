@@ -1,0 +1,68 @@
+﻿<Window x:Class="DistributionView.Organization.ContractDiscountBatchSetWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:sysvm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Title="合同折扣批量设置" Height="500" MinWidth="420" Width="420">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <WrapPanel Orientation="Horizontal" Grid.Row="0">
+            <telerik:DataFormComboBoxField x:Name="cbxBrand" Label="品牌" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}" 
+                                           DataMemberBinding="{Binding BrandID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                           SelectedValuePath="ID" DisplayMemberPath="Name" Width="200" />
+            <telerik:DataFormDataField Label="年份" Width="200">
+                <telerik:DataFormDataField.Content>
+                    <telerik:RadDatePicker DateSelectionMode="Year" DateTimeWatermarkContent="选择年份" DateTimeText="{Binding Year, Mode=TwoWay}"
+                                           SelectionChanged="RadDatePicker_SelectionChanged" />
+                </telerik:DataFormDataField.Content>
+            </telerik:DataFormDataField>
+            <telerik:DataFormComboBoxField Label="季度" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.Quarters}}" 
+                                           DataMemberBinding="{Binding Quarter,Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="Name" Width="200" />
+            <telerik:DataFormDataField x:Name="txtDiscount" Label="折扣(%)" Width="200" DataMemberBinding="{Binding Discount}" />
+        </WrapPanel>
+        <GroupBox Grid.Row="1" Header="应用机构(左边为待选机构，右边为已选机构)">
+            <GroupBox.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+                <DataTemplate x:Key="listItemData">
+                    <StackPanel Orientation="Horizontal" Background="Transparent" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+                        <TextBlock Text="{Binding Code}"></TextBlock>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.Resources>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="spButtons" Grid.Column="1" VerticalAlignment="Center" ButtonBase.Click="spButtons_Click">
+                    <Button x:Name="btnToRight" Content="&gt;" Margin="0 5" />
+                    <Button x:Name="btnToLeft" Content="&lt;" Margin="0 5" />
+                    <Button x:Name="btnAllToRight" Content="&gt;&gt;" Margin="0 5" />
+                    <Button x:Name="btnAllToLeft" Content="&lt;&lt;" Margin="0 5" />
+                </StackPanel>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <telerik:RadWatermarkTextBox x:Name="radMaskedTextInput" Margin="0 0 5 5"
+                                                Width="{Binding ElementName=lbxLeft, Path=ActualWidth, Mode=OneWay}"
+                                             WatermarkContent="机构筛选" TextChanged="radMaskedTextInput_TextChanged"/>
+                    <ListBox x:Name="lbxLeft" Grid.Row="1" Margin="0 0 5 0" ItemTemplate="{StaticResource listItemData}" 
+                             SelectionMode="Extended" />
+                </Grid>
+                <ListBox x:Name="lbxRight" Grid.Column="2" Margin="5 0 0 0" ItemTemplate="{StaticResource listItemData}" SelectionMode="Extended" />
+            </Grid>
+        </GroupBox>
+        <telerik:RadButton x:Name="btnSave" Content="保存" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5 0" Width="60" Click="btnSave_Click" />
+    </Grid>
+</Window>

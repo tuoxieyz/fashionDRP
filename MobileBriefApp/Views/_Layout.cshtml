@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="@Url.Content("~/Styles/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/js/jquery.min.js")"></script>
+    <script src="@Url.Content("~/js/kendo.all.min.js")"></script>
+    @RenderSection("Head", false)
+</head>
+<body>    
+    @RenderBody()
+    <script>
+        new kendo.mobile.Application($(document.body), { transition: "slide" });
+    </script>
+</body>
+</html>

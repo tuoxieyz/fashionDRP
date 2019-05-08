@@ -1,0 +1,22 @@
+﻿<Window x:Class="Manufacturing.OuterFactorySelectorWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        Title="工厂选择" Height="500" Width="420" ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <telerik:RadGridView x:Name="RadGridView1" CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" Grid.Row="1" IsReadOnly="True"
+                             AutoGenerateColumns="False" BorderThickness="0" ShowGroupPanel="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}" Header="工厂编号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="工厂名称" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding LinkMan}" Header="联系人" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding LinkPhone}" Header="联系号码" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="SysProcessView.MultiOrganizationSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="选择机构" VerticalAlignment="Center" />
+        <telerik:RadWatermarkTextBox x:Name="tbOrganizations" WatermarkContent="留空表示所有机构" TextWrapping="Wrap" IsReadOnly="True" Margin="5 0 2 0" Grid.Column="1" />
+        <telerik:RadButton Height="16" ToolTip="打开机构选择框" Click="btnSelectOrganizations_Click" Grid.Column="2">
+            <telerik:RadButton.Content>
+                <Image Source="pack://application:,,,/HabilimentERP;component/Images/chart_organisation.png" />
+            </telerik:RadButton.Content>
+        </telerik:RadButton>
+        <telerik:RadButton x:Name="btnClearSelectedOrganizations" Height="16" ToolTip="清除已选机构" Click="btnClearSelectedOrganizations_Click" Margin="2 0 0 0" Grid.Column="3">
+            <telerik:RadButton.Content>
+                <Image Source="pack://application:,,,/HabilimentERP;component/Images/erase.png" />
+            </telerik:RadButton.Content>
+        </telerik:RadButton>
+    </Grid>
+</UserControl>

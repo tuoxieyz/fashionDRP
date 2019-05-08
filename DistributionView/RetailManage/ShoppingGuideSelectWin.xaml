@@ -1,0 +1,26 @@
+﻿<Window x:Class="DistributionView.RetailManage.ShoppingGuideSelectWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:DistributionView"
+        xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+        xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+        Title="导购选择" Height="500" Width="420" ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.Resources>
+            <view:StateConvertor x:Key="stateCvt" />
+            <local:GuideWorkStateCvt x:Key="guideWorkStateCvt" />
+        </Grid.Resources>
+        <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding SynEntities}" ValidatesOnDataErrors="None"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True"
+                             AutoGenerateColumns="False" BorderThickness="0" ShowGroupPanel="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}" Header="编号" IsFilterable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="姓名" IsFilterable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Converter={StaticResource guideWorkStateCvt}}" Header="职位状态" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding State, Converter={StaticResource stateCvt}}" Header="系统状态" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</Window>

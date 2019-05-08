@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{243CF4E8-08AB-4DAC-A9B2-CD460E983195}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Manufacturing.ViewModel</RootNamespace>
+    <AssemblyName>Manufacturing.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.UniqueCode|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug.UniqueCode\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UniqueCode</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Windows.Controls, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bill\BillProductExchangeManageVM.cs" />
+    <Compile Include="Bill\BillProductPlanManageVM.cs" />
+    <Compile Include="Bill\BillProductPlanVM.cs" />
+    <Compile Include="Bill\BillSubcontractManageVM.cs" />
+    <Compile Include="Bill\BillSubcontractVM.cs" />
+    <Compile Include="Bill\BillProductExchangeVM.cs" />
+    <Compile Include="BO\BillProductExchangeBO.cs" />
+    <Compile Include="BO\BillProductPlanBO.cs" />
+    <Compile Include="BO\BillSubcontractBO.cs" />
+    <Compile Include="BO\FactoryBO.cs" />
+    <Compile Include="ManufacturingBillVM.cs" />
+    <Compile Include="OuterFactoryVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BillProductExchangeSearchVM.cs" />
+    <Compile Include="Reports\BillProductPlanSearchVM.cs" />
+    <Compile Include="Reports\BillSubcontractSearchVM.cs" />
+    <Compile Include="Reports\ProductExchangeAggregationVM.cs" />
+    <Compile Include="Reports\ProductPlanAggregationVM.cs" />
+    <Compile Include="Reports\SubcontractAggregationVM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBOperator\DBAccess.csproj">
+      <Project>{0659B2B4-E322-47B8-B5BC-C1FCDF23A820}</Project>
+      <Name>DBAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DistributionModel\DistributionModel.csproj">
+      <Project>{6C3FD41B-92E6-43F2-93A9-21685917BDAD}</Project>
+      <Name>DistributionModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainLogicEncap\DomainLogicEncap.csproj">
+      <Project>{ECABAC61-5112-406E-B5F8-D898A996AB4C}</Project>
+      <Name>DomainLogicEncap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERPModelBO\ERPModelBO.csproj">
+      <Project>{a6ba9012-1b18-4d83-b3db-8864cc6721f8}</Project>
+      <Name>ERPModelBO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FactoryProductionModel\ManufacturingModel.csproj">
+      <Project>{34BB9EA6-0350-4482-BCCE-347EEE501DE8}</Project>
+      <Name>ManufacturingModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IWCFService\IWCFService.csproj">
+      <Project>{05a5ba0b-8cd8-4c0e-98f3-165bd8a25de1}</Project>
+      <Name>IWCFService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kernel.Extension\Kernel.csproj">
+      <Project>{A0726815-AFFD-4636-A64A-8BA7A7612FA8}</Project>
+      <Name>Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Extension\Model.Extension.csproj">
+      <Project>{3E5D357D-E7A9-4BF5-9079-0484E303FB6E}</Project>
+      <Name>Model.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessModel\SysProcessModel.csproj">
+      <Project>{522D227D-139F-4E59-983B-339198A9FDAD}</Project>
+      <Name>SysProcessModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessViewModel\SysProcessViewModel.csproj">
+      <Project>{1B328CA3-BFF9-4FFD-8214-EF603465355E}</Project>
+      <Name>SysProcessViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModelBase\ViewModelBasic.csproj">
+      <Project>{3D521D68-094F-46C8-9877-A2009EA1CAD5}</Project>
+      <Name>ViewModelBasic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ERPViewModelBasic.csproj">
+      <Project>{2E97B0FB-10A1-4241-A4E0-ABC60A7D51E7}</Project>
+      <Name>ERPViewModelBasic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

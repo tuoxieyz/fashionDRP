@@ -1,0 +1,28 @@
+﻿<Window x:Class="UpdateOnline.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Title="版本升级" SizeToContent="WidthAndHeight">
+    <Grid Margin="30">
+        <StackPanel VerticalAlignment="Center" Width="300">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="LoadingLabel" FontSize="13" FontFamily="Segoe UI" />
+                <TextBlock x:Name="PercentageLabel" FontSize="13" FontFamily="Segoe UI" />
+                <TextBlock x:Name="CompleteLabel" FontSize="13" FontFamily="Segoe UI" />
+            </StackPanel>
+            <telerik:RadProgressBar x:Name="RadProgressBar1" Minimum="0" Maximum="100"
+					IsIndeterminate="True" Width="260" Height="30"
+					Margin="0,20" />
+            <StackPanel x:Name="pnlError" Visibility="Collapsed">
+                <TextBlock x:Name="tbError" FontSize="13" FontFamily="Segoe UI" Foreground="Red"
+                           TextWrapping="Wrap" HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10">
+                    <telerik:RadButton x:Name="btnReUpdate" Content="重新升级" Click="btnReUpdate_Click" />
+                    <telerik:RadButton x:Name="btnRunApp" Content="运行当前版本" Margin="5 0 5 0" Click="btnRunApp_Click" />
+                    <telerik:RadButton x:Name="btnClose" Content="关闭" Click="btnClose_Click" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

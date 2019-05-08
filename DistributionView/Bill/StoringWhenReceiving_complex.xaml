@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="DistributionView.Bill.StoringWhenReceiving"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:bill="clr-namespace:DistributionView.Bill"
+             xmlns:vm="clr-namespace:DistributionViewModel;assembly=DistributionViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="gridLayout">
+        <Grid.Resources>
+            <bill:StoringWhenReceiveRowStyleSelector x:Key="storingWhenReceiveRowStyleSelector">
+                <bill:StoringWhenReceiveRowStyleSelector.DeliveryOverflowReceiveStyle>
+                    <Style TargetType="telerik:GridViewRow">
+                        <Setter Property="Background" Value="{StaticResource GridViewRowThrowColor}" />
+                    </Style>
+                </bill:StoringWhenReceiveRowStyleSelector.DeliveryOverflowReceiveStyle>
+                <bill:StoringWhenReceiveRowStyleSelector.ReceiveOverflowDeliveryStyle>
+                    <Style TargetType="telerik:GridViewRow">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFC3FFB9" />
+                                    <GradientStop Color="#FF7AFF63" Offset="1" />
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </bill:StoringWhenReceiveRowStyleSelector.ReceiveOverflowDeliveryStyle>
+            </bill:StoringWhenReceiveRowStyleSelector>
+        </Grid.Resources>
+        <telerik:RadGridView x:Name="RadGridView1" ShowColumnFooters="True" AutoGenerateColumns="False" ShowGroupPanel="False"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True" BorderThickness="0" 
+                             RowDetailsVisibilityChanged="RadGridView1_RowDetailsVisibilityChanged" RowDetailsVisibilityMode="Collapsed"
+                             EnableRowVirtualization="False" EnableColumnVirtualization="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewToggleRowDetailsColumn />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}" Header="发货单号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandName}" Header="发货品牌" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd HH:mm}}" Header="发货时间" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="发货数量">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction Caption="发货数量合计:" ResultFormatString="{}{0}件" SourceField="Quantity" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TotalPrice,StringFormat={}{0:C2}}" Header="货品总价">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction Caption="货品总价合计:" ResultFormatString="{}{0:C2}" SourceField="TotalPrice" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Remark}" Header="备注" Width="*" />
+            </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <CheckBox x:Name="ckScanProducts" Content="扫单入库" VerticalAlignment="Center" IsChecked="{Binding IsChecked,Mode=TwoWay}" Unchecked="ckScanProducts_Unchecked" Checked="ckScanProducts_Checked" />
+                            <TextBox IsEnabled="{Binding ElementName=ckScanProducts,Path=IsChecked}" Width="160" KeyDown="tbProductCode_KeyUp" VerticalAlignment="Center" Margin="5 0 0 0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="入库仓库" VerticalAlignment="Center" />
+                            <telerik:RadComboBox x:Name="cbxStorage" VerticalContentAlignment="Center"
+                                                 ItemsSource="{Binding Source={x:Static vm:StorageInfoVM.Storages}}"
+                                                 SelectedValue="{Binding StorageID}"
+                                                 SelectedValuePath="ID" DisplayMemberPath="Name" 
+                                                 Width="120" Margin="5 0 10 0" />
+                            <telerik:RadButton x:Name="btnSave" Content="入库" VerticalAlignment="Center" Margin="0 0 5 0" Width="60" Click="btnSave_Click" />
+                        </StackPanel>
+                        <telerik:RadGridView Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="Green" GridLinesVisibility="None" 
+                                             CanUserFreezeColumns="False" RowIndicatorVisibility="Hidden" EnableRowVirtualization="False"
+                                         AutoGenerateColumns="False" ShowGroupPanel="False" IsReadOnly="True" IsFilteringAllowed="False"
+                                             ItemsSource="{Binding GridDataItems}">
+                            <?UniqueCode BEGIN?>
+                            <telerik:RadGridView.RowDetailsTemplate>
+                                <DataTemplate>
+                                    <bill:UniqueCodeDetailsForStoringTemplate />
+                                </DataTemplate>
+                            </telerik:RadGridView.RowDetailsTemplate>
+                            <?UniqueCode END?>
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ProductCode}" Header="SKU码" IsGroupable="False" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandCode}" Header="品牌" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding StyleCode}" Header="款号" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorCode}" Header="色号" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding SizeName}" Header="尺码" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="发货数量" IsGroupable="False" />
+                                <!--发货价 = 发货时单价*折扣-->
+                                <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding Price}" Header="发货价" DataFormatString="{}{0:C2}" />                                
+                                <telerik:GridViewExpressionColumn Header="发货价小计" DataFormatString="{}{0:C2}" Expression="Price * Quantity" IsGroupable="False">
+                                    <telerik:GridViewExpressionColumn.AggregateFunctions>
+                                        <local:TotalDiscountPriceFunction />
+                                    </telerik:GridViewExpressionColumn.AggregateFunctions>
+                                </telerik:GridViewExpressionColumn>-->
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ReceiveQuantity}" Header="收货数量" IsGroupable="False" IsVisible="{Binding ElementName=ckScanProducts,Path=IsChecked}" />
+                            </telerik:RadGridView.Columns>
+                        </telerik:RadGridView>
+                    </Grid>
+                </DataTemplate>
+            </telerik:RadGridView.RowDetailsTemplate>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

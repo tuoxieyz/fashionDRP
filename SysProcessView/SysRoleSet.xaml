@@ -1,0 +1,235 @@
+﻿<UserControl x:Class="SysProcessView.SysRoleSet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:telerikConverter="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+             xmlns:vm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"   
+             xmlns:vmbs="clr-namespace:ViewModelBasic;assembly=ViewModelBasic"
+             xmlns:local="clr-namespace:SysProcessView"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="layout">
+        <Grid.Resources>
+            <telerikConverter:InvertedBooleanConverter x:Key="invertedBooleanConverter" />
+            <local:CheckStateCvt x:Key="checkStateCvt" />
+            <local:ModuleTreeCvt x:Key="moduleTreeCvt" />
+            <local:ModuleTreeReadOnlyCvt x:Key="moduleTreeReadOnlyCvt" />
+            <local:RoleOPAccessCvt x:Key="roleOPAccessCvt" />
+            <local:RoleIMAccessCvt x:Key="roleIMAccessCvt" />
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="360" />
+        </Grid.ColumnDefinitions>
+        <Grid.DataContext>
+            <vm:RoleVM />
+        </Grid.DataContext>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" MinHeight="280"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="gridFilter">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" MinWidth="60" />
+                </Grid.ColumnDefinitions>
+                <telerik:RadDataFilter Name="radDataFilter" 
+                                           view:ItemPropertyDefinitionBindingBehavior.ItemPropertyDefinitions="{Binding ItemPropertyDefinitions}"
+                                           view:FilterDescriptorBindingBehavior.FilterDescriptors="{Binding FilterDescriptors}" />
+                <telerik:RadButton x:Name="btnSearch" Content="查询" Margin="5" Grid.Column="1" MinWidth="70"
+                                       VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding SearchCommand}"/>
+            </Grid>
+            <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding SynEntities}" ValidatesOnDataErrors="InEditMode"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" Grid.Row="1" IsReadOnly="True"
+                             AutoGenerateColumns="False" BorderThickness="0">
+                <telerik:RadGridView.Resources>
+                    <local:UserIDNameConvertor x:Key="userIDNameCvt" />
+                </telerik:RadGridView.Resources>
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="名称" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding CreatorID, Converter={StaticResource userIDNameCvt}}" Header="创建者" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd HH:mm}}" Header="创建时间" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="备注" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </Grid>
+        <GridSplitter Width="4" Grid.Column="1" ResizeBehavior="PreviousAndNext" />
+        <telerik:RadDataForm x:Name="myRadDataForm" ItemsSource="{Binding SynEntities}" BorderThickness="0"
+                             AutoGenerateFields="False" EditEnding="myRadDataForm_EditEnding" DeletingItem="myRadDataForm_DeletingItem"
+                             BeginningEdit="myRadDataForm_BeginningEdit" Grid.Column="2" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"                            
+                             CurrentItemChanged="myRadDataForm_CurrentItemChanged">
+            <telerik:RadDataForm.Resources>
+                <vmbs:EnumVM x:Key="infoType" EnumType="vm:BasicInfoEnum" />
+                <vmbs:EnumVM x:Key="imReceiveAccessEnum" EnumType="vm:IMReceiveAccessEnum" />
+                <ItemsPanelTemplate x:Key="wrapPanelTemplate">
+                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+                <DataTemplate x:Key="accessTemplate">
+                    <!--<telerik:DataFormDataField Label="{Binding Name}" Tag="{Binding ID}">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton x:Name="rbAllOP" Content="增删改查" VerticalAlignment="Center" />
+                            <RadioButton x:Name="rbReadOnly" Content="只能查看" VerticalAlignment="Center" IsChecked="True" Margin="5 0 0 0" />
+                        </StackPanel>                    
+                    </telerik:DataFormDataField>-->
+                    <CheckBox Margin="0 0 10 4" Content="{Binding Name}" Tag="{Binding ID}" MinWidth="70" />
+                </DataTemplate>
+            </telerik:RadDataForm.Resources>
+            <telerik:RadDataForm.ReadOnlyTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,Mode=OneWay}" Label="名称" IsReadOnly="True"/>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Description,Mode=OneWay}" Label="备注" IsReadOnly="True" />
+                        <telerik:DataFormDataField Label="模块权限">
+                            <telerik:DataFormDataField.Content>
+                                <telerik:RadTreeView IsLineEnabled="True"
+                                                     ItemsSource="{Binding ID,Converter={StaticResource moduleTreeReadOnlyCvt}}">
+                                    <telerik:RadTreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate DataType="{x:Type vm:ModuleTreeItem}" ItemsSource="{Binding Path=Children}">
+                                            <StackPanel RenderOptions.BitmapScalingMode="NearestNeighbor" Orientation="Horizontal">
+                                                <Image Source="{Binding Path=Icon}" Width="16" Height="16" />
+                                                <TextBlock FontSize="12" Text="{Binding Path=Module.Name}" />
+                                            </StackPanel>
+                                        </HierarchicalDataTemplate>
+                                    </telerik:RadTreeView.ItemTemplate>
+                                </telerik:RadTreeView>
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <GroupBox Header="增删改权限">
+                            <ItemsControl x:Name="opList" 
+                                          Margin="5"
+                                          ItemsPanel="{StaticResource wrapPanelTemplate}"
+                                          ItemsSource="{Binding OPAccess, Converter={StaticResource roleOPAccessCvt},ConverterParameter={StaticResource infoType}}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Margin="0 0 10 4" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </GroupBox>
+                        <GroupBox Header="即时消息接收权限">
+                            <ItemsControl x:Name="imList" 
+                                          Margin="5"
+                                          ItemsPanel="{StaticResource wrapPanelTemplate}"
+                                          ItemsSource="{Binding IMAccess, Converter={StaticResource roleIMAccessCvt},ConverterParameter={StaticResource imReceiveAccessEnum}}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Margin="0 0 10 4" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </GroupBox>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.ReadOnlyTemplate>
+            <telerik:RadDataForm.EditTemplate>
+                <DataTemplate>
+                    <StackPanel Loaded="moduleProcess_Loaded">
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="名称" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Description}" Label="备注" />
+                        <telerik:DataFormDataField Label="模块权限">
+                            <telerik:DataFormDataField.DataContext>
+                                <!--<Binding RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type local:DockingWindow}}" Path="DataContext.MenuTreeVM"></Binding>-->
+                                <Binding Source="{x:Static vm:RoleVM.ModuleTreeItems}" />
+                            </telerik:DataFormDataField.DataContext>
+                            <telerik:DataFormDataField.Content>
+                                <telerik:RadTreeView x:Name="tvModuleProcess" Focusable="False" SelectionMode="Extended"
+                                                        IsOptionElementsEnabled="True"
+                                                        IsLineEnabled="True" ItemsOptionListType="CheckList"
+                                                        IsTriStateMode="True"
+                                                        ItemsSource="{Binding}">
+                                    <!--DataContext放于此处竟然没用,这估计是telerik搞的鬼-->
+                                    <!--<telerik:RadTreeView.DataContext>
+                                                        <vm:MenuTreeVM />
+                                                    </telerik:RadTreeView.DataContext>-->
+                                    <!--RadTreeView中的UI节点如果未展开则不能访问-->
+                                    <!--以下效果同后台loaded事件中tv.ExpandAll()一样，但应该比loaded早，因此在loaded时候就能访问所有子节点的UI元素了-->
+                                    <telerik:RadTreeView.ItemContainerStyle>
+                                        <Style TargetType="telerik:RadTreeViewItem">
+                                            <Setter Property="IsExpanded" Value="True"></Setter>
+                                        </Style>
+                                    </telerik:RadTreeView.ItemContainerStyle>
+                                    <telerik:RadTreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate DataType="{x:Type vm:ModuleTreeItem}" ItemsSource="{Binding Path=Children}">
+                                            <StackPanel RenderOptions.BitmapScalingMode="NearestNeighbor" Orientation="Horizontal">
+                                                <Image Source="{Binding Path=Icon}" Width="16" Height="16" />
+                                                <TextBlock FontSize="12" Text="{Binding Path=Module.Name}" />
+                                            </StackPanel>
+                                        </HierarchicalDataTemplate>
+                                    </telerik:RadTreeView.ItemTemplate>
+                                </telerik:RadTreeView>
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <GroupBox Header="增删改权限">
+                            <ItemsControl x:Name="opList" 
+                                          Margin="5"
+                                          ItemsPanel="{StaticResource wrapPanelTemplate}"
+                                          ItemsSource="{Binding Source={StaticResource infoType}, Path=Values}" 
+                                          ItemTemplate="{StaticResource accessTemplate}"></ItemsControl>
+                        </GroupBox>
+                        <GroupBox Header="即时消息接收权限">
+                            <ItemsControl x:Name="imList" 
+                                          Margin="5"
+                                          ItemsPanel="{StaticResource wrapPanelTemplate}"
+                                          ItemsSource="{Binding Source={StaticResource imReceiveAccessEnum}, Path=Values}" 
+                                          ItemTemplate="{StaticResource accessTemplate}">                              
+                            </ItemsControl>
+                        </GroupBox>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.EditTemplate>
+            <telerik:RadDataForm.NewItemTemplate>
+                <DataTemplate>
+                    <StackPanel Loaded="newModuleProcess_Loaded">
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="名称" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Description}" Label="备注" />
+                        <telerik:DataFormDataField Label="模块权限">
+                            <telerik:DataFormDataField.DataContext>
+                                <!--<Binding RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type local:DockingWindow}}" Path="DataContext.MenuTreeVM"></Binding>-->
+                                <Binding Source="{x:Static vm:RoleVM.ModuleTreeItems}" />
+                            </telerik:DataFormDataField.DataContext>
+                            <telerik:DataFormDataField.Content>
+                                <telerik:RadTreeView x:Name="tvModuleProcess" Focusable="False" SelectionMode="Extended"
+                                                        IsOptionElementsEnabled="True" Checked="tvModuleProcess_Checked"
+                                                        IsLineEnabled="True" ItemsOptionListType="CheckList" IsRootLinesEnabled="True"
+                                                        IsTriStateMode="True" ItemsSource="{Binding}">
+                                    <telerik:RadTreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate DataType="{x:Type vm:ModuleTreeItem}" ItemsSource="{Binding Path=Children}">
+                                            <StackPanel RenderOptions.BitmapScalingMode="NearestNeighbor" Orientation="Horizontal">
+                                                <Image Source="{Binding Path=Icon}" Width="16" Height="16" />
+                                                <TextBlock FontSize="12" Text="{Binding Path=Module.Name}" />
+                                            </StackPanel>
+                                        </HierarchicalDataTemplate>
+                                    </telerik:RadTreeView.ItemTemplate>
+                                </telerik:RadTreeView>
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <GroupBox Header="增删改权限">
+                            <ItemsControl x:Name="opList" 
+                                          Margin="5"
+                                          ItemsPanel="{StaticResource wrapPanelTemplate}"
+                                          ItemsSource="{Binding Source={StaticResource infoType}, Path=Values}" 
+                                          ItemTemplate="{StaticResource accessTemplate}"></ItemsControl>
+                        </GroupBox>
+                        <GroupBox Header="即时消息接收权限">
+                            <ItemsControl x:Name="imList" 
+                                          Margin="5"
+                                          ItemsPanel="{StaticResource wrapPanelTemplate}"
+                                          ItemsSource="{Binding Source={StaticResource imReceiveAccessEnum}, Path=Values}" 
+                                          ItemTemplate="{StaticResource accessTemplate}">
+                            </ItemsControl>
+                        </GroupBox>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.NewItemTemplate>
+        </telerik:RadDataForm>
+
+    </Grid>
+</UserControl>

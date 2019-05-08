@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="DistributionView.Organization.ContractDiscount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:DistributionView"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:sysvm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <sysv:BrandIDNameOfOrganizationCvt x:Key="brandIDNameOfOrganizationCvt" />
+        <sysv:YearQuarterCvt x:Key="yearQuarterCvt" />
+        <sysv:QuarterCvt x:Key="quarterCvt" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.Resources>
+                <DataTemplate x:Key="ComboboxFilterEditorTemplate">
+                    <telerik:RadComboBox SelectedValue="{Binding Value, Mode=TwoWay, FallbackValue=-1}" 
+                                         SelectedValuePath="ID" DisplayMemberPath="Name" MinWidth="100"/>
+                </DataTemplate>
+                <DataTemplate x:Key="OrganizationEditorTemplate">
+                    <sysv:OrganizationSelector IDValue="{Binding Value,Mode=TwoWay}" FilterCurrent="True" MinWidth="100"  />
+                </DataTemplate>
+                <DataTemplate x:Key="YearFilterEditorTemplate">
+                    <telerik:RadDatePicker DateSelectionMode="Year" IsTooltipEnabled="True" ErrorTooltipContent="输入格式不正确" 
+                                           DateTimeWatermarkContent="选择年份" DateTimeText="{Binding Value,Mode=TwoWay}" MinWidth="100" />
+                </DataTemplate>
+                <view:ExtEditorTemplateSelector x:Key="MyEditorTemplateSelector">
+                    <view:ExtEditorTemplateSelector.EditorTemplateRules>
+                        <view:EditorTemplateRule PropertyName="BrandID" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                        <view:EditorTemplateRule PropertyName="Quarter" DataTemplate="{StaticResource ComboboxFilterEditorTemplate}"/>
+                        <view:EditorTemplateRule PropertyName="OrganizationID" DataTemplate="{StaticResource OrganizationEditorTemplate}"/>
+                        <view:EditorTemplateRule PropertyName="Year" DataTemplate="{StaticResource YearFilterEditorTemplate}"/>
+                    </view:ExtEditorTemplateSelector.EditorTemplateRules>
+                </view:ExtEditorTemplateSelector>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="gridFilter">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" MinWidth="60" />
+                </Grid.ColumnDefinitions>
+                <telerik:RadDataFilter Name="radDataFilter" 
+                                           view:ItemPropertyDefinitionBindingBehavior.ItemPropertyDefinitions="{Binding ItemPropertyDefinitions}"
+                                           view:FilterDescriptorBindingBehavior.FilterDescriptors="{Binding FilterDescriptors}"
+                                           EditorTemplateSelector="{StaticResource MyEditorTemplateSelector}"
+                                           EditorCreated="radDataFilter_EditorCreated"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                    <telerik:RadButton x:Name="btnSearch" Content="查询" MinWidth="70" Command="{Binding SearchCommand}" />
+                    <telerik:RadButton x:Name="btnBatchSet" Content="批量设置" MinWidth="70" Click="btnBatchSet_Click"  />
+                </StackPanel>
+            </Grid>
+            <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding SynEntities}" ValidatesOnDataErrors="InEditMode"
+                                 CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" Grid.Row="1" IsReadOnly="True"
+                                 AutoGenerateColumns="False" BorderThickness="0">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationCode,Mode=OneWay}" Header="机构编号" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationName,Mode=OneWay}" Header="机构名称" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandID,Converter={StaticResource brandIDNameOfOrganizationCvt}}" Header="品牌" />
+                    <telerik:GridViewColumn Header="年份季度">
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock IsEnabled="False">
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource yearQuarterCvt}">
+                                            <Binding Path="Year"/>
+                                            <Binding Path="Quarter"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Discount}" Header="折扣(%)" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+            <telerik:RadDataPager x:Name="pager" PageSize="{Binding PageSize}" PageIndex="{Binding PageIndex,Mode=TwoWay}" ItemCount="{Binding TotalCount}" Grid.Row="2" DisplayMode="FirstLastPreviousNextNumeric" />
+        </Grid>
+
+        <GridSplitter Width="4" Grid.Column="1" ResizeBehavior="PreviousAndNext" />
+
+        <telerik:RadDataForm x:Name="myRadDataForm" ItemsSource="{Binding SynEntities}" BorderThickness="0"
+                             AutoGenerateFields="False" EditEnding="myRadDataForm_EditEnding" DeletingItem="myRadDataForm_DeletingItem" Grid.Column="2">
+            <telerik:RadDataForm.Resources>
+                <sysv:UserIDNameCvt x:Key="userIDNameCvt" />
+            </telerik:RadDataForm.Resources>
+            <telerik:RadDataForm.ReadOnlyTemplate>
+                <DataTemplate>
+                    <StackPanel Loaded="StackPanel_Loaded">
+                        <telerik:DataFormDataField DataMemberBinding="{Binding OrganizationName,Mode=OneWay}" Label="分支机构" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding BrandID,Mode=OneWay,Converter={StaticResource brandIDNameOfOrganizationCvt}}" Label="品牌" IsReadOnly="True" />
+                        <telerik:DataFormDataField  Label="年份" DataMemberBinding="{Binding Year,Mode=OneWay}" IsReadOnly="True"/>
+                        <telerik:DataFormDataField  Label="季度" DataMemberBinding="{Binding Quarter,Converter={StaticResource quarterCvt}}" IsReadOnly="True"/>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Discount,Mode=OneWay}" Label="折扣(%)" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding CreatorID,Mode=OneWay,Converter={StaticResource userIDNameCvt}}" Label="创建人" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding CreateTime,Mode=OneWay,StringFormat={}{0:yyyy-MM-dd HH:mm}}" Label="创建时间" IsReadOnly="True" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.ReadOnlyTemplate>
+            <telerik:RadDataForm.EditTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField  Label="分支机构">
+                            <telerik:DataFormDataField.Content>
+                                <sysv:OrganizationSelector FilterCurrent="True" IDValue="{Binding OrganizationID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormComboBoxField Label="品牌" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}"
+                                                       DataMemberBinding="{Binding BrandID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                       SelectedValuePath="ID" DisplayMemberPath="Name" />
+                        <telerik:DataFormDataField  Label="年份">
+                            <telerik:DataFormDataField.Content>
+                                <telerik:RadDatePicker DateSelectionMode="Year" DateTimeWatermarkContent = "选择年份" 
+                                                                       DateTimeText="{Binding Year, Mode=TwoWay}" SelectionChanged="RadDatePicker_SelectionChanged" />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormComboBoxField Label="季度" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.Quarters}}" DataMemberBinding="{Binding Quarter,Mode=TwoWay}"
+                                                       SelectedValuePath="ID" DisplayMemberPath="Name" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Discount}" Label="折扣(%)" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.EditTemplate>
+            <telerik:RadDataForm.NewItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField  Label="分支机构">
+                            <telerik:DataFormDataField.Content>
+                                <sysv:OrganizationSelector FilterCurrent="True" IDValue="{Binding OrganizationID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormComboBoxField Label="品牌" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}" 
+                                                                       DataMemberBinding="{Binding BrandID,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                       SelectedValuePath="ID" DisplayMemberPath="Name" />
+                        <telerik:DataFormDataField  Label="年份">
+                            <telerik:DataFormDataField.Content>
+                                <telerik:RadDatePicker DateSelectionMode="Year" DateTimeWatermarkContent = "选择年份" 
+                                                                       DateTimeText="{Binding Year, Mode=TwoWay}" SelectionChanged="RadDatePicker_SelectionChanged" />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+                        <telerik:DataFormComboBoxField Label="季度" ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.Quarters}}" DataMemberBinding="{Binding Quarter,Mode=TwoWay}"
+                                                       SelectedValuePath="ID" DisplayMemberPath="Name" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Discount}" Label="折扣(%)" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.NewItemTemplate>
+        </telerik:RadDataForm>
+    </Grid>
+</UserControl>

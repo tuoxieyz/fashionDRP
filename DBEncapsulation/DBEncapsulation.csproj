@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3DDC5E5-0025-41F6-80E7-C9BDAFECCAAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBEncapsulation</RootNamespace>
+    <AssemblyName>DBEncapsulation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Distribution.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Distribution.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Distribution.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Manufacturing.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Manufacturing.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manufacturing.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Manufacturing.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysProcess.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SysProcess.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysProcess.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SysProcess.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SysProcess.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SysProcess.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Manufacturing.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Manufacturing.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Distribution.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Distribution.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Distribution.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Distribution.edmx</DependentUpon>
+      <LastGenOutput>Distribution.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Distribution.edmx.diagram">
+      <DependentUpon>Distribution.edmx</DependentUpon>
+    </None>
+    <None Include="Manufacturing.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Manufacturing.edmx</DependentUpon>
+      <LastGenOutput>Manufacturing.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Manufacturing.edmx.diagram">
+      <DependentUpon>Manufacturing.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="SysProcess.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SysProcess.edmx</DependentUpon>
+      <LastGenOutput>SysProcess.Context.cs</LastGenOutput>
+    </None>
+    <None Include="SysProcess.edmx.diagram">
+      <DependentUpon>SysProcess.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CentralizeModel\CentralizeModel.csproj">
+      <Project>{4246bf13-bfbb-48d2-b259-34fe026f1b82}</Project>
+      <Name>CentralizeModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DbContextExtension\DbContextExtension.csproj">
+      <Project>{84f9b89f-1cdd-4abe-b3ad-ac3ea43744da}</Project>
+      <Name>DbContextExtension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DistributionModel\DistributionModel.csproj">
+      <Project>{6c3fd41b-92e6-43f2-93a9-21685917bdad}</Project>
+      <Name>DistributionModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FactoryProductionModel\ManufacturingModel.csproj">
+      <Project>{34bb9ea6-0350-4482-bcce-347eee501de8}</Project>
+      <Name>ManufacturingModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kernel.Extension\Kernel.csproj">
+      <Project>{a0726815-affd-4636-a64a-8ba7a7612fa8}</Project>
+      <Name>Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Extension\Model.Extension.csproj">
+      <Project>{3e5d357d-e7a9-4bf5-9079-0484e303fb6e}</Project>
+      <Name>Model.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessModel\SysProcessModel.csproj">
+      <Project>{522d227d-139f-4e59-983b-339198a9fdad}</Project>
+      <Name>SysProcessModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

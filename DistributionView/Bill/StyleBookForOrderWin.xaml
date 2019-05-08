@@ -1,0 +1,34 @@
+﻿<Window x:Class="HabilimentERP.Modules.Bill.StyleBookForOrderWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:cvt ="clr-namespace:HabilimentERP.Convertors"
+        Title="StyleBookForOrderWin"
+        ShowInTaskbar="False" WindowStyle="ToolWindow" Width="620" Height="480"
+                   WindowStartupLocation="CenterOwner">
+    <Grid x:Name="gridLayout">
+        <Grid.Resources>
+            <cvt:NumericMultiplicationCvt x:Key="numericMultiplicationCvt" />
+            <DataTemplate x:Key="PageTemplate">
+                <Border BorderBrush="#B2ADBDD1" BorderThickness="1">
+                    <Grid Background="White" Width="{Binding ActualWidth,ElementName=gridLayout,Mode=OneWay,Converter={StaticResource numericMultiplicationCvt},ConverterParameter=0.5}" 
+                          Height="{Binding ActualHeight,ElementName=gridLayout,Mode=OneWay}">
+                        <telerik:RadGridView x:Name="gvDatas" ShowGroupPanel="False" IsFilteringAllowed="False"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed"
+                             AutoGenerateColumns="False" BorderThickness="0">
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorCode}" Header="色号" Width="50" IsReadOnly="True" />
+                            </telerik:RadGridView.Columns>
+                        </telerik:RadGridView>
+                        <Image Source="{Binding PictureName,Converter={StaticResource SCPCvt}}" />
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </Grid.Resources>
+        <Border CornerRadius="5">
+            <telerik:RadBook x:Name="RadBook1" IsKeyboardNavigationEnabled="True"
+					ItemTemplate="{StaticResource PageTemplate}" 
+					FirstPagePosition="Right" RightPageIndex="0" />
+        </Border>
+    </Grid>
+</Window>

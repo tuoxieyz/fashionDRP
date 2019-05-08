@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="DistributionView.RetailManage.RetailForSubordinate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:DistributionView"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <RoutedCommand x:Key="retailCommand" />
+        </Grid.Resources>
+        <Grid.InputBindings>
+            <KeyBinding Key="F1" Command="{StaticResource retailCommand}" CommandParameter="Cash" />
+            <KeyBinding Key="F4" Command="{StaticResource retailCommand}" CommandParameter="CashCoupon" />
+            <KeyBinding Key="F5" Command="{StaticResource retailCommand}" CommandParameter="Back" />
+            <!--<KeyBinding Key="F6" Command="{StaticResource retailCommand}" />-->
+            <KeyBinding Key="F7" Command="{StaticResource retailCommand}" CommandParameter="VIP" />
+        </Grid.InputBindings>
+        <Grid.CommandBindings>
+            <CommandBinding Command="{StaticResource retailCommand}" Executed="retailCommandBinding_Executed" />
+        </Grid.CommandBindings>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Margin="5">
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" MinWidth="100" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="零售店铺" />
+                <sysv:OrganizationSelector FilterCurrent="True" IsShowShopOnly="True" 
+                                           IDValue="{Binding OrganizationID,Mode=TwoWay}"
+                                           Grid.Column="1" Margin="5 0 10 0" />
+                <TextBlock Text="开单日期" Grid.Row="1" />
+                <telerik:RadDatePicker MinWidth="100" SelectedDate="{Binding Master.CreateTime,Mode=TwoWay}" 
+                                       VerticalAlignment="Center" 
+                                       Grid.Row="1" Grid.Column="1"
+                                       Margin="5 0 10 0"/>
+                <TextBlock Text="出货仓库" Grid.Column="2" />
+                <telerik:RadComboBox ItemsSource="{Binding Storages}"
+                                     SelectedValue="{Binding Master.StorageID,Mode=TwoWay}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Grid.Column="3" Margin="5 0" />
+                <TextBlock Text="班次" Grid.Row="1" Grid.Column="2" />
+                <telerik:RadComboBox ItemsSource="{Binding Shifts}"
+                                     SelectedValue="{Binding Master.ShiftID,Mode=TwoWay}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Grid.Row="1"
+                                     Grid.Column="3" Margin="5" />
+                <TextBlock Text="导购" Grid.Row="2" Grid.Column="2" />
+                <telerik:RadComboBox ItemsSource="{Binding Guides}"
+                                     SelectedValue="{Binding Master.GuideID,Mode=TwoWay}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Grid.Row="2"
+                                     Grid.Column="3" Margin="5 0" />
+                <TextBlock Text="收银员" Grid.Row="3" Grid.Column="2" />
+                <telerik:RadComboBox ItemsSource="{Binding Users}"
+                                     SelectedValue="{Binding Master.CreatorID,Mode=TwoWay}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Grid.Row="3"
+                                     Grid.Column="3" Margin="5 5 5 0" />
+            </Grid>
+            <Grid Grid.Column="1" Margin="5 0 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Margin="0 0 0 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="备注" VerticalAlignment="Center" Margin="0 0 15 0" />
+                    <TextBox x:Name="txtRemark" Grid.Column="1" Text="{Binding Master.Remark}" HorizontalAlignment="Stretch" />
+                </Grid>
+                <WrapPanel Orientation="Horizontal" Grid.Row="1">
+                    <telerik:RadButton Content="结账[F1]" Width="80" Margin="0 0 5 0" Command="{StaticResource retailCommand}" CommandParameter="Cash" />
+                    <telerik:RadButton Content="抵价券[F4]" Width="80" Margin="0 0 5 0" Command="{StaticResource retailCommand}" CommandParameter="CashCoupon" />
+                    <telerik:RadButton Content="退货[F5]" Width="80" Margin="0 0 5 0" Command="{StaticResource retailCommand}" CommandParameter="Back" />
+                    <!--<telerik:RadButton Content="重打小票[F6]" Width="80" Margin="0 0 5 0" Command="{StaticResource retailCommand}" CommandParameter="Back" />-->
+                </WrapPanel>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding InputLabelString}" FontSize="16" VerticalAlignment="Center" Margin="0 0 15 0" />
+                    <TextBox x:Name="txtProductCode" FontSize="20" Grid.Column="1" Width="200" VerticalAlignment="Center" HorizontalAlignment="Left" KeyDown="txtProductCode_KeyDown" />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <telerik:RadButton x:Name="btnVIP" Content="VIP[F7]" Width="80" Margin="0 0 5 0" VerticalAlignment="Bottom" Command="{StaticResource retailCommand}" CommandParameter="VIP" />
+                    <TextBlock x:Name="tbVIPInfo" Text="{Binding VIPMessage}" Foreground="Red" Grid.Column="1" VerticalAlignment="Center" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <telerik:RadGridView x:Name="gvDatas" Grid.Row="2" IsFilteringAllowed="False" ShowColumnFooters="True"
+                             CanUserFreezeColumns="False" ShowGroupPanel="False"
+                             RowIndicatorVisibility="Visible" RowDetailsVisibilityMode="Visible" 
+                             AutoGenerateColumns="False" BorderThickness="0" ItemsSource="{Binding GridDataItems}">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ProductCode}" Header="SKU码" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding BrandCode}" Header="品牌" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding StyleCode}" Header="款号" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ColorCode}" Header="色号" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SizeName}" Header="尺码" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Price}" Header="零售价" DataFormatString="{}{0:C2}" IsReadOnly="True" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Discount}" Header="折扣(%)" UniqueName="colDiscount" Name="colDiscount" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="数量" IsGroupable="False" IsReadOnly="True">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction Caption="数量合计:" ResultFormatString="{}{0}件" SourceField="Quantity" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewExpressionColumn Header="折后价" DataFormatString="{}{0:C2}" Expression="Price * Discount*0.01" IsGroupable="False" IsReadOnly="True" />
+                <telerik:GridViewExpressionColumn Header="折后价小计" DataFormatString="{}{0:C2}" Expression="Price * Quantity * Discount*0.01" IsGroupable="False" Width="*" IsReadOnly="True">
+                    <telerik:GridViewExpressionColumn.AggregateFunctions>
+                        <local:TotalDiscountPriceFunction Caption="折后价合计:" />
+                    </telerik:GridViewExpressionColumn.AggregateFunctions>
+                </telerik:GridViewExpressionColumn>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding RealMoney}" Header="实收金额" DataFormatString="{}{0:C2}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CutMoney}" Header="扣减金额" DataFormatString="{}{0:C2}" IsReadOnly="True" />
+                <telerik:GridViewColumn Header="操作" x:Name="colOperate">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <telerik:RadButton x:Name="btnDelete" ToolTip="删除" Click="btnDelete_Click" Height="16">
+                                <telerik:RadButton.Content>
+                                    <Image Source="pack://application:,,,/HabilimentERP;Component/Images/minus.png" />
+                                </telerik:RadButton.Content>
+                            </telerik:RadButton>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

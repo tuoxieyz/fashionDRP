@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="DistributionView.VIP.VIPProportion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:sysvm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <WrapPanel Orientation="Horizontal" Margin="5 5 5 0" Grid.ColumnSpan="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto "/>
+                    <ColumnDefinition Width="Auto "/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="品牌" VerticalAlignment="Center" />
+                <telerik:RadComboBox ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}"
+                                     SelectedValue="{Binding BrandID}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Width="100"
+                                     Margin="5 0"
+                                     Grid.Column="1"/>
+            </Grid>
+            <telerik:RadButton x:Name="btnSearch" Content="查询" Width="60"
+                               HorizontalAlignment="Right" Click="btnSearch_Click" />
+        </WrapPanel>
+        <telerik:RadPieChart x:Name="PieChart1" Palette="Lilac" EmptyContent="" Grid.Row="1">
+            <telerik:PieSeries x:Name="pieKindProportion">
+                <telerik:PieSeries.ValueBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Quantity"></telerik:PropertyNameDataPointBinding>
+                </telerik:PieSeries.ValueBinding>
+                <telerik:PieSeries.LabelDefinitions>
+                    <telerik:ChartSeriesLabelDefinition Margin="-5,0,0,0">
+                        <telerik:ChartSeriesLabelDefinition.Binding>
+                            <telerik:PropertyNameDataPointBinding PropertyName="Description"></telerik:PropertyNameDataPointBinding>
+                        </telerik:ChartSeriesLabelDefinition.Binding>
+                    </telerik:ChartSeriesLabelDefinition>
+                </telerik:PieSeries.LabelDefinitions>
+                <telerik:PieSeries.LegendSettings>
+                    <telerik:DataPointLegendSettings TitleBinding="Title" />
+                </telerik:PieSeries.LegendSettings>
+            </telerik:PieSeries>
+        </telerik:RadPieChart>
+        <telerik:RadLegend Items="{Binding LegendItems, ElementName=PieChart1}" Grid.Row="1" Grid.Column="1" />
+
+        <telerik:RadPieChart x:Name="PieChart2" Palette="Lilac" EmptyContent="" Grid.Row="1" Grid.Column="2">
+            <telerik:PieSeries x:Name="pieConsumeProportion">
+                <telerik:PieSeries.ValueBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="ConsumeMoney"></telerik:PropertyNameDataPointBinding>
+                </telerik:PieSeries.ValueBinding>
+                <telerik:PieSeries.LabelDefinitions>
+                    <telerik:ChartSeriesLabelDefinition Margin="-5,0,0,0">
+                        <telerik:ChartSeriesLabelDefinition.Binding>
+                            <telerik:PropertyNameDataPointBinding PropertyName="Description"></telerik:PropertyNameDataPointBinding>
+                        </telerik:ChartSeriesLabelDefinition.Binding>
+                    </telerik:ChartSeriesLabelDefinition>
+                </telerik:PieSeries.LabelDefinitions>
+                <telerik:PieSeries.LegendSettings>
+                    <telerik:DataPointLegendSettings TitleBinding="Title" />
+                </telerik:PieSeries.LegendSettings>
+            </telerik:PieSeries>
+        </telerik:RadPieChart>
+        <telerik:RadLegend Items="{Binding LegendItems, ElementName=PieChart2}" Grid.Row="1" Grid.Column="3" />
+        
+        <telerik:RadPieChart x:Name="PieChart" Palette="Lilac" EmptyContent="" Grid.Row="2">
+            <telerik:PieSeries x:Name="pieActiveProportion">
+                <telerik:PieSeries.ValueBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Quantity"></telerik:PropertyNameDataPointBinding>
+                </telerik:PieSeries.ValueBinding>
+                <telerik:PieSeries.LabelDefinitions>
+                    <telerik:ChartSeriesLabelDefinition Margin="-5,0,0,0">
+                        <telerik:ChartSeriesLabelDefinition.Binding>
+                            <telerik:PropertyNameDataPointBinding PropertyName="Description"></telerik:PropertyNameDataPointBinding>
+                        </telerik:ChartSeriesLabelDefinition.Binding>
+                    </telerik:ChartSeriesLabelDefinition>
+                </telerik:PieSeries.LabelDefinitions>
+                <telerik:PieSeries.LegendSettings>
+                    <telerik:DataPointLegendSettings TitleBinding="Title" />
+                </telerik:PieSeries.LegendSettings>
+            </telerik:PieSeries>
+        </telerik:RadPieChart>
+        <telerik:RadLegend Items="{Binding LegendItems, ElementName=PieChart}" Grid.Row="2" Grid.Column="1" />
+    </Grid>
+</UserControl>

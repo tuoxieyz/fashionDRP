@@ -1,0 +1,145 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:Double x:Key="ButtonWidthAndHeight">16</sys:Double>
+    <!--ButtonStyle1-->    
+    <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+        <Setter Property="SnapsToDevicePixels" Value="false"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ButtonBorder"  
+                          CornerRadius="2" 
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          Background="{StaticResource ButtonNormalBackgroundBrush}"
+                          BorderBrush="{StaticResource ButtonNormalBorderBrush}">
+                        <Grid>
+                            <Path x:Name="ButtonPath" 
+                              Margin="2"
+                              Data="{Binding Path=Content,RelativeSource={RelativeSource TemplatedParent}}"
+                              Stroke="{StaticResource ButtonNormalForegroundBrush}" 
+                              StrokeThickness="2"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round"
+                              Stretch="Uniform"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" 
+                                Value="{StaticResource ButtonHoverBackgroundBrush}" />
+                            <Setter TargetName="ButtonPath" Property="Stroke" 
+                                Value="{StaticResource ButtonHoverForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonBorder" 
+                                Property="Background" 
+                                Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                            <Setter TargetName="ButtonBorder" 
+                                Property="BorderBrush" 
+                                Value="{StaticResource ButtonPressedBorderBrush}" />
+                            <Setter TargetName="ButtonPath" Property="Stroke" 
+                                Value="{StaticResource ButtonPressedForegroundBrush}"/>
+                            <!-- 
+                           Simulate a pressed-effect by moving the contents down and to the right.
+                           Since the button is pretty small, the trick here is to only shift things
+                           just a tiny little bit, hence the fractional values below.
+                           Note that, in order for this to work as expected, SnapsToDevicePixels
+                           must be set to "false" (see the setter at the top of this style).
+                        -->
+                            <Setter TargetName="ButtonPath" Property="Margin" Value="2.5,2.5,1.5,1.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--ButtonStyle2-->   
+    <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Height" Value="{StaticResource ButtonWidthAndHeight}"/>
+        <Setter Property="Width" Value="{StaticResource ButtonWidthAndHeight}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="ButtonBorder" Margin="1"
+                          BorderBrush="{StaticResource LineButtonBorderBrush}" 
+                          Background="{StaticResource LineButtonBackgroundBrush}" 
+                          CornerRadius="1" 
+                          BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Stretch"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="Background" 
+                                Value="{StaticResource LineButtonHoverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="Background" 
+                                Value="{StaticResource LineButtonPressedBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ButtonBorder" Property="Background" 
+                                Value="{StaticResource LineButtonDisabledBrush}" />
+                            <Setter TargetName="ButtonBorder" Property="Opacity" 
+                                Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--If you create a style with a TargetType property and base it on another style that also defines a TargetType property, 
+    the target type of the derived style must be the same as or be derived from the type of the base style.-->
+    <!--由于RepeatButton不是继承自Button，因此下面的语句不行-->
+    <!--<Style x:Key="LineButtonStyle" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ButtonStyle2}"></Style>-->
+
+    <Style x:Key="ButtonStyle3" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Height" Value="{StaticResource ButtonWidthAndHeight}"/>
+        <Setter Property="Width" Value="{StaticResource ButtonWidthAndHeight}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Name="ButtonBorder" Margin="1"
+                          BorderBrush="{StaticResource LineButtonBorderBrush}" 
+                          Background="{StaticResource LineButtonBackgroundBrush}" 
+                          CornerRadius="1" 
+                          BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Stretch"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="Background" 
+                                Value="{StaticResource LineButtonHoverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="Background" 
+                                Value="{StaticResource LineButtonPressedBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ButtonBorder" Property="Background" 
+                                Value="{StaticResource LineButtonDisabledBrush}" />
+                            <Setter TargetName="ButtonBorder" Property="Opacity" 
+                                Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

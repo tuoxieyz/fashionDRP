@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    @*参看http://www.cnblogs.com/liuzhendong/archive/2012/03/21/2410107.html*@
+    @*在IE7下很多bootstrap样式得不到展现，IE8也有少许问题，所以至少使用IE9吧*@
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #container {
+            height: 100%;
+        }
+
+        small.infoshow {
+            display: block;
+            color: #737373;
+            vertical-align: top;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=LTfOUMVQ2qxu7CTjOqPXTV6c" type="text/javascript"></script>
+
+</head>
+<body>
+    <div id="divInfoWindow" style="display: none;">
+        <div id="divOrganizationSelect" data-bind="if: inmarking">
+            <div class="form-group">
+                <label for="shoplist">选择对应机构</label>
+                <select class="form-control" id="shoplist" data-bind="options: organizationList, optionsText: 'Name', value: currentOrganization, optionsCaption: '请选择……', optionsAfterRender: setOrganizationOptionColor">
+                </select>
+            </div>
+            <p style="text-align: right">
+                <button type="button" class="btn btn-primary btn-xs" data-bind="click: function () { saveCoordinate(infoWin.marker) }">标注</button>
+                <button type="button" class="btn btn-default btn-xs" data-bind="click: function () { deleteCoordinate(infoWin.marker) }">删除标注</button>
+                <button type="button" class="btn btn-default btn-xs" data-bind="visible: currentOrganization, click: function () { window.app.mapViewModel.inmarking(false); }">明细</button>
+            </p>
+        </div>
+        <div id="divOrganizationShow" data-bind="ifnot: inmarking">
+            <div data-bind="with: currentOrganization">
+                <h5 data-bind="text: Name"></h5>
+                <table>
+                    <tr>
+                        <td style="width: 40px;"><small class="infoshow">地址：</small></td>
+                        <td><small class="infoshow" data-bind="text: Address"></small></td>
+                    </tr>
+                    <tr>
+                        <td><small class="infoshow">电话：</small></td>
+                        <td><small class="infoshow" data-bind="text: Telephone"></small></td>
+                    </tr>
+                </table>
+                <p style="text-align: right">
+                    <button type="button" class="btn btn-default btn-xs" data-bind="click: function () { window.app.mapViewModel.inmarking(true); }">编辑</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="container"></div>
+    <script type="text/javascript">
+        var map = new BMap.Map("container");
+        map.enableScrollWheelZoom();
+        var infoWin = new BMap.InfoWindow($('#divInfoWindow')[0], { enableMessage: false });
+        map.addEventListener("rightclick", function (e) {
+            $('#divInfoWindow').css("display", "block");            
+            if (e.overlay)//当有值时表示点到覆盖物上
+            {
+                e.overlay.openInfoWindow(infoWin);
+                infoWin.marker = e.overlay;
+                window.app.mapViewModel.setCurrentOrganization(e.overlay);//infoWin要先open，再设置值，否则承载其中的ＵＩ可能无法获得源的更改通知
+            }
+            else {
+                var marker = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat));// 创建标注   
+                map.addOverlay(marker);
+                marker.openInfoWindow(infoWin);
+                infoWin.marker = marker;
+                window.app.mapViewModel.currentOrganization(null);
+            }
+            window.app.mapViewModel.inmarking(true);
+        });
+        map.addEventListener("click", function (e) {
+            if (e.overlay) {
+                $('#divInfoWindow').css("display", "block");
+                e.overlay.openInfoWindow(infoWin);
+                window.app.mapViewModel.setCurrentOrganization(e.overlay);
+                window.app.mapViewModel.inmarking(!window.app.mapViewModel.currentOrganization());
+            }
+        });
+        function myFun(result) {
+            map.centerAndZoom(result.name);
+        }
+        var myCity = new BMap.LocalCity();
+        myCity.get(myFun);
+        map.addControl(new BMap.NavigationControl());
+    </script>
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+    <script src="~/Scripts/app/map.viewmodel.js"></script>
+    <script type="text/javascript">
+        window.app.mapViewModel.getOrganizations(map);
+    </script>
+</body>
+</html>

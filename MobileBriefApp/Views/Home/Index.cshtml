@@ -1,0 +1,65 @@
+﻿@model List<MobileBriefApp.ModuleBO>
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<script>
+    @*localStorage只能存储字符串，需要在使用时进行必要转换
+    localStorage.setItem("Brands", "@ViewData["PoweredBrands"]");*@
+    var Brands = "@ViewData["PoweredBrands"]".replace(/&quot;/g, '\"');
+    Brands = JSON.parse(Brands);
+    var CurrentUser = "@ViewData["CurrentUser"]".replace(/&quot;/g, '\"');
+    CurrentUser = JSON.parse(CurrentUser);
+</script>
+
+<div data-role="view" id="index" data-init="showModuleList" data-title="蝶讯-简约精致">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            @*注意下行会生成<a class="nav-button" data-align="right" data-role="button" href="/Account/Logout">退出</a>
+            data_align变成了data-align，不知道是kendo ui处理的还是asp.net mvc处理的
+            如果直接写成new {  data-align="right", data-role="button" ……,编译器是会报错的*@
+            @Html.ActionLink("退出", "Logout", "Account", null, new { data_align = "right", data_role = "button", @class = "nav-button" })
+        </div>
+    </header>
+    <ul id="grouped-listview"></ul>
+</div>
+
+@foreach (MobileBriefApp.ModuleBO module in Model)
+{
+    @Html.Partial(module.MobileUri);
+}
+
+<div data-role="layout" data-id="partial-view">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a data-align="right" data-role="button" class="nav-button" href="#index">返回</a>
+        </div>
+    </header>
+</div>
+
+@*<script type="text/x-kendo-template" id="moduleListViewTemplate">
+    <a href="${url}">${name}</a>
+</script>*@
+
+<script>
+    var groupedData = [
+    @foreach (MobileBriefApp.ModuleBO module in Model)
+    {
+        //@:的作用和<text></text>一样，参看 ASP MVC Razor foreach inside Javascript block http://stackoverflow.com/questions/12686014/asp-mvc-razor-foreach-inside-javascript-block
+        @: { name: "@module.Name", parentname: "@module.ParentName", url: "@module.MobileUri" },
+    }
+    ];
+
+    function showModuleList() {
+        $("#grouped-listview").kendoMobileListView({
+            dataSource: kendo.data.DataSource.create({ data: groupedData, group: "parentname" }),
+            //template: $("#moduleListViewTemplate").html(),
+            template: "<a href='#:data.url#-view'>#:data.name#</a>",
+            fixedHeaders: true
+        });
+    }
+</script>
+

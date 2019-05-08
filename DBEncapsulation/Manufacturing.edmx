@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ManufacturingModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ManufacturingModelStoreContainer">
+          <EntitySet Name="BillProductExchange" EntityType="ManufacturingModel.Store.BillProductExchange" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="BillProductExchangeDetails" EntityType="ManufacturingModel.Store.BillProductExchangeDetails" store:Type="Tables" store:Schema="dbo" store:Name="BillProductExchangeDetails" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [BillProductExchangeDetails].[ID] AS [ID], 
+      [BillProductExchangeDetails].[BillID] AS [BillID], 
+      [BillProductExchangeDetails].[ProductID] AS [ProductID], 
+      [BillProductExchangeDetails].[Quantity] AS [Quantity]
+      FROM [dbo].[BillProductExchangeDetails] AS [BillProductExchangeDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BillProductPlan" EntityType="ManufacturingModel.Store.BillProductPlan" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="BillProductPlanDetails" EntityType="ManufacturingModel.Store.BillProductPlanDetails" store:Type="Tables" store:Schema="dbo" store:Name="BillProductPlanDetails" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [BillProductPlanDetails].[ID] AS [ID], 
+      [BillProductPlanDetails].[BillID] AS [BillID], 
+      [BillProductPlanDetails].[ProductID] AS [ProductID], 
+      [BillProductPlanDetails].[Quantity] AS [Quantity], 
+      [BillProductPlanDetails].[QuaCancel] AS [QuaCancel], 
+      [BillProductPlanDetails].[QuaCompleted] AS [QuaCompleted], 
+      [BillProductPlanDetails].[DeliveryDate] AS [DeliveryDate], 
+      [BillProductPlanDetails].[Status] AS [Status]
+      FROM [dbo].[BillProductPlanDetails] AS [BillProductPlanDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BillSubcontract" EntityType="ManufacturingModel.Store.BillSubcontract" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="BillSubcontractDetails" EntityType="ManufacturingModel.Store.BillSubcontractDetails" store:Type="Tables" store:Schema="dbo" store:Name="BillSubcontractDetails" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [BillSubcontractDetails].[ID] AS [ID], 
+      [BillSubcontractDetails].[BillID] AS [BillID], 
+      [BillSubcontractDetails].[ProductID] AS [ProductID], 
+      [BillSubcontractDetails].[Quantity] AS [Quantity], 
+      [BillSubcontractDetails].[QuaCancel] AS [QuaCancel], 
+      [BillSubcontractDetails].[QuaCompleted] AS [QuaCompleted], 
+      [BillSubcontractDetails].[DeliveryDate] AS [DeliveryDate], 
+      [BillSubcontractDetails].[Status] AS [Status], 
+      [BillSubcontractDetails].[IsDeleted] AS [IsDeleted]
+      FROM [dbo].[BillSubcontractDetails] AS [BillSubcontractDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BusiDataDictionary" EntityType="ManufacturingModel.Store.BusiDataDictionary" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Factory" EntityType="ManufacturingModel.Store.Factory" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ViewProduct" EntityType="ManufacturingModel.Store.ViewProduct" store:Type="Views" store:Schema="dbo" store:Name="ViewProduct" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ViewProduct].[ProductID] AS [ProductID], 
+      [ViewProduct].[ProductCode] AS [ProductCode], 
+      [ViewProduct].[StyleCode] AS [StyleCode], 
+      [ViewProduct].[StyleID] AS [StyleID], 
+      [ViewProduct].[ColorCode] AS [ColorCode], 
+      [ViewProduct].[ColorName] AS [ColorName], 
+      [ViewProduct].[SizeCode] AS [SizeCode], 
+      [ViewProduct].[SizeName] AS [SizeName], 
+      [ViewProduct].[ColorID] AS [ColorID], 
+      [ViewProduct].[BrandID] AS [BrandID], 
+      [ViewProduct].[BrandCode] AS [BrandCode], 
+      [ViewProduct].[BrandName] AS [BrandName], 
+      [ViewProduct].[Year] AS [Year], 
+      [ViewProduct].[Quarter] AS [Quarter], 
+      [ViewProduct].[Price] AS [Price], 
+      [ViewProduct].[ProductName] AS [ProductName]
+      FROM [dbo].[ViewProduct] AS [ViewProduct]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewUser" EntityType="ManufacturingModel.Store.ViewUser" store:Type="Views" store:Schema="dbo" store:Name="ViewUser" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ViewUser].[ID] AS [ID], 
+      [ViewUser].[Code] AS [Code], 
+      [ViewUser].[Name] AS [Name], 
+      [ViewUser].[Password] AS [Password], 
+      [ViewUser].[OrganizationID] AS [OrganizationID], 
+      [ViewUser].[Flag] AS [Flag], 
+      [ViewUser].[CreatorID] AS [CreatorID], 
+      [ViewUser].[CreateTime] AS [CreateTime]
+      FROM [dbo].[ViewUser] AS [ViewUser]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="BillProductExchange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="OuterFactoryID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="1000" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Manufacturing.dbo.BillProductExchangeDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillProductExchangeDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillProductPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Manufacturing.dbo.BillProductPlanDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillProductPlanDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="QuaCancel" />
+            <PropertyRef Name="QuaCompleted" />
+            <PropertyRef Name="DeliveryDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="QuaCancel" Type="int" Nullable="false" />
+          <Property Name="QuaCompleted" Type="int" Nullable="false" />
+          <Property Name="DeliveryDate" Type="date" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillSubcontract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="OuterFactoryID" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Manufacturing.dbo.BillSubcontractDetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="BillSubcontractDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="QuaCancel" />
+            <PropertyRef Name="QuaCompleted" />
+            <PropertyRef Name="DeliveryDate" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="QuaCancel" Type="int" Nullable="false" />
+          <Property Name="QuaCompleted" Type="int" Nullable="false" />
+          <Property Name="DeliveryDate" Type="date" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusiDataDictionary">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ParentCode" Type="varchar" MaxLength="8" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LinkMan" Type="nvarchar" MaxLength="10" />
+          <Property Name="LinkPhone" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsOuter" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Manufacturing.dbo.ViewProduct”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="StyleCode" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorCode" />
+            <PropertyRef Name="ColorName" />
+            <PropertyRef Name="SizeCode" />
+            <PropertyRef Name="SizeName" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="BrandCode" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Quarter" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ProductName" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="StyleCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="ColorCode" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="ColorName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="SizeCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="SizeName" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="BrandCode" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="BrandName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Quarter" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“Manufacturing.dbo.ViewUser”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="Flag" />
+            <PropertyRef Name="CreatorID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ManufacturingModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="BillProductExchange" EntityType="ManufacturingModel.BillProductExchange" />
+          <EntitySet Name="BillProductExchangeDetails" EntityType="ManufacturingModel.BillProductExchangeDetails" />
+          <EntitySet Name="BillProductPlan" EntityType="ManufacturingModel.BillProductPlan" />
+          <EntitySet Name="BillProductPlanDetails" EntityType="ManufacturingModel.BillProductPlanDetails" />
+          <EntitySet Name="BillSubcontract" EntityType="ManufacturingModel.BillSubcontract" />
+          <EntitySet Name="BillSubcontractDetails" EntityType="ManufacturingModel.BillSubcontractDetails" />
+          <EntitySet Name="BusiDataDictionary" EntityType="ManufacturingModel.BusiDataDictionary" />
+          <EntitySet Name="Factory" EntityType="ManufacturingModel.Factory" />
+          <EntitySet Name="ViewProduct" EntityType="ManufacturingModel.ViewProduct" />
+          <EntitySet Name="ViewUser" EntityType="ManufacturingModel.ViewUser" />
+        </EntityContainer>
+        <EntityType Name="BillProductExchange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="OuterFactoryID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillProductExchangeDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillProductPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillProductPlanDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="QuaCancel" />
+            <PropertyRef Name="QuaCompleted" />
+            <PropertyRef Name="DeliveryDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="QuaCancel" Type="Int32" Nullable="false" />
+          <Property Name="QuaCompleted" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillSubcontract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="OuterFactoryID" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillSubcontractDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="QuaCancel" />
+            <PropertyRef Name="QuaCompleted" />
+            <PropertyRef Name="DeliveryDate" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="QuaCancel" Type="Int32" Nullable="false" />
+          <Property Name="QuaCompleted" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusiDataDictionary">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ParentCode" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LinkMan" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="LinkPhone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsOuter" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="StyleCode" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorCode" />
+            <PropertyRef Name="ColorName" />
+            <PropertyRef Name="SizeCode" />
+            <PropertyRef Name="SizeName" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="BrandCode" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Quarter" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ProductName" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="StyleCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="ColorCode" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="ColorName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="SizeCode" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="SizeName" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="BrandCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Quarter" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ViewUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="Flag" />
+            <PropertyRef Name="CreatorID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ManufacturingModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="BillProductExchange">
+            <EntityTypeMapping TypeName="ManufacturingModel.BillProductExchange">
+              <MappingFragment StoreEntitySet="BillProductExchange">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OuterFactoryID" ColumnName="OuterFactoryID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillProductExchangeDetails">
+            <EntityTypeMapping TypeName="ManufacturingModel.BillProductExchangeDetails">
+              <MappingFragment StoreEntitySet="BillProductExchangeDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillProductPlan">
+            <EntityTypeMapping TypeName="ManufacturingModel.BillProductPlan">
+              <MappingFragment StoreEntitySet="BillProductPlan">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillProductPlanDetails">
+            <EntityTypeMapping TypeName="ManufacturingModel.BillProductPlanDetails">
+              <MappingFragment StoreEntitySet="BillProductPlanDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="QuaCancel" ColumnName="QuaCancel" />
+                <ScalarProperty Name="QuaCompleted" ColumnName="QuaCompleted" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillSubcontract">
+            <EntityTypeMapping TypeName="ManufacturingModel.BillSubcontract">
+              <MappingFragment StoreEntitySet="BillSubcontract">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="OuterFactoryID" ColumnName="OuterFactoryID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillSubcontractDetails">
+            <EntityTypeMapping TypeName="ManufacturingModel.BillSubcontractDetails">
+              <MappingFragment StoreEntitySet="BillSubcontractDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="QuaCancel" ColumnName="QuaCancel" />
+                <ScalarProperty Name="QuaCompleted" ColumnName="QuaCompleted" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusiDataDictionary">
+            <EntityTypeMapping TypeName="ManufacturingModel.BusiDataDictionary">
+              <MappingFragment StoreEntitySet="BusiDataDictionary">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factory">
+            <EntityTypeMapping TypeName="ManufacturingModel.Factory">
+              <MappingFragment StoreEntitySet="Factory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LinkMan" ColumnName="LinkMan" />
+                <ScalarProperty Name="LinkPhone" ColumnName="LinkPhone" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsOuter" ColumnName="IsOuter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewProduct">
+            <EntityTypeMapping TypeName="ManufacturingModel.ViewProduct">
+              <MappingFragment StoreEntitySet="ViewProduct">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="StyleCode" ColumnName="StyleCode" />
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="SizeCode" ColumnName="SizeCode" />
+                <ScalarProperty Name="SizeName" ColumnName="SizeName" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewUser">
+            <EntityTypeMapping TypeName="ManufacturingModel.ViewUser">
+              <MappingFragment StoreEntitySet="ViewUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

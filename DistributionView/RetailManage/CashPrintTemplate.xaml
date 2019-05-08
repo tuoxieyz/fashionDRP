@@ -1,0 +1,104 @@
+﻿<FixedPage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" HorizontalAlignment="Left"
+      d:DesignHeight="300" d:DesignWidth="300">
+    <Grid MaxWidth="288" Margin="10 0 0 0">
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style x:Key="columnContentCenterStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Header}" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="小票号:" />
+            <TextBlock Text="{Binding RetailCode}" Grid.Column="1" Grid.ColumnSpan="3" />            
+            <TextBlock Text="VIP:" Grid.Row="1" />
+            <TextBlock Text="{Binding VIPName}" Grid.Row="1" Grid.Column="1" />
+            <TextBlock Text="导购:" Grid.Row="1" Grid.Column="2" />
+            <TextBlock Text="{Binding Guide}" Grid.Row="1" Grid.Column="3" />
+            <TextBlock Text="收银员:" Grid.Row="2" />
+            <TextBlock Text="{Binding Cashier}" Grid.Row="2" Grid.Column="1" />
+            <TextBlock Text="收银时间:" Grid.Row="2" Grid.Column="2" />
+            <TextBlock Text="{Binding CreateTimeString}" Grid.Row="2" Grid.Column="3" />
+            <TextBlock Text="店铺地址:" Grid.Row="3" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0}{1}"><Binding Path="ShopAddress"/><Binding Path="ShopName"/></MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </Grid>
+        <!--AutoGenerateColumns="True"在xps文件中显示不出来-->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding ProductCollection}" RowHeaderWidth="0" FontSize="11" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=SKU码}" Header="SKU码" MaxWidth="95" ElementStyle="{StaticResource columnContentCenterStyle}" />
+                <DataGridTextColumn Binding="{Binding Path=数量}" Header="数量" ElementStyle="{StaticResource columnContentCenterStyle}" />
+                <DataGridTextColumn Binding="{Binding Path=单价}" Header="单价" ElementStyle="{StaticResource columnContentCenterStyle}" />
+                <DataGridTextColumn Binding="{Binding Path=折扣}" Header="折扣(%)" ElementStyle="{StaticResource columnContentCenterStyle}" />
+                <DataGridTextColumn Binding="{Binding Path=折后价}" Header="折后价" ElementStyle="{StaticResource columnContentCenterStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="数量合计:" />
+            <TextBlock Text="{Binding Quantity}" Grid.Column="1" />
+            <TextBlock Text="应收金额:" Grid.Column="2" />
+            <TextBlock Text="{Binding CostMoney}" Grid.Column="3" />
+            <TextBlock Text="抵价券收:" Grid.Row="1" />
+            <TextBlock Text="{Binding ReceiveTicket}" Grid.Row="1" Grid.Column="1" />
+            <TextBlock Text="抵价券抵:" Grid.Row="1" Grid.Column="2" />
+            <TextBlock Text="{Binding TicketMoney}" Grid.Row="1" Grid.Column="3" />
+            <TextBlock Text="预存支付:" Grid.Row="2" />
+            <TextBlock Text="{Binding PredepositPay}" Grid.Row="2" Grid.Column="1" />
+            <TextBlock Text="预存余额:" Grid.Row="2" Grid.Column="2" />
+            <TextBlock Text="{Binding PredepositBalance}" Grid.Row="2" Grid.Column="3" />
+            <TextBlock Text="现金收取:" Grid.Row="3" />
+            <TextBlock Text="{Binding TakeMoney}" Grid.Row="3" Grid.Column="1" />
+            <TextBlock Text="找零:" Grid.Row="3" Grid.Column="2" />
+            <TextBlock Text="{Binding BackMoney}" Grid.Row="3" Grid.Column="3" />
+            <TextBlock Text="备注:" Grid.Row="4" />
+            <TextBlock Text="{Binding Remark}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" />
+            <TextBlock Text="{Binding Footer}" Grid.Row="5" Grid.ColumnSpan="4" TextWrapping="Wrap" />
+        </Grid>
+    </Grid>
+</FixedPage>

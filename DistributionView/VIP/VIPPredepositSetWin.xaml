@@ -1,0 +1,48 @@
+﻿<Window x:Class="DistributionView.VIP.VIPPredepositSetWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Title="VIP充值" SizeToContent="WidthAndHeight" MinWidth="290" MinHeight="275">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <StackPanel>            
+            <telerik:DataFormDataField Label="姓名">
+                <TextBlock x:Name="tbName" />
+            </telerik:DataFormDataField>
+            <telerik:DataFormDataField Label="当前余额">
+                <TextBlock x:Name="tbBalance" />
+            </telerik:DataFormDataField>
+            <telerik:DataFormDataField Label="卡号">
+                <TextBox x:Name="txtCode" PreviewTextInput="txtCode_PreviewTextInput" IsReadOnly="True" />
+            </telerik:DataFormDataField>
+            <telerik:DataFormDataField Label="预存密码">
+                <PasswordBox x:Name="txtPassword" />
+            </telerik:DataFormDataField>
+            <telerik:DataFormDataField Label="充值金额">
+                <telerik:DataFormDataField.Content>
+                    <telerik:RadMaskedCurrencyInput TextMode="PlainText" IsClearButtonVisible="False" Mask="#6" InputBehavior="Insert" 
+                                                    UpdateValueEvent="LostFocus" SelectionOnFocus="SelectAll"
+                                                    Value="{Binding StoreMoney}" />
+                </telerik:DataFormDataField.Content>
+            </telerik:DataFormDataField>
+            <telerik:DataFormDataField Label="送金额">
+                <telerik:DataFormDataField.Content>
+                    <telerik:RadMaskedCurrencyInput TextMode="PlainText" IsClearButtonVisible="False" Mask="#6" InputBehavior="Insert" 
+                                                    UpdateValueEvent="LostFocus" SelectionOnFocus="SelectAll"
+                                                    Value="{Binding FreeMoney}" />
+                </telerik:DataFormDataField.Content>
+            </telerik:DataFormDataField>
+            <telerik:DataFormDataField DataMemberBinding="{Binding Remark}" Label="备注" />
+        </StackPanel>
+        <Border BorderThickness="0 1 0 0" BorderBrush="Gray" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                <CheckBox x:Name="ckPrint" Content="打印票据" IsChecked="True" Margin="0 0 5 0" VerticalAlignment="Center" />
+                <telerik:RadButton x:Name="btnOK" Content="确定" Width="60" VerticalAlignment="Center" Click="btnOK_Click" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

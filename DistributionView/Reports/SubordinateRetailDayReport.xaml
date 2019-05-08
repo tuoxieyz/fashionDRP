@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="DistributionView.Reports.SubordinateRetailDayReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:sysvm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridFilter">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" MinWidth="100" />
+            </Grid.ColumnDefinitions>
+            <sysv:MultiOrganizationSelector CanUserToggleShowAllLower="True" FilterCurrent="True" SelectedOrganizationArray="{Binding Path=OrganizationArray,Mode=OneWayToSource}" Margin="5 5 5 0" Grid.ColumnSpan="2" />
+            <Grid Margin="5" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="品牌" VerticalAlignment="Center" />
+                <telerik:RadComboBox ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}"
+                                     SelectedValue="{Binding BrandID}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Width="100"
+                                     Margin="5 0 0 5"
+                                     Grid.Column="1"/>
+                <TextBlock Text="日期" VerticalAlignment="Center" Grid.Row="1" />
+                <telerik:RadDateTimePicker InputMode="DatePicker" SelectedDate="{Binding RetailDay,Mode=TwoWay}" VerticalAlignment="Center" Margin="5 0" Grid.Row="1" Grid.Column="1" />
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="0 5 5 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1">
+                <telerik:RadButton x:Name="btnSearch" Content="查询" MinWidth="70" Command="{Binding SearchCommand}" />
+                <telerik:RadButton x:Name="btnExcel" Content="导出Excel" MinWidth="70" Click="btnExcel_Click" />
+            </StackPanel>
+        </Grid>
+        <telerik:RadGridView x:Name="RadGridView1" IsFilteringAllowed="False" ShowColumnFooters="True" AutoGenerateColumns="False"                            
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" Grid.Row="1" ShowGroupPanel="False"  IsReadOnly="True" BorderThickness="0"
+                             ItemsSource="{Binding Entities}">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationCode}" Header="机构编号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationName}" Header="机构名称" />                
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="当日数量" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SalePrice,StringFormat={}{0:C2}}" Header="当日业绩" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SaleMoney,StringFormat={}{0:C2}}" Header="当日实绩" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Discount,StringFormat={}{0:0.00%}}" Header="折扣率" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DayTarget,StringFormat={}{0:C2}}" Header="当日指标" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CompletionRate,StringFormat={}{0:0.00%}}" Header="当日完成率" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MonthQuantity}" Header="当月数量" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MonthSaleMoney,StringFormat={}{0:C2}}" Header="当月实绩" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MonthTarget,StringFormat={}{0:C2}}" Header="当月指标" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MonthCompletionRate,StringFormat={}{0:0.00%}}" Header="当月完成率" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MonthUndone,StringFormat={}{0:C2}}" Header="当月未完成" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

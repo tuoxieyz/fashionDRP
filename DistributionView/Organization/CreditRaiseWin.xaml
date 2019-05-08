@@ -1,0 +1,23 @@
+﻿<Window x:Class="DistributionView.Organization.CreditRaiseWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Title="资信额度提升" SizeToContent="WidthAndHeight">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="输入提升额度" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <telerik:RadMaskedCurrencyInput x:Name="txtIncrease" Grid.Column="1" TextMode="PlainText" IsClearButtonVisible="False" Mask="#6" InputBehavior="Insert" 
+                                            UpdateValueEvent="LostFocus" SelectionOnFocus="SelectAll" Margin="5 0 0 0" />
+        </Grid>
+        <telerik:RadButton x:Name="btnOK" Grid.Row="1" Content="确定" HorizontalAlignment="Right" Width="60" IsDefault="True" Click="btnOK_Click" Margin="0 5 0 0" />
+    </Grid>
+</Window>

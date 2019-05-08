@@ -1,0 +1,66 @@
+﻿<FixedPage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" HorizontalAlignment="Left"
+      d:DesignHeight="300" d:DesignWidth="300">
+    <Grid MaxWidth="288" Margin="10 0 0 0">
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style x:Key="columnContentCenterStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Header}" FontWeight="Bold" HorizontalAlignment="Center" />
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="票据号:" />
+            <TextBlock Text="{Binding RefrenceBillCode}" Grid.Column="1" Grid.ColumnSpan="3" />            
+            <TextBlock Text="顾客姓名:" Grid.Row="1" />
+            <TextBlock Text="{Binding VIPName}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
+            <TextBlock Text="VIP卡号:" Grid.Row="2" />
+            <TextBlock Text="{Binding VIPCode}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" />
+            <TextBlock Text="充值金额:" Grid.Row="3" />
+            <TextBlock Text="{Binding StoreMoney}" Grid.Row="3" Grid.Column="1" />
+            <TextBlock Text="送金额:" Grid.Row="3" Grid.Column="2" />
+            <TextBlock Text="{Binding FreeMoney}" Grid.Row="3" Grid.Column="3" />
+            <TextBlock Text="当前余额:" Grid.Row="4" />
+            <TextBlock Text="{Binding Balance}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" />
+            <TextBlock Text="预存时间:" Grid.Row="5" />
+            <TextBlock Text="{Binding CreateTimeString}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" />
+            <TextBlock Text="店铺地址:" Grid.Row="6" />
+            <TextBlock Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0}-{1}"><Binding Path="ShopAddress"/><Binding Path="ShopName"/></MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Text="备注:" Grid.Row="7" />
+            <TextBlock Text="{Binding Remark}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" />
+        </Grid>
+    </Grid>
+</FixedPage>

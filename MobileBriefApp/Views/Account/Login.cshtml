@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+<div data-role="view" data-title="蝶讯-简约精致">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="userCode" /></li>
+        <li>
+            <label for="password">密码:</label>
+            <input type="password" id="password" name="password" /></li>
+        <li>
+            <label for="isRememberMe">30天内自动登录</label>
+            <input type="checkbox" data-role="switch" id="isRememberMe" />
+        </li>
+        <li>
+            <div id="loginError"></div>
+        </li>
+    </ul>
+    <a data-role="button" data-click="loginClick" class="login-button">登录</a>
+</div>
+<style>
+    .login-button {
+        display: block;
+        text-align: center;
+        margin: 1.1em;
+    }
+</style>
+<script>
+    function loginClick(e) {
+        $.ajax({
+            url: '/api/Account/Login?' + $.param({ userCode: $("#username").val(), password: $("#password").val(), isRememberMe: $("#isRememberMe").is(':checked') }),
+            type: "get",
+            contentType: "application/json; charset=utf8",
+            success: function (data) {
+                if (typeof (data) == "string") {
+                    $('#loginError').html(data)
+                        .css({
+                            marginTop: -24,
+                            color: "#ff4f4f"
+                        })
+                        .animate({ marginTop: 0 }, 300);
+                }
+                else {
+                    location.href = "@Url.Action("Index", "Home")";
+        }
+            }
+        });
+}
+</script>

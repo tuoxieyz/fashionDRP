@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="VersionManager.SoftVersionList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:VersionManager"
+             xmlns:extension="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <telerik:RadGridView x:Name="RadGridView1" 
+                             HorizontalAlignment="Stretch"
+                             ItemsSource="{Binding VersionTracks}"
+                             IsReadOnly="True"
+                             CanUserFreezeColumns="False" 
+                             AutoGenerateColumns="False" 
+                             RowIndicatorVisibility="Collapsed"
+                             BorderThickness="0" 
+                             ShowGroupPanel="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewToggleRowDetailsColumn />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding VersionCode}" Header="版本编号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd}}" Header="发布日期" IsFilterable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding IsCoerciveUpdateStr}" Header="强制升级" />
+                <telerik:GridViewColumn Header="操作" x:Name="colOperate">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel x:Name="spOperate" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <telerik:RadButton x:Name="btnEdit" IsBackgroundVisible="False" MinWidth="20" ToolTipService.ToolTip="编辑" Click="btnEdit_Click">
+                                    <Path Data="M3.6943,11.9199L4.1323,9.5549C4.1443,9.4019,4.1953,9.2459,4.2973,9.1289L9.4233,4.0049L11.8853,6.4669L6.7593,11.5919C6.7043,11.6469,6.4893,11.7749,6.4183,11.7869L4.0083,12.2339C3.7943,12.2749,3.6533,12.1349,3.6943,11.9199 M4.8903,11.4789L6.2383,11.2519L10.9273,6.5619L10.3673,6.0059L5.7093,10.6679L4.8153,9.7169L4.5693,11.1329C4.7253,11.1989,4.8253,11.3219,4.8903,11.4789 M12.4513,5.9019L9.9893,3.4399L10.7863,2.6439C11.0063,2.4229,11.3643,2.4229,11.5853,2.6439L13.2483,4.3069C13.4683,4.5269,13.4683,4.8849,13.2483,5.1059z" 
+							  Fill="#FF333333" Stretch="Fill" Width="12" Height="12" />
+                                </telerik:RadButton>
+                                <telerik:RadButton x:Name="btnDelete" IsBackgroundVisible="False" MinWidth="20" ToolTipService.ToolTip="删除" Click="btnDelete_Click">
+                                    <Path Data="M1,1.0920105 L10.875,10.873011 M10.905006,1 L9.9050312,2.0619726 L1.0460064,10.921" 
+								  Stroke="#FF333333" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Width="12" Height="12"/>
+                                </telerik:RadButton>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+            </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="0 0 10 0" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" MaxHeight="100" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="文件列表" Grid.Row="0" />
+                        <TextBlock Text="待更新客户" Grid.Row="1" />
+                        <TextBlock Text="版本描述" Grid.Row="2" />
+                        <TextBlock Text="{Binding UpdatedFileList}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" />
+                        <ListBox x:Name="lbxCustomer" ItemsSource="{Binding Customers}" Background="Transparent" BorderThickness="0" Grid.Row="1" Grid.Column="1">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" IsItemsHost="True" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <TextBlock Margin="0 5 10 5" Text="{Binding Name}" />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                        <telerik:RadRichTextBox extension:RadRichTextBoxHelper.DocumentXaml="{Binding Description,Mode=OneTime}" IsReadOnly="True" MaxHeight="400" Grid.Row="2" Grid.Column="1" />
+                    </Grid>
+                </DataTemplate>
+            </telerik:RadGridView.RowDetailsTemplate>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

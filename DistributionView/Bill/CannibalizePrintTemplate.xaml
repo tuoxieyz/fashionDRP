@@ -1,0 +1,57 @@
+﻿<FixedPage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            HorizontalAlignment="Left"
+      mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style x:Key="columnContentCenterStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="调拨单" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="单据号:" />
+            <TextBlock Text="{Binding BillCode}" Grid.Column="1" />
+            <TextBlock Text="调出店铺:" Grid.Row="1" />
+            <TextBlock Text="{Binding OuterName}" Grid.Row="1" Grid.Column="1" />
+            <TextBlock Text="调入店铺:" Grid.Row="2" />
+            <TextBlock Text="{Binding InnerName}" Grid.Row="2" Grid.Column="1" />
+            <TextBlock Text="开单时间:" Grid.Row="3" />
+            <TextBlock Text="{Binding CreateTimeString}" Grid.Row="3" Grid.Column="1" />
+            <TextBlock Text="备注:" Grid.Row="4" />
+            <TextBlock Text="{Binding Remark}" Grid.Row="4" Grid.Column="1" />
+        </Grid>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding ProductCollection}" RowHeaderWidth="0" FontSize="11" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=ProductCode}" Header="SKU码" MaxWidth="110" ElementStyle="{StaticResource columnContentCenterStyle}" />
+                <DataGridTextColumn Binding="{Binding Path=BrandName}" Header="品牌" ElementStyle="{StaticResource columnContentCenterStyle}" />
+                <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="数量" ElementStyle="{StaticResource columnContentCenterStyle}" />                
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</FixedPage>

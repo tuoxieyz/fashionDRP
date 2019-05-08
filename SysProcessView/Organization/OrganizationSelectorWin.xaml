@@ -1,0 +1,21 @@
+﻿<Window x:Class="SysProcessView.OrganizationSelectorWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:SysProcessView"
+        Title="机构选择" Height="500" Width="420" ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <telerik:RadGridView x:Name="RadGridView1" CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True"
+                             AutoGenerateColumns="False" ItemsSource="{Binding Entities}"
+                             BorderThickness="0" ShowGroupPanel="False" ValidatesOnDataErrors="InEditMode">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}" Header="编号" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="名称" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TypeName}" Header="类型" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding AreaName}" Header="地区" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ProvienceName}" Header="省份" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</Window>

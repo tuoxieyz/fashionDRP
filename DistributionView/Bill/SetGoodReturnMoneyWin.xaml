@@ -1,0 +1,30 @@
+﻿<Window x:Class="DistributionView.Bill.SetGoodReturnMoneyWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Title="退货金额设置" SizeToContent="WidthAndHeight">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Source="pack://application:,,,/HabilimentERP;Component/Images/yen.png" Stretch="None" Grid.RowSpan="2" Margin="0 0 5 0" />
+            <TextBlock Grid.Column="1" Text="请输入退货金额,退货金额计入机构总帐余额" />
+            <telerik:RadMaskedCurrencyInput x:Name="inputReturnMoney" Grid.Row="1" Grid.Column="1"
+                                            TextMode="PlainText" IsClearButtonVisible="False" Mask="#6.2" InputBehavior="Insert" 
+                                            UpdateValueEvent="LostFocus" SelectionOnFocus="SelectAll"
+                                            FontSize="20" Margin="0 5 0 5" Value="0" />
+        </Grid>
+        <telerik:RadButton x:Name="btnOK" Grid.Row="1" Content="确定" HorizontalAlignment="Right" Width="60" IsDefault="True" Click="btnOK_Click" />
+    </Grid>
+</Window>

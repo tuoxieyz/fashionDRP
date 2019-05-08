@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="DistributionView.Reports.ShopProfit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <sysv:MultiOrganizationSelector CanUserToggleShowAllLower="False" IsShowShopOnly="True" FilterCurrent="True" SelectedOrganizationArray="{Binding Path=OrganizationArray,Mode=OneWayToSource}" />
+            <Grid Grid.Row="1" Margin="0 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Text="日期范围" />
+                <telerik:RadDatePicker MinWidth="100" DateSelectionMode="Month" SelectedDate="{Binding BeginMonth,StringFormat={}{0:yyyy-MM},Mode=TwoWay}" VerticalAlignment="Center" Margin="5 0" Grid.Column="1" />
+                <TextBlock Text="-" VerticalAlignment="Center" Grid.Column="2" />
+                <telerik:RadDatePicker MinWidth="100" DateSelectionMode="Month" SelectedDate="{Binding EndMonth,StringFormat={}{0:yyyy-MM},Mode=TwoWay}" VerticalAlignment="Center" Margin="5 0 0 0" Grid.Column="3" />
+            </Grid>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 0 0 5">
+                <CheckBox Content="只显示有零售数据的记录" IsChecked="{Binding IsShowShopHasRetailOnly}" />
+                <CheckBox Content="只显示有成本录入的记录" IsChecked="{Binding IsShowShopHasExpensesOnly}" Margin="10 0 0 0" />
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <telerik:RadButton x:Name="btnSearch" Content="查询" MinWidth="70" Command="{Binding SearchCommand}" />
+                <telerik:RadButton x:Name="btnExcel" Content="导出Excel" MinWidth="70" Click="btnExcel_Click" />
+            </StackPanel>
+        </Grid>
+        <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding TableData}" ValidatesOnDataErrors="InEditMode"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True"
+                             AutoGenerateColumns="False" BorderThickness="0" Grid.Row="1" ShowColumnFooters="True">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding OrganizationName}" Header="店铺名称" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding YearMonth}" Header="年月" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MonthTarget}" Header="月度指标" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SaleQuantity}" Header="实销件数" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SaleMoney}" Header="实销金额" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewExpressionColumn UniqueName="colAverage" Header="平均件数金额" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding OriginalPrice}" Header="吊牌价合计" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CostPrice}" Header="成本价合计" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding BaseCost}" Header="基础费用" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ElectricCharge}" Header="电费" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ExpressCharge}" Header="快递费" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TelephoneCharge}" Header="电话费" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Rent}" Header="房屋租金" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding RenovationCost}" Header="装修及维修费" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SocialSecurityCharge}" Header="社保" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Salary}" Header="工资" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Bonus}" Header="奖金" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding AdvertisingFee}" Header="广告费" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ManagerCost}" Header="店长费用" DataFormatString="{}{0:C2}" IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding OtherCost}" Header="其它费用" DataFormatString="{}{0:C2}" IsGroupable="False" />-->
+                <telerik:GridViewDataColumn Header="费用类别" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding GrossProfit}" Header="毛利润" DataFormatString="{}{0:C2}">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction ResultFormatString="{}{0:C2}" SourceField="GrossProfit" />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

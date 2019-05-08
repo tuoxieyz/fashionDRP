@@ -1,0 +1,34 @@
+﻿<Window x:Class="DistributionView.VIP.VIPPointSetWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:DistributionView"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Title="VIP积分设置" SizeToContent="WidthAndHeight" MinWidth="290" MinHeight="200">
+    <Grid Margin="5">
+        <Grid.Resources>
+            <local:VIPIDCodeCvt x:Key="vipIDCodeCvt" />
+            <local:VIPIDNameCvt x:Key="vipIDNameCvt" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <telerik:DataFormDataField DataMemberBinding="{Binding VIPID,Converter={StaticResource vipIDCodeCvt}}" Label="卡号" IsReadOnly="True" />
+            <telerik:DataFormDataField DataMemberBinding="{Binding VIPID,Converter={StaticResource vipIDNameCvt}}" Label="姓名" IsReadOnly="True" />
+            <telerik:DataFormDataField Label="增减积分">
+                <telerik:DataFormDataField.Content>
+                    <telerik:RadNumericUpDown Value="{Binding Point}" IsInteger="True" />
+                </telerik:DataFormDataField.Content>
+            </telerik:DataFormDataField>
+            <telerik:DataFormDataField DataMemberBinding="{Binding Remark}" Label="备注" />            
+        </StackPanel>
+        <Border BorderThickness="0 1 0 0" BorderBrush="Gray" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                <telerik:RadButton x:Name="btnOK" Content="确定" Width="60" IsDefault="True" VerticalAlignment="Center" Margin="0 0 5 0" Click="btnOK_Click" />
+                <telerik:RadButton Content="取消" Width="60" IsCancel="True" VerticalAlignment="Center" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

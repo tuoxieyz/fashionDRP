@@ -1,0 +1,268 @@
+﻿<Window x:Class="HabilimentERP.DockingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:HabilimentERP"
+        xmlns:sysv="clr-namespace:SysProcessView;assembly=SysProcessView"
+        xmlns:vm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+        WindowState="Maximized"
+        Title="蝶讯服饰分销系统" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {telerik:ThemeResourceKey ThemeType=telerik:Windows7Theme, ElementType=TextBox}}" />
+        <Style TargetType="PasswordBox" BasedOn="{StaticResource {telerik:ThemeResourceKey ThemeType=telerik:Windows7Theme, ElementType=PasswordBox}}" />
+        <Style TargetType="ScrollViewer" BasedOn="{StaticResource {telerik:ThemeResourceKey ThemeType=telerik:Windows7Theme, ElementType=ScrollViewer}}" />
+        <DataTemplate x:Key="uniqueCodeDetailsTemplate">
+            <sysv:UniqueCodeDetailsTemplate />
+        </DataTemplate>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Images/blue_glow.jpg" Stretch="UniformToFill" />
+    </Window.Background>
+    <Grid x:Name="gridLayout">
+        <Grid x:Name="gridContent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <telerik:RadMenu x:Name="radMenu" ClickToOpen="False" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
+                    <telerik:RadMenu.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Right" IsItemsHost="True" />
+                        </ItemsPanelTemplate>
+                    </telerik:RadMenu.ItemsPanel>
+                    <telerik:RadMenuItem x:Name="space" Header="设置">
+                        <telerik:RadMenuItem.Icon>
+                            <Image Stretch="None" Source="pack://application:,,,/Images/BottomBar/hammer.png" />
+                        </telerik:RadMenuItem.Icon>
+                        <telerik:RadMenuItem x:Name="menuRefresh" Header="基础数据刷新" Click="menuRefresh_Click">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/arrow_refresh.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem x:Name="menuPasswordSet" Header="密码修改" Click="menuPasswordSet_Click">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/BottomBar/key.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Header="系统参数" IsEnabled="False" >
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/BottomBar/puzzle.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Header="界面设置" x:Name="menuUISet" IsEnabled="False">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/BottomBar/color_swatch_1.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                    </telerik:RadMenuItem>
+                    <telerik:RadMenuItem Header="帮助中心">
+                        <telerik:RadMenuItem.Icon>
+                            <Image Stretch="None" Source="pack://application:,,,/Images/BottomBar/help.png" />
+                        </telerik:RadMenuItem.Icon>
+                        <telerik:RadMenuItem Header="使用手册" IsEnabled="False">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/BottomBar/bookmark_book_open.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Header="官方网站" x:Name="officeSite" Click="officeSite_Click" >
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/BottomBar/house.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Header="版本轨迹" x:Name="versionContrail" IsEnabled="False" />
+                        <telerik:RadMenuItem Header="意见反馈" IsEnabled="False" />
+                        <telerik:RadMenuItem IsSeparator="True" />
+                        <telerik:RadMenuItem Header="关于..." IsEnabled="False" />
+                    </telerik:RadMenuItem>
+                    <telerik:RadMenuItem Header="退出">
+                        <telerik:RadMenuItem.Icon>
+                            <Image Stretch="None" Source="pack://application:,,,/Images/BottomBar/door_in.png" />
+                        </telerik:RadMenuItem.Icon>
+                        <telerik:RadMenuItem Header="锁屏" x:Name="menuLock" Click="menuLock_Click">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/application_key.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Header="注销" x:Name="menuLogout" Click="menuLogout_Click">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/BottomBar/disconnect.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Header="关闭" x:Name="menuClose" Click="menuClose_Click">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="pack://application:,,,/Images/BottomBar/delete.png" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                    </telerik:RadMenuItem>
+                </telerik:RadMenu>
+                <StackPanel Orientation="Horizontal" Margin="5 0 5 0" VerticalAlignment="Center">
+                    <Image Stretch="None" Source="pack://application:,,,/Images/BottomBar/user.png" />
+                    <TextBlock Text="{Binding WelcomeMessage}" Margin="5 0 0 0" Foreground="#FF333333" />
+                </StackPanel>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="pack://application:,,,/Images/speaker.gif" VerticalAlignment="Center" />
+                    <!--最上层是TextBlock的话，ToolTip似乎一定要放在最上层控件上才能显示（不管这个控件多少小，其余层控件多少大）-->
+                    <!--MouseLeftButtonDown类似，似乎不管TextBlock呈现的Text尺寸有多小，TextBlock默认占满整个空间-->
+                    <TextBlock Text="{Binding MessageCount}" Foreground="Red" FontSize="9" FontWeight="Black" ToolTip="查看更多消息" MouseLeftButtonDown="moreMsg_MouseLeftButtonDown" />
+                    <TextBlock DataContext="{Binding RecentMessage}" Foreground="{Binding MessageColor}" 
+                               Margin="2 0 0 0" MaxWidth="600" TextTrimming="WordEllipsis" 
+                               HorizontalAlignment="Left" 
+                               VerticalAlignment="Center"
+                               Grid.Column="1">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}[{1}{2:dd.HH:mm:ss}]">
+                                <Binding Path="Message" />
+                                <Binding Path="Sender.UserName" />
+                                <Binding Path="SendTime" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+            <telerik:RadDocking x:Name="dockPanel" Background="Transparent" Grid.Row="1" CloseButtonPosition="InPane">
+                <!--<telerik:RadDocking.Resources>
+                    <DataTemplate x:Key="TabItemTemplate">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Header}" />
+                            <telerik:RadButton x:Name="HeaderCloseButton" Background="Red" Width="14" Height="14" VerticalAlignment="Center" Margin="5 0 4 0" HorizontalAlignment="Right">
+                                <Path x:Name="BackgroundIcon" Fill="#FF000000" Width="8" Height="7"
+                                      Data="M0,0 L2,0 2,1 3,1 3,2 5,2 5,1 6,1 6,0 8,0 8,1 7,1 7,2 6,2 6,3 5,3 5,4 6,4 6,5 6,5 7,5 7,6 8,6 8,7 6,7 6,6 5,6 5,5 3,5 3,6 2,6 2,7 0,7 0,6 1,6 1,5 2,5 2,4 3,4 3,3 2,3 2,2 1,2 1,1 0,1 Z" />
+                            </telerik:RadButton>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadDocking.Resources>-->
+                <telerik:RadDocking.DocumentHost>
+                    <telerik:RadSplitContainer>
+                        <telerik:RadPaneGroup x:Name="tabHost" />
+                        <!--ItemTemplate="{StaticResource TabItemTemplate}"-->
+                    </telerik:RadSplitContainer>
+                </telerik:RadDocking.DocumentHost>
+                <telerik:RadSplitContainer InitialPosition="DockedLeft">
+                    <telerik:RadPaneGroup x:Name="leftPanel">
+                        <telerik:RadPane x:Name="paneMenu" Header="功能模块" CanDockInDocumentHost="False" CanUserClose="False" ContextMenuTemplate="{x:Null}">
+                            <DockPanel x:Name="dpTree" LastChildFill="True" DataContext="{Binding Path=MenuTreeVM}">
+                                <Border x:Name="bdQuikSearch" DockPanel.Dock="Top" BorderBrush="#FFB4B4B4" BorderThickness="0.5" Height="21" Margin="2,3,2,0" CornerRadius="3" 
+                    Background="{StaticResource Workarea_BackgroundBrush}">
+                                </Border>
+                                <Popup Name="popSearch" AllowsTransparency="True" PopupAnimation="None" StaysOpen="False">
+                                    <Popup.Resources>
+                                        <LinearGradientBrush x:Key="ControlSubItem_Background_MouseOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFFFFBA3" Offset="1" />
+                                            <GradientStop Color="#FFFFFBDA" Offset="0" />
+                                        </LinearGradientBrush>
+                                    </Popup.Resources>
+                                    <ListView x:Name="lvSearch" ItemsSource="{Binding Path=QSModuleTreeItems}" MaxHeight="200" Width="180" SelectionChanged="lvSearch_SelectionChanged" >
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListViewItem">
+                                                            <Grid>
+                                                                <Border x:Name="MouseOverVisual" Opacity="0" Grid.ColumnSpan="6" Grid.Column="2"
+                                                                        CornerRadius="2"
+                                                                        BorderBrush="#FFFFC92B"
+                                                                        BorderThickness="1">
+                                                                    <Border BorderBrush="#FFFFFFFF"
+                                                                            CornerRadius="1"
+                                                                            BorderThickness="1"
+                                                                            Background="{StaticResource ControlSubItem_Background_MouseOver}" />
+                                                                </Border>
+                                                                <StackPanel RenderOptions.BitmapScalingMode="NearestNeighbor" Orientation="Horizontal" 
+                                                                            Margin="0 2" ToolTip="{Binding Path=Tip}">
+                                                                    <Image Source="{Binding Path=Icon}" Width="16" Height="16" />
+                                                                    <TextBlock FontSize="12" Text="{Binding Path=Module.Name}" Margin="5 0 0 0" />
+                                                                </StackPanel>
+                                                            </Grid>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Opacity" Value="1" TargetName="MouseOverVisual" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+                                </Popup>
+                                <Border Margin="2" CornerRadius="3"  Background="{StaticResource Workarea_BackgroundBrush}">
+                                    <telerik:RadTreeView x:Name="tvMenu" Padding="5 3" ItemClick="tvMenu_ItemClick"
+                                                         BorderThickness="0" Background="Transparent" ItemsSource="{Binding Path=ModuleTreeItems}">
+                                        <telerik:RadTreeView.ItemTemplate>
+                                            <HierarchicalDataTemplate DataType="{x:Type vm:ModuleTreeItem}" ItemsSource="{Binding Path=Children}">
+                                                <StackPanel RenderOptions.BitmapScalingMode="NearestNeighbor" Orientation="Horizontal" Margin="0 2">
+                                                    <Image Source="{Binding Path=Icon}" Width="16" Height="16" />
+                                                    <TextBlock FontSize="12" Text="{Binding Path=Module.Name}" Margin="5 0 0 0" />
+                                                </StackPanel>
+                                            </HierarchicalDataTemplate>
+                                        </telerik:RadTreeView.ItemTemplate>
+                                        <telerik:RadTreeView.ItemContainerStyle>
+                                            <Style TargetType="telerik:RadTreeViewItem">
+                                                <!--若不显式绑定IsExpanded属性,那么在RadPane状态变化时,RadTreeView会自动恢复到默认的收缩展开状态.-->
+                                                <Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/>
+                                            </Style>
+                                        </telerik:RadTreeView.ItemContainerStyle>
+                                    </telerik:RadTreeView>
+                                </Border>
+                            </DockPanel>
+                        </telerik:RadPane>
+                    </telerik:RadPaneGroup>
+                </telerik:RadSplitContainer>
+            </telerik:RadDocking>
+        </Grid>
+        <!--登录框-->
+        <Grid Grid.IsSharedSizeScope="True" Width="210" VerticalAlignment="Center" x:Name="gridLogin">
+            <Grid.RowDefinitions>
+                <RowDefinition SharedSizeGroup="login" />
+                <RowDefinition SharedSizeGroup="login" />
+            </Grid.RowDefinitions>
+            <local:LoginUI x:Name="loginUI" Login="loginUI_Login" />
+            <Rectangle x:Name="rectangleShadow" Grid.Row="1">
+                <Rectangle.Fill>
+                    <VisualBrush Visual="{Binding ElementName=loginUI}" >
+                        <VisualBrush.RelativeTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="0.5" CenterY=".5" />
+                        </VisualBrush.RelativeTransform>
+                    </VisualBrush>
+                </Rectangle.Fill>
+                <Rectangle.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0" Color="#FF000000"/>
+                        <GradientStop Offset="0.3" Color="#33000000"/>
+                        <GradientStop Offset="0.9" Color="#00000000"/>
+                    </LinearGradientBrush>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform X="-1000" />
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" 
+                                                 Duration="0:0:1" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<div data-role="view" id="_VIPProportion-view" data-after-show="VIPProportionShowed" data-title="VIP占比图" data-layout="partial-view" data-zoom="true">
+
+    <div data-role="popover" id="popover-brand">
+        <div data-role="view">
+            <ul id="brand-listview" data-role="listview" data-click="setDataBrand" />
+        </div>
+    </div>
+    <a id="vp-brands-select" data-rel="popover" href="#popover-brand" data-role="button">选择品牌</a>
+    <div id="chartKind" style="margin-top: 10px;"></div>
+    <div id="chartConsume"></div>
+    <div id="chartActive"></div>
+    <script>
+        var vp_currBrand;
+
+        function createChart(element, data, title, template, tooltipTpt, field, categoryField) {
+            element.kendoChart({
+                title: {
+                    position: "top",
+                    text: title
+                },
+                legend: {
+                    visible: false
+                },
+                chartArea: {
+                    background: "#ffffff"
+                },
+                seriesDefaults: {
+                    labels: {
+                        visible: true,
+                        template: template
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    startAngle: 120,
+                    field: field,
+                    categoryField: categoryField,
+                    data: data
+                }],
+                tooltip: {
+                    visible: true,
+                    template: tooltipTpt
+                }
+            });
+        }
+
+        function VIPProportionShowed() {
+            if (Brands.length > 0) {
+                $("#brand-listview").kendoMobileListView({
+                    dataSource: kendo.data.DataSource.create({ data: Brands }),
+                    template: "<label>#:data.Name#</label>"
+                });
+                vp_currBrand = Brands[0];
+                $("#vp-brands-select")[0].innerText = vp_currBrand.Name;
+                //$("#brand-listview").data("kendoMobileListView").setDataItem($("#listview li").eq(0), new kendo.data.Model(vp_currBrand));
+
+                $.ajax({
+                    url: '/api/VIP/GetVIPProportion?' + $.param({ brandID: vp_currBrand.ID, organizationID: CurrentUser.OrganizationID }),
+                    type: "get",
+                    contentType: "application/json; charset=utf8",
+                    success: function (data) {
+                        createChart($("#chartKind"), data[0], 'VIP类型占比', "#= dataItem.Title#", "${ dataItem.Description }", "Quantity", "Name");
+                        createChart($("#chartConsume"), data[1], 'VIP消费占比', "#= dataItem.Title#", "${ dataItem.Description }", "ConsumeMoney", "Name");
+                        createChart($("#chartActive"), data[2], 'VIP活跃度占比', "#= dataItem.Name #:#= dataItem.Description#", "${dataItem.Title}", "Quantity", "Name");
+                    }
+                });
+            }
+        }
+
+        function setDataBrand(e) {
+            vp_currBrand = e.dataItem;
+            $("#vp-brands-select")[0].innerText = e.dataItem.Name;
+            var popover = e.sender.element.closest('[data-role=popover]').data('kendoMobilePopOver');
+            popover.close();
+        }
+    </script>
+</div>

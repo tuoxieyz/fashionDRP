@@ -1,0 +1,45 @@
+﻿<Window x:Class="DistributionView.RetailManage.CashCouponWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:DistributionViewModel;assembly=DistributionViewModel"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        Title="抵价券抵用" SizeToContent="WidthAndHeight">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="应用品牌" Grid.ColumnSpan="2">
+            <ListBox x:Name="lbBrand" BorderThickness="0">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" Width="260" IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <CheckBox x:Name="ckBrand" Margin="5 2" Content="{Binding Name}" IsChecked="True" MinWidth="120" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </GroupBox>
+        <TextBlock Text="折前券" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 5 0" />
+        <TextBlock Text="折后券" Grid.Row="2" VerticalAlignment="Center" Margin="0 0 5 0" />
+        <telerik:RadNumericUpDown x:Name="beforeDiscountCoupon" Grid.Row="1" Grid.Column="1" IsInteger="True" Minimum="0" FontSize="20" Margin="0 5 0 5" />
+        <telerik:RadNumericUpDown x:Name="afterDiscountCoupon" Grid.Row="2" Grid.Column="1" IsInteger="True" Minimum="0" FontSize="20" Margin="0 5 0 5" />
+        <telerik:RadButton x:Name="btnOK" Grid.Row="3" Grid.Column="1" Content="确定" Margin="0 5 0 5" HorizontalAlignment="Right" IsDefault="True" Width="60" Click="btnOK_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,1825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SysProcessModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SysProcessModelStoreContainer">
+          <EntitySet Name="BusiDataDictionary" EntityType="SysProcessModel.Store.BusiDataDictionary" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CertCarriedStandard" EntityType="SysProcessModel.Store.CertCarriedStandard" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CertGrade" EntityType="SysProcessModel.Store.CertGrade" store:Type="Tables" store:Schema="dbo" store:Name="CertGrade" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [CertGrade].[ID] AS [ID], 
+      [CertGrade].[Name] AS [Name], 
+      [CertGrade].[Enabled] AS [Enabled]
+      FROM [dbo].[CertGrade] AS [CertGrade]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Certification" EntityType="SysProcessModel.Store.Certification" store:Type="Tables" store:Schema="dbo" store:Name="Certification" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [Certification].[ID] AS [ID], 
+      [Certification].[StyleID] AS [StyleID], 
+      [Certification].[Price] AS [Price], 
+      [Certification].[Composition] AS [Composition], 
+      [Certification].[Grade] AS [Grade], 
+      [Certification].[CarriedStandard] AS [CarriedStandard], 
+      [Certification].[SafetyTechnique] AS [SafetyTechnique], 
+      [Certification].[GBCode] AS [GBCode], 
+      [Certification].[CreatorID] AS [CreatorID], 
+      [Certification].[CreateTime] AS [CreateTime]
+      FROM [dbo].[Certification] AS [Certification]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CertMateriel" EntityType="SysProcessModel.Store.CertMateriel" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CertMaterielKind" EntityType="SysProcessModel.Store.CertMaterielKind" store:Type="Tables" store:Schema="dbo" store:Name="CertMaterielKind" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [CertMaterielKind].[ID] AS [ID], 
+      [CertMaterielKind].[Code] AS [Code], 
+      [CertMaterielKind].[Name] AS [Name], 
+      [CertMaterielKind].[CreatorID] AS [CreatorID], 
+      [CertMaterielKind].[CreateTime] AS [CreateTime]
+      FROM [dbo].[CertMaterielKind] AS [CertMaterielKind]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CertSafetyTech" EntityType="SysProcessModel.Store.CertSafetyTech" store:Type="Tables" store:Schema="dbo" store:Name="CertSafetyTech" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [CertSafetyTech].[ID] AS [ID], 
+      [CertSafetyTech].[Code] AS [Code], 
+      [CertSafetyTech].[Name] AS [Name], 
+      [CertSafetyTech].[CreatorID] AS [CreatorID], 
+      [CertSafetyTech].[CreateTime] AS [CreateTime], 
+      [CertSafetyTech].[Enabled] AS [Enabled]
+      FROM [dbo].[CertSafetyTech] AS [CertSafetyTech]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrganizationArea" EntityType="SysProcessModel.Store.OrganizationArea" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="OrganizationBrand" EntityType="SysProcessModel.Store.OrganizationBrand" store:Type="Tables" store:Schema="dbo" store:Name="OrganizationBrand" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [OrganizationBrand].[OrganizationID] AS [OrganizationID], 
+      [OrganizationBrand].[BrandID] AS [BrandID], 
+      [OrganizationBrand].[CreatorID] AS [CreatorID], 
+      [OrganizationBrand].[CreateTime] AS [CreateTime]
+      FROM [dbo].[OrganizationBrand] AS [OrganizationBrand]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrganizationPriceFloat" EntityType="SysProcessModel.Store.OrganizationPriceFloat" store:Type="Tables" store:Schema="dbo" store:Name="OrganizationPriceFloat" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [OrganizationPriceFloat].[ID] AS [ID], 
+      [OrganizationPriceFloat].[OrganizationID] AS [OrganizationID], 
+      [OrganizationPriceFloat].[BYQID] AS [BYQID], 
+      [OrganizationPriceFloat].[FloatRate] AS [FloatRate], 
+      [OrganizationPriceFloat].[LastNumber] AS [LastNumber], 
+      [OrganizationPriceFloat].[CreatorID] AS [CreatorID], 
+      [OrganizationPriceFloat].[CreateTime] AS [CreateTime]
+      FROM [dbo].[OrganizationPriceFloat] AS [OrganizationPriceFloat]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProBoduan" EntityType="SysProcessModel.Store.ProBoduan" store:Type="Tables" store:Schema="dbo" store:Name="ProBoduan" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProBoduan].[ID] AS [ID], 
+      [ProBoduan].[Name] AS [Name], 
+      [ProBoduan].[CreatorID] AS [CreatorID], 
+      [ProBoduan].[CreateTime] AS [CreateTime], 
+      [ProBoduan].[IsEnabled] AS [IsEnabled]
+      FROM [dbo].[ProBoduan] AS [ProBoduan]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProBrand" EntityType="SysProcessModel.Store.ProBrand" store:Type="Tables" store:Schema="dbo" store:Name="ProBrand" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProBrand].[ID] AS [ID], 
+      [ProBrand].[Code] AS [Code], 
+      [ProBrand].[Name] AS [Name], 
+      [ProBrand].[CreatorID] AS [CreatorID], 
+      [ProBrand].[CreateTime] AS [CreateTime], 
+      [ProBrand].[Flag] AS [Flag], 
+      [ProBrand].[Description] AS [Description]
+      FROM [dbo].[ProBrand] AS [ProBrand]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProBYQ" EntityType="SysProcessModel.Store.ProBYQ" store:Type="Tables" store:Schema="dbo" store:Name="ProBYQ" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProBYQ].[ID] AS [ID], 
+      [ProBYQ].[BrandID] AS [BrandID], 
+      [ProBYQ].[Year] AS [Year], 
+      [ProBYQ].[Quarter] AS [Quarter]
+      FROM [dbo].[ProBYQ] AS [ProBYQ]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProColor" EntityType="SysProcessModel.Store.ProColor" store:Type="Tables" store:Schema="dbo" store:Name="ProColor" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProColor].[ID] AS [ID], 
+      [ProColor].[Code] AS [Code], 
+      [ProColor].[Name] AS [Name], 
+      [ProColor].[RGBCode] AS [RGBCode], 
+      [ProColor].[CreatorID] AS [CreatorID], 
+      [ProColor].[CreateTime] AS [CreateTime]
+      FROM [dbo].[ProColor] AS [ProColor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Product" EntityType="SysProcessModel.Store.Product" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ProductUniqueCodeMapping" EntityType="SysProcessModel.Store.ProductUniqueCodeMapping" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ProName" EntityType="SysProcessModel.Store.ProName" store:Type="Tables" store:Schema="dbo" store:Name="ProName" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProName].[ID] AS [ID], 
+      [ProName].[Name] AS [Name], 
+      [ProName].[CreatorID] AS [CreatorID], 
+      [ProName].[CreateTime] AS [CreateTime], 
+      [ProName].[Flag] AS [Flag]
+      FROM [dbo].[ProName] AS [ProName]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProQuarter" EntityType="SysProcessModel.Store.ProQuarter" store:Type="Tables" store:Schema="dbo" store:Name="ProQuarter" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProQuarter].[ID] AS [ID], 
+      [ProQuarter].[Name] AS [Name], 
+      [ProQuarter].[CreatorID] AS [CreatorID], 
+      [ProQuarter].[CreateTime] AS [CreateTime], 
+      [ProQuarter].[IsEnabled] AS [IsEnabled]
+      FROM [dbo].[ProQuarter] AS [ProQuarter]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProSCPicture" EntityType="SysProcessModel.Store.ProSCPicture" store:Type="Tables" store:Schema="dbo" store:Name="ProSCPicture" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProSCPicture].[StyleID] AS [StyleID], 
+      [ProSCPicture].[ColorID] AS [ColorID], 
+      [ProSCPicture].[PictureName] AS [PictureName], 
+      [ProSCPicture].[UploadTime] AS [UploadTime]
+      FROM [dbo].[ProSCPicture] AS [ProSCPicture]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProSize" EntityType="SysProcessModel.Store.ProSize" store:Type="Tables" store:Schema="dbo" store:Name="ProSize" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProSize].[ID] AS [ID], 
+      [ProSize].[Code] AS [Code], 
+      [ProSize].[Name] AS [Name], 
+      [ProSize].[Description] AS [Description], 
+      [ProSize].[CreatorID] AS [CreatorID], 
+      [ProSize].[CreateTime] AS [CreateTime], 
+      [ProSize].[Flag] AS [Flag]
+      FROM [dbo].[ProSize] AS [ProSize]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProStyle" EntityType="SysProcessModel.Store.ProStyle" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ProStyleChange" EntityType="SysProcessModel.Store.ProStyleChange" store:Type="Tables" store:Schema="dbo" store:Name="ProStyleChange" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProStyleChange].[StyleID] AS [StyleID], 
+      [ProStyleChange].[Description] AS [Description], 
+      [ProStyleChange].[CreatorID] AS [CreatorID], 
+      [ProStyleChange].[CreateTime] AS [CreateTime]
+      FROM [dbo].[ProStyleChange] AS [ProStyleChange]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProStyleMatching" EntityType="SysProcessModel.Store.ProStyleMatching" store:Type="Tables" store:Schema="dbo" store:Name="ProStyleMatching" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProStyleMatching].[GroupID] AS [GroupID], 
+      [ProStyleMatching].[StyleID] AS [StyleID], 
+      [ProStyleMatching].[ColorID] AS [ColorID], 
+      [ProStyleMatching].[CreatorID] AS [CreatorID], 
+      [ProStyleMatching].[CreateTime] AS [CreateTime]
+      FROM [dbo].[ProStyleMatching] AS [ProStyleMatching]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProUnit" EntityType="SysProcessModel.Store.ProUnit" store:Type="Tables" store:Schema="dbo" store:Name="ProUnit" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ProUnit].[ID] AS [ID], 
+      [ProUnit].[Name] AS [Name], 
+      [ProUnit].[CreatorID] AS [CreatorID], 
+      [ProUnit].[CreateTime] AS [CreateTime], 
+      [ProUnit].[Flag] AS [Flag]
+      FROM [dbo].[ProUnit] AS [ProUnit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SysApplication" EntityType="SysProcessModel.Store.SysApplication" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysArea" EntityType="SysProcessModel.Store.SysArea" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysCity" EntityType="SysProcessModel.Store.SysCity" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysModule" EntityType="SysProcessModel.Store.SysModule" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysOrganization" EntityType="SysProcessModel.Store.SysOrganization" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysOrganizationType" EntityType="SysProcessModel.Store.SysOrganizationType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysProvience" EntityType="SysProcessModel.Store.SysProvience" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysRole" EntityType="SysProcessModel.Store.SysRole" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysRoleModule" EntityType="SysProcessModel.Store.SysRoleModule" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysUser" EntityType="SysProcessModel.Store.SysUser" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysUserModule" EntityType="SysProcessModel.Store.SysUserModule" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SysUserRole" EntityType="SysProcessModel.Store.SysUserRole" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="UserBrand" EntityType="SysProcessModel.Store.UserBrand" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ViewProduct" EntityType="SysProcessModel.Store.ViewProduct" store:Type="Views" store:Schema="dbo" store:Name="ViewProduct" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ViewProduct].[ProductID] AS [ProductID], 
+      [ViewProduct].[ProductCode] AS [ProductCode], 
+      [ViewProduct].[StyleCode] AS [StyleCode], 
+      [ViewProduct].[StyleID] AS [StyleID], 
+      [ViewProduct].[ColorCode] AS [ColorCode], 
+      [ViewProduct].[ColorName] AS [ColorName], 
+      [ViewProduct].[SizeCode] AS [SizeCode], 
+      [ViewProduct].[SizeName] AS [SizeName], 
+      [ViewProduct].[ColorID] AS [ColorID], 
+      [ViewProduct].[BrandID] AS [BrandID], 
+      [ViewProduct].[BrandCode] AS [BrandCode], 
+      [ViewProduct].[BrandName] AS [BrandName], 
+      [ViewProduct].[Year] AS [Year], 
+      [ViewProduct].[Quarter] AS [Quarter], 
+      [ViewProduct].[BYQID] AS [BYQID], 
+      [ViewProduct].[Price] AS [Price], 
+      [ViewProduct].[ProductName] AS [ProductName], 
+      [ViewProduct].[NameID] AS [NameID]
+      FROM [dbo].[ViewProduct] AS [ViewProduct]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="BusiDataDictionary">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ParentCode" Type="varchar" MaxLength="8" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CertCarriedStandard">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.CertGrade”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="CertGrade">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Enabled" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.Certification”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Composition" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="CarriedStandard" />
+            <PropertyRef Name="SafetyTechnique" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="Composition" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="Grade" Type="int" Nullable="false" />
+          <Property Name="CarriedStandard" Type="int" Nullable="false" />
+          <Property Name="SafetyTechnique" Type="int" Nullable="false" />
+          <Property Name="GBCode" Type="varchar" MaxLength="30" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CertMateriel">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.CertMaterielKind”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="CertMaterielKind">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.CertSafetyTech”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="CertSafetyTech">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Enabled" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationArea">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.OrganizationBrand”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="OrganizationBrand">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.OrganizationPriceFloat”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="OrganizationPriceFloat">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BYQID" />
+            <PropertyRef Name="FloatRate" />
+            <PropertyRef Name="LastNumber" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="BYQID" Type="int" Nullable="false" />
+          <Property Name="FloatRate" Type="decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="LastNumber" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProBoduan”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProBoduan">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="IsEnabled" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProBrand”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProBrand">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProBYQ”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProBYQ">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Quarter" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Quarter" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProColor”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProColor">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="RGBCode" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="RGBCode" Type="char" Nullable="false" MaxLength="9" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="SizeID" Type="int" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductUniqueCodeMapping">
+          <Key>
+            <PropertyRef Name="UniqueCode" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="UniqueCode" Type="char" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProName”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProName">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProQuarter”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProQuarter">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="IsEnabled" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProSCPicture”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProSCPicture">
+          <Key>
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="PictureName" />
+            <PropertyRef Name="UploadTime" />
+          </Key>
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="PictureName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="UploadTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProSize”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProSize">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Description" Type="varchar" MaxLength="20" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProStyle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="BYQID" Type="int" Nullable="false" />
+          <Property Name="NameID" Type="int" Nullable="false" />
+          <Property Name="UnitID" Type="int" Nullable="false" />
+          <Property Name="BoduanID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="CostPrice" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="EANCode" Type="char" MaxLength="13" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProStyleChange”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProStyleChange">
+          <Key>
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProStyleMatching”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProStyleMatching">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ProUnit”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ProUnit">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysApplication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="SysArea">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SysCity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProvienceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ParentCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Uri" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="MobileUri" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SysOrganization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="AreaID" Type="int" Nullable="false" />
+          <Property Name="ProvienceID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="Linkman" Type="nvarchar" MaxLength="10" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Latitude" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="12" Scale="6" />
+<Property Name="MapCityName" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SysOrganizationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysProvience">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AreaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="OPAccess" Type="int" Nullable="false" />
+          <Property Name="IMAccess" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysRoleModule">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="Flag" Type="bit" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SysUserModule">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserBrand">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SysProcess.dbo.ViewProduct”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="StyleCode" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorCode" />
+            <PropertyRef Name="ColorName" />
+            <PropertyRef Name="SizeCode" />
+            <PropertyRef Name="SizeName" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="BrandCode" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Quarter" />
+            <PropertyRef Name="BYQID" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="NameID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="StyleCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="StyleID" Type="int" Nullable="false" />
+          <Property Name="ColorCode" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="ColorName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="SizeCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="SizeName" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="BrandCode" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="BrandName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Quarter" Type="int" Nullable="false" />
+          <Property Name="BYQID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="NameID" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SysProcessModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="BusiDataDictionary" EntityType="SysProcessModel.BusiDataDictionary" />
+          <EntitySet Name="CertCarriedStandard" EntityType="SysProcessModel.CertCarriedStandard" />
+          <EntitySet Name="CertGrade" EntityType="SysProcessModel.CertGrade" />
+          <EntitySet Name="Certification" EntityType="SysProcessModel.Certification" />
+          <EntitySet Name="CertMateriel" EntityType="SysProcessModel.CertMateriel" />
+          <EntitySet Name="CertMaterielKind" EntityType="SysProcessModel.CertMaterielKind" />
+          <EntitySet Name="CertSafetyTech" EntityType="SysProcessModel.CertSafetyTech" />
+          <EntitySet Name="OrganizationBrand" EntityType="SysProcessModel.OrganizationBrand" />
+          <EntitySet Name="OrganizationPriceFloat" EntityType="SysProcessModel.OrganizationPriceFloat" />
+          <EntitySet Name="ProBoduan" EntityType="SysProcessModel.ProBoduan" />
+          <EntitySet Name="ProBrand" EntityType="SysProcessModel.ProBrand" />
+          <EntitySet Name="ProBYQ" EntityType="SysProcessModel.ProBYQ" />
+          <EntitySet Name="ProColor" EntityType="SysProcessModel.ProColor" />
+          <EntitySet Name="Product" EntityType="SysProcessModel.Product" />
+          <EntitySet Name="ProductUniqueCodeMapping" EntityType="SysProcessModel.ProductUniqueCodeMapping" />
+          <EntitySet Name="ProName" EntityType="SysProcessModel.ProName" />
+          <EntitySet Name="ProSCPicture" EntityType="SysProcessModel.ProSCPicture" />
+          <EntitySet Name="ProSize" EntityType="SysProcessModel.ProSize" />
+          <EntitySet Name="ProStyle" EntityType="SysProcessModel.ProStyle" />
+          <EntitySet Name="ProStyleChange" EntityType="SysProcessModel.ProStyleChange" />
+          <EntitySet Name="ProStyleMatching" EntityType="SysProcessModel.ProStyleMatching" />
+          <EntitySet Name="ProUnit" EntityType="SysProcessModel.ProUnit" />
+          <EntitySet Name="SysApplication" EntityType="SysProcessModel.SysApplication" />
+          <EntitySet Name="SysArea" EntityType="SysProcessModel.SysArea" />
+          <EntitySet Name="SysCity" EntityType="SysProcessModel.SysCity" />
+          <EntitySet Name="SysModule" EntityType="SysProcessModel.SysModule" />
+          <EntitySet Name="SysOrganization" EntityType="SysProcessModel.SysOrganization" />
+          <EntitySet Name="SysOrganizationType" EntityType="SysProcessModel.SysOrganizationType" />
+          <EntitySet Name="SysProvience" EntityType="SysProcessModel.SysProvience" />
+          <EntitySet Name="SysRole" EntityType="SysProcessModel.SysRole" />
+          <EntitySet Name="SysRoleModule" EntityType="SysProcessModel.SysRoleModule" />
+          <EntitySet Name="SysUser" EntityType="SysProcessModel.SysUser" />          
+          <EntitySet Name="SysUserModule" EntityType="SysProcessModel.SysUserModule" />
+          <EntitySet Name="SysUserRole" EntityType="SysProcessModel.SysUserRole" />
+          <EntitySet Name="UserBrand" EntityType="SysProcessModel.UserBrand" />
+          <EntitySet Name="ViewProduct" EntityType="SysProcessModel.ViewProduct" />
+          <EntitySet Name="OrganizationArea" EntityType="SysProcessModel.OrganizationArea" />
+          <EntitySet Name="ProQuarter" EntityType="SysProcessModel.ProQuarter" />
+        </EntityContainer>
+        <EntityType Name="BusiDataDictionary">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ParentCode" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CertCarriedStandard">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CertGrade">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Enabled" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Composition" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="CarriedStandard" />
+            <PropertyRef Name="SafetyTechnique" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="Composition" Type="String" Nullable="false" MaxLength="4000" Unicode="false" FixedLength="false" />
+          <Property Name="Grade" Type="Int32" Nullable="false" />
+          <Property Name="CarriedStandard" Type="Int32" Nullable="false" />
+          <Property Name="SafetyTechnique" Type="Int32" Nullable="false" />
+          <Property Name="GBCode" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CertMateriel">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CertMaterielKind">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CertSafetyTech">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Enabled" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationBrand">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OrganizationPriceFloat">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="BYQID" />
+            <PropertyRef Name="FloatRate" />
+            <PropertyRef Name="LastNumber" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="BYQID" Type="Int32" Nullable="false" />
+          <Property Name="FloatRate" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="LastNumber" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProBoduan">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="IsEnabled" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProBrand">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ProBYQ">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Quarter" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Quarter" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProColor">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="RGBCode" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="RGBCode" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="SizeID" Type="Int32" Nullable="false" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProductUniqueCodeMapping">
+          <Key>
+            <PropertyRef Name="UniqueCode" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="UniqueCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="ProName">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProSCPicture">
+          <Key>
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="PictureName" />
+            <PropertyRef Name="UploadTime" />
+          </Key>
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="PictureName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="UploadTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProSize">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProStyle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="BYQID" Type="Int32" Nullable="false" />
+          <Property Name="NameID" Type="Int32" Nullable="false" />
+          <Property Name="UnitID" Type="Int32" Nullable="false" />
+          <Property Name="BoduanID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EANCode" Type="String" MaxLength="13" Unicode="false" FixedLength="true" />
+          <Property Type="Decimal" Name="CostPrice" Nullable="false" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="ProStyleChange">
+          <Key>
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProStyleMatching">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProUnit">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="Flag" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysApplication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SysArea">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SysCity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProvienceId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Uri" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="MobileUri" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SysOrganization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="AreaID" Type="Int32" Nullable="false" />
+          <Property Name="ProvienceID" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Linkman" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Precision="12" Scale="6" />
+          <Property Type="String" Name="MapCityName" MaxLength="10" Nullable="true" />
+        </EntityType>
+        <EntityType Name="SysOrganizationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysProvience">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="OPAccess" Type="Int32" Nullable="false" />
+          <Property Name="IMAccess" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SysRoleModule">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="Flag" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>        
+        <EntityType Name="SysUserModule">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SysUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserBrand">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="StyleCode" />
+            <PropertyRef Name="StyleID" />
+            <PropertyRef Name="ColorCode" />
+            <PropertyRef Name="ColorName" />
+            <PropertyRef Name="SizeCode" />
+            <PropertyRef Name="SizeName" />
+            <PropertyRef Name="ColorID" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="BrandCode" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Quarter" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BYQID" />
+            <PropertyRef Name="NameID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="StyleCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="StyleID" Type="Int32" Nullable="false" />
+          <Property Name="ColorCode" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="ColorName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="SizeCode" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="SizeName" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="BrandCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Quarter" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="BYQID" Nullable="false" />
+          <Property Type="Int32" Name="NameID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationArea">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="ParentID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="OrganizationID" Nullable="false" />
+          <Property Type="Int32" Name="CreatorID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsEnabled" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProQuarter">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="IsEnabled" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CreatorID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsEnabled" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SysProcessModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="BusiDataDictionary">
+            <EntityTypeMapping TypeName="SysProcessModel.BusiDataDictionary">
+              <MappingFragment StoreEntitySet="BusiDataDictionary">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertCarriedStandard">
+            <EntityTypeMapping TypeName="SysProcessModel.CertCarriedStandard">
+              <MappingFragment StoreEntitySet="CertCarriedStandard">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertGrade">
+            <EntityTypeMapping TypeName="SysProcessModel.CertGrade">
+              <MappingFragment StoreEntitySet="CertGrade">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certification">
+            <EntityTypeMapping TypeName="SysProcessModel.Certification">
+              <MappingFragment StoreEntitySet="Certification">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Composition" ColumnName="Composition" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="CarriedStandard" ColumnName="CarriedStandard" />
+                <ScalarProperty Name="SafetyTechnique" ColumnName="SafetyTechnique" />
+                <ScalarProperty Name="GBCode" ColumnName="GBCode" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertMateriel">
+            <EntityTypeMapping TypeName="SysProcessModel.CertMateriel">
+              <MappingFragment StoreEntitySet="CertMateriel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertMaterielKind">
+            <EntityTypeMapping TypeName="SysProcessModel.CertMaterielKind">
+              <MappingFragment StoreEntitySet="CertMaterielKind">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertSafetyTech">
+            <EntityTypeMapping TypeName="SysProcessModel.CertSafetyTech">
+              <MappingFragment StoreEntitySet="CertSafetyTech">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationBrand">
+            <EntityTypeMapping TypeName="SysProcessModel.OrganizationBrand">
+              <MappingFragment StoreEntitySet="OrganizationBrand">
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationPriceFloat">
+            <EntityTypeMapping TypeName="SysProcessModel.OrganizationPriceFloat">
+              <MappingFragment StoreEntitySet="OrganizationPriceFloat">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="BYQID" ColumnName="BYQID" />
+                <ScalarProperty Name="FloatRate" ColumnName="FloatRate" />
+                <ScalarProperty Name="LastNumber" ColumnName="LastNumber" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProBoduan">
+            <EntityTypeMapping TypeName="SysProcessModel.ProBoduan">
+              <MappingFragment StoreEntitySet="ProBoduan">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProBrand">
+            <EntityTypeMapping TypeName="SysProcessModel.ProBrand">
+              <MappingFragment StoreEntitySet="ProBrand">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProBYQ">
+            <EntityTypeMapping TypeName="SysProcessModel.ProBYQ">
+              <MappingFragment StoreEntitySet="ProBYQ">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProColor">
+            <EntityTypeMapping TypeName="SysProcessModel.ProColor">
+              <MappingFragment StoreEntitySet="ProColor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RGBCode" ColumnName="RGBCode" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="SysProcessModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductUniqueCodeMapping">
+            <EntityTypeMapping TypeName="SysProcessModel.ProductUniqueCodeMapping">
+              <MappingFragment StoreEntitySet="ProductUniqueCodeMapping">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProName">
+            <EntityTypeMapping TypeName="SysProcessModel.ProName">
+              <MappingFragment StoreEntitySet="ProName">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProSCPicture">
+            <EntityTypeMapping TypeName="SysProcessModel.ProSCPicture">
+              <MappingFragment StoreEntitySet="ProSCPicture">
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="PictureName" ColumnName="PictureName" />
+                <ScalarProperty Name="UploadTime" ColumnName="UploadTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProSize">
+            <EntityTypeMapping TypeName="SysProcessModel.ProSize">
+              <MappingFragment StoreEntitySet="ProSize">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProStyle">
+            <EntityTypeMapping TypeName="SysProcessModel.ProStyle">
+              <MappingFragment StoreEntitySet="ProStyle">
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BYQID" ColumnName="BYQID" />
+                <ScalarProperty Name="NameID" ColumnName="NameID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="BoduanID" ColumnName="BoduanID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="EANCode" ColumnName="EANCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProStyleChange">
+            <EntityTypeMapping TypeName="SysProcessModel.ProStyleChange">
+              <MappingFragment StoreEntitySet="ProStyleChange">
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProStyleMatching">
+            <EntityTypeMapping TypeName="SysProcessModel.ProStyleMatching">
+              <MappingFragment StoreEntitySet="ProStyleMatching">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProUnit">
+            <EntityTypeMapping TypeName="SysProcessModel.ProUnit">
+              <MappingFragment StoreEntitySet="ProUnit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysApplication">
+            <EntityTypeMapping TypeName="SysProcessModel.SysApplication">
+              <MappingFragment StoreEntitySet="SysApplication">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysArea">
+            <EntityTypeMapping TypeName="SysProcessModel.SysArea">
+              <MappingFragment StoreEntitySet="SysArea">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysCity">
+            <EntityTypeMapping TypeName="SysProcessModel.SysCity">
+              <MappingFragment StoreEntitySet="SysCity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProvienceId" ColumnName="ProvienceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysModule">
+            <EntityTypeMapping TypeName="SysProcessModel.SysModule">
+              <MappingFragment StoreEntitySet="SysModule">
+                <ScalarProperty Name="MobileUri" ColumnName="MobileUri" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
+                <ScalarProperty Name="Uri" ColumnName="Uri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysOrganization">
+            <EntityTypeMapping TypeName="SysProcessModel.SysOrganization">
+              <MappingFragment StoreEntitySet="SysOrganization">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="ProvienceID" ColumnName="ProvienceID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Linkman" ColumnName="Linkman" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+<ScalarProperty Name="MapCityName" ColumnName="MapCityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysOrganizationType">
+            <EntityTypeMapping TypeName="SysProcessModel.SysOrganizationType">
+              <MappingFragment StoreEntitySet="SysOrganizationType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysProvience">
+            <EntityTypeMapping TypeName="SysProcessModel.SysProvience">
+              <MappingFragment StoreEntitySet="SysProvience">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysRole">
+            <EntityTypeMapping TypeName="SysProcessModel.SysRole">
+              <MappingFragment StoreEntitySet="SysRole">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OPAccess" ColumnName="OPAccess" />
+                <ScalarProperty Name="IMAccess" ColumnName="IMAccess" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysRoleModule">
+            <EntityTypeMapping TypeName="SysProcessModel.SysRoleModule">
+              <MappingFragment StoreEntitySet="SysRoleModule">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysUser">
+            <EntityTypeMapping TypeName="SysProcessModel.SysUser">
+              <MappingFragment StoreEntitySet="SysUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysUserModule">
+            <EntityTypeMapping TypeName="SysProcessModel.SysUserModule">
+              <MappingFragment StoreEntitySet="SysUserModule">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysUserRole">
+            <EntityTypeMapping TypeName="SysProcessModel.SysUserRole">
+              <MappingFragment StoreEntitySet="SysUserRole">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBrand">
+            <EntityTypeMapping TypeName="SysProcessModel.UserBrand">
+              <MappingFragment StoreEntitySet="UserBrand">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewProduct">
+            <EntityTypeMapping TypeName="SysProcessModel.ViewProduct">
+              <MappingFragment StoreEntitySet="ViewProduct">
+                <ScalarProperty Name="NameID" ColumnName="NameID" />
+                <ScalarProperty Name="BYQID" ColumnName="BYQID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="StyleCode" ColumnName="StyleCode" />
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="SizeCode" ColumnName="SizeCode" />
+                <ScalarProperty Name="SizeName" ColumnName="SizeName" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationArea">
+            <EntityTypeMapping TypeName="SysProcessModel.OrganizationArea">
+              <MappingFragment StoreEntitySet="OrganizationArea">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProQuarter">
+            <EntityTypeMapping TypeName="SysProcessModel.ProQuarter">
+              <MappingFragment StoreEntitySet="ProQuarter">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

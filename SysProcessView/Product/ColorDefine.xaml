@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="SysProcessView.ColorDefine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:vm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <!--<UserControl.DataContext>
+        <vm:ProductDataContext />
+    </UserControl.DataContext>-->
+
+    <Grid x:Name="LayoutRoot" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="380" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" MinHeight="280"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer MaxHeight="120" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <Grid x:Name="gridFilter">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" MinWidth="60" />
+                    </Grid.ColumnDefinitions>
+                    <telerik:RadDataFilter Name="radDataFilter" 
+                                           view:ItemPropertyDefinitionBindingBehavior.ItemPropertyDefinitions="{Binding ItemPropertyDefinitions}"
+                                           view:FilterDescriptorBindingBehavior.FilterDescriptors="{Binding FilterDescriptors}" />
+                    <telerik:RadButton x:Name="btnSearch" Content="查询" Margin="5" Grid.Column="1" MinWidth="70"
+                                       VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding SearchCommand}" />
+                </Grid>
+            </ScrollViewer>
+            <!--设置RadGridView的Height貌似会影响到水平滚动条的显示，这莫非是Bug？-->
+            <telerik:RadGridView x:Name="RadGridView1" ItemsSource="{Binding SynEntities}" ValidatesOnDataErrors="InEditMode"
+                             CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed" Grid.Row="1" IsReadOnly="True"
+                             AutoGenerateColumns="False" BorderThickness="0">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}" Header="编号" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="名称" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding RGBCode}" Header="RGB码" >
+                        <telerik:GridViewDataColumn.CellStyle>
+                            <Style TargetType="telerik:GridViewCell">
+                                <Setter Property="Background" Value="{Binding RGBCode}" />
+                            </Style>
+                        </telerik:GridViewDataColumn.CellStyle>
+                    </telerik:GridViewDataColumn>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </Grid>
+        <GridSplitter Width="4" Grid.Column="1" ResizeBehavior="PreviousAndNext" />
+        <telerik:RadDataForm x:Name="myRadDataForm" ItemsSource="{Binding SynEntities}" BorderThickness="0"
+                             AutoGenerateFields="False" EditEnding="myRadDataForm_EditEnding" DeletingItem="myRadDataForm_DeletingItem" Grid.Column="2">
+            <telerik:RadDataForm.ReadOnlyTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Code,Mode=OneWay}" Label="编号" IsReadOnly="True" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,Mode=OneWay}" Label="名称" IsReadOnly="True" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.ReadOnlyTemplate>
+            <telerik:RadDataForm.EditTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Code,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="编号" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="名称" />
+                        <telerik:RadColorEditor SelectedColor="{Binding RGBCode,Mode=TwoWay}" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.EditTemplate>
+            <telerik:RadDataForm.NewItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Code,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="编号" />
+                        <telerik:DataFormDataField DataMemberBinding="{Binding Name,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Label="名称" />
+                        <telerik:RadColorEditor SelectedColor="{Binding RGBCode,Mode=TwoWay}" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadDataForm.NewItemTemplate>
+        </telerik:RadDataForm>
+
+    </Grid>
+</UserControl>

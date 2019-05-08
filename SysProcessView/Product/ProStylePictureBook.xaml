@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="SysProcessView.ProStylePictureBook"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:tileview="clr-namespace:Telerik.Windows.Controls.TileView;assembly=Telerik.Windows.Controls.Navigation"
+             xmlns:view="clr-namespace:View.Extension;assembly=View.Extension"
+             xmlns:local="clr-namespace:SysProcessView"
+             xmlns:sysvm="clr-namespace:SysProcessViewModel;assembly=SysProcessViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <local:QuarterImageCvt x:Key="quarterImageCvt" />
+        <!--<local:StylePictureCvt x:Key="stylePictureCvt" />-->
+        <!--<DataTemplate x:Key="transitionContentTemplate">
+            <Grid>
+                <Image Source="{Binding Pictures}" Stretch="Uniform" HorizontalAlignment="Left" />
+            </Grid>
+        </DataTemplate>-->
+        <!--<DataTemplate x:Key="picListBoxItemTemplate">
+            <Grid Height="70" Margin="5 0">
+                <Image Source="{Binding Mode=OneWay,Converter={StaticResource stylePictureCvt}}" Stretch="Uniform" />
+            </Grid>
+        </DataTemplate>-->
+        <DataTemplate x:Key="headerTemplate">
+            <Grid>
+                <Grid Background="White">
+                    <Grid.Effect>
+                        <BlurEffect Radius="18" />
+                    </Grid.Effect>
+                </Grid>
+                <TextBlock VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0}年{1} {2}"><Binding Path="Year"/><Binding Path="QuarterName"/><Binding Path="BrandName"/></MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="contentTemplate">
+            <telerik:RadFluidContentControl ContentChangeMode="Manual"
+			                                State="Normal"
+			                                TransitionDuration="0:0:.5">
+                <telerik:RadFluidContentControl.Content>
+                    <Image Source="{Binding CoverImage,Mode=OneWay}" Stretch="UniformToFill" VerticalAlignment="Center" />
+                </telerik:RadFluidContentControl.Content>
+                <telerik:RadFluidContentControl.LargeContent>
+                    <local:StylePicturesShowPanel DataContext="{Binding}" IsReadOnly="{Binding IsReadOnly,Mode=OneTime}" />
+                    <!--<Grid>
+                        <telerik:RadTransitionControl Content="{Binding SelectedStyle}" ContentTemplate="{StaticResource transitionContentTemplate}" Transition="FlipWarp" />
+                        <telerik:RadListBox ItemsSource="{Binding Styles}" SelectedItem="{Binding SelectedStyle,Mode=TwoWay}" 
+                                            ItemTemplate="{StaticResource picListBoxItemTemplate}"
+                                            BorderThickness="0"
+                                            Background="Transparent"
+                                            VerticalAlignment="Bottom">
+                            <telerik:RadListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" IsItemsHost="True" />
+                                </ItemsPanelTemplate>
+                            </telerik:RadListBox.ItemsPanel>
+                        </telerik:RadListBox>
+                    </Grid>-->
+                </telerik:RadFluidContentControl.LargeContent>
+            </telerik:RadFluidContentControl>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <WrapPanel Orientation="Horizontal" Margin="5 5 5 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto "/>
+                    <ColumnDefinition Width="Auto "/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="品牌" VerticalAlignment="Center" />
+                <telerik:RadComboBox ItemsSource="{Binding Source={x:Static sysvm:VMGlobal.PoweredBrands}}"
+                                     SelectedValue="{Binding BrandID}"
+                                     SelectedValuePath="ID" DisplayMemberPath="Name"
+                                     Width="100"
+                                     Margin="5 0"
+                                     Grid.Column="1"/>
+            </Grid>
+            <telerik:RadButton x:Name="btnSearch" Content="查询" Width="60"
+                               HorizontalAlignment="Right"
+                               Command="{Binding SearchCommand}" />
+        </WrapPanel>
+        <telerik:RadTileView ItemsSource="{Binding Entities}"
+		                     ItemTemplate="{StaticResource headerTemplate}"
+                             ContentTemplate="{StaticResource contentTemplate}"
+                             IsItemDraggingEnabled="False"
+                             PreservePositionWhenMaximized="True"
+		                     MaximizeMode="ZeroOrOne"
+                             MinimizedRowHeight="46"
+                             MinimizedColumnWidth="230"
+                             TileStateChanged="tileView1_TileStateChanged"
+                             Grid.Row="1">
+            <telerik:RadTileView.HeaderStyle>
+                <Style TargetType="tileview:TileViewItemHeader">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="{Binding Quarter,Mode=OneWay, Converter={StaticResource quarterImageCvt}}" Stretch="Fill" />
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </telerik:RadTileView.HeaderStyle>
+        </telerik:RadTileView>
+    </Grid>
+</UserControl>

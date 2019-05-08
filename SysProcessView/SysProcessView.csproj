@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55AB3F23-DC57-44CC-9B78-111F6ABA936F}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SysProcessView</RootNamespace>
+    <AssemblyName>SysProcessView</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.UniqueCode|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug.UniqueCode\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UniqueCode</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BillPrintTemplate.xaml.cs">
+      <DependentUpon>BillPrintTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\CarriedStandardForCertificationSet.xaml.cs">
+      <DependentUpon>CarriedStandardForCertificationSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\CertificationMake.xaml.cs">
+      <DependentUpon>CertificationMake.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\CertificationPrintSetWin.xaml.cs">
+      <DependentUpon>CertificationPrintSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\FloatPriceTacticSelectWin.xaml.cs">
+      <DependentUpon>FloatPriceTacticSelectWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\GradeForCertificationSet.xaml.cs">
+      <DependentUpon>GradeForCertificationSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\MaterielForCertificationSet.xaml.cs">
+      <DependentUpon>MaterielForCertificationSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\MaterielKindForCertificationSet.xaml.cs">
+      <DependentUpon>MaterielKindForCertificationSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Certification\SafetyTechForCertificationSet.xaml.cs">
+      <DependentUpon>SafetyTechForCertificationSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ColorSubtractCvt.cs" />
+    <Compile Include="Converters\OrganizationCvt.cs" />
+    <Compile Include="Converters\ProColorsForSetCvt.cs" />
+    <Compile Include="Converters\ProductCvt.cs" />
+    <Compile Include="Converters\ProSizesForSetCvt.cs" />
+    <Compile Include="Converters\QuarterCvt.cs" />
+    <Compile Include="Converters\RoleUserCvt.cs" />
+    <Compile Include="Converters\SizesOfStyleAsStringCvt.cs" />
+    <Compile Include="Converters\UserIDNameConvertor.cs" />
+    <Compile Include="LargeDataTransfer.cs" />
+    <Compile Include="Organization\OrganizationAreaSet.xaml.cs">
+      <DependentUpon>OrganizationAreaSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\MultiOrganizationSelector.xaml.cs">
+      <DependentUpon>MultiOrganizationSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\MultiOrganizationSelectWin.xaml.cs">
+      <DependentUpon>MultiOrganizationSelectWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\OrganizationMap.xaml.cs">
+      <DependentUpon>OrganizationMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\OrganizationSelector.xaml.cs">
+      <DependentUpon>OrganizationSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\OrganizationSelectorWin.xaml.cs">
+      <DependentUpon>OrganizationSelectorWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\Information.xaml.cs">
+      <DependentUpon>Information.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\OrganizationTypeSet.xaml.cs">
+      <DependentUpon>OrganizationTypeSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\PriceFloat.xaml.cs">
+      <DependentUpon>PriceFloat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\PriceFloatBatchSetWin.xaml.cs">
+      <DependentUpon>PriceFloatBatchSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ColorDefine.xaml.cs">
+      <DependentUpon>ColorDefine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProBoduanSet.xaml.cs">
+      <DependentUpon>ProBoduanSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProBrandSet.xaml.cs">
+      <DependentUpon>ProBrandSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProductInfo.xaml.cs">
+      <DependentUpon>ProductInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProductPictrueShowWin.xaml.cs">
+      <DependentUpon>ProductPictrueShowWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProNameSet.xaml.cs">
+      <DependentUpon>ProNameSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProQuarterSet.xaml.cs">
+      <DependentUpon>ProQuarterSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProSizeSet.xaml.cs">
+      <DependentUpon>ProSizeSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProStyleMatchManage.cs" />
+    <Compile Include="Product\ProStylePictureBook.xaml.cs">
+      <DependentUpon>ProStylePictureBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProStyleQuantitySetWin.xaml.cs">
+      <DependentUpon>ProStyleQuantitySetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ProUnitSet.xaml.cs">
+      <DependentUpon>ProUnitSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\SKUDeletion.xaml.cs">
+      <DependentUpon>SKUDeletion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\StylePictureBatchUpload.xaml.cs">
+      <DependentUpon>StylePictureBatchUpload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\StylePicturesShowPanel.xaml.cs">
+      <DependentUpon>StylePicturesShowPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\StyleSelectWin.xaml.cs">
+      <DependentUpon>StyleSelectWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\WinStyleSelectForMatching.xaml.cs">
+      <DependentUpon>WinStyleSelectForMatching.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="QuantitySetForProStyle.cs" />
+    <Compile Include="SysRoleSet.xaml.cs">
+      <DependentUpon>SysRoleSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SysUserSet.xaml.cs">
+      <DependentUpon>SysUserSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIHelper.cs" />
+    <Compile Include="UniqueCodeDetailsTemplate.xaml.cs">
+      <DependentUpon>UniqueCodeDetailsTemplate.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="BillPrintTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Certification\CarriedStandardForCertificationSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Certification\CertificationMake.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Certification\CertificationPrintSetWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Certification\FloatPriceTacticSelectWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Certification\GradeForCertificationSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Certification\MaterielForCertificationSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Certification\MaterielKindForCertificationSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Certification\SafetyTechForCertificationSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\OrganizationAreaSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Organization\MultiOrganizationSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\OrganizationMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Organization\OrganizationSelectorWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\MultiOrganizationSelectWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\OrganizationSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\OrganizationTypeSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\PriceFloat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\PriceFloatBatchSetWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\Information.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Product\ColorDefine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Product\ProductPictrueShowWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Product\ProQuarterSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Product\ProStyleQuantitySetWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Product\SKUDeletion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Product\StylePicturesShowPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Product\WinStyleSelectForMatching.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SysRoleSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SysUserSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UniqueCodeDetailsTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\ProBoduanSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\ProBrandSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\ProductInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\ProNameSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\ProSizeSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\ProStylePictureBook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\ProUnitSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\StylePictureBatchUpload.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Product\StyleSelectWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBOperator\DBAccess.csproj">
+      <Project>{0659B2B4-E322-47B8-B5BC-C1FCDF23A820}</Project>
+      <Name>DBAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DistributionViewModel\DistributionViewModel.csproj">
+      <Project>{1ce10888-2818-4318-bad1-1d95290cda2b}</Project>
+      <Name>DistributionViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainLogicEncap\DomainLogicEncap.csproj">
+      <Project>{ECABAC61-5112-406E-B5F8-D898A996AB4C}</Project>
+      <Name>DomainLogicEncap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IWCFService\IWCFService.csproj">
+      <Project>{05A5BA0B-8CD8-4C0E-98F3-165BD8A25DE1}</Project>
+      <Name>IWCFService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kernel.Extension\Kernel.csproj">
+      <Project>{A0726815-AFFD-4636-A64A-8BA7A7612FA8}</Project>
+      <Name>Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Extension\Model.Extension.csproj">
+      <Project>{3E5D357D-E7A9-4BF5-9079-0484E303FB6E}</Project>
+      <Name>Model.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessModel\SysProcessModel.csproj">
+      <Project>{522D227D-139F-4E59-983B-339198A9FDAD}</Project>
+      <Name>SysProcessModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessViewModel\SysProcessViewModel.csproj">
+      <Project>{1B328CA3-BFF9-4FFD-8214-EF603465355E}</Project>
+      <Name>SysProcessViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\View.Extension\View.Extension.csproj">
+      <Project>{D0FB639A-65F2-47C9-9DBB-B61BB8ED13E7}</Project>
+      <Name>View.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModelBase\ViewModelBasic.csproj">
+      <Project>{3D521D68-094F-46C8-9877-A2009EA1CAD5}</Project>
+      <Name>ViewModelBasic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ERPViewModelBasic.csproj">
+      <Project>{2E97B0FB-10A1-4241-A4E0-ABC60A7D51E7}</Project>
+      <Name>ERPViewModelBasic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

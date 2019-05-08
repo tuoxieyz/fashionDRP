@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <BuildDependsOn>
+      PreparePreprocessXamlItems;
+      PreprocessXamlForUniqueCode;
+      CreateItemsForWPF;
+      $(BuildDependsOn);
+    </BuildDependsOn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<BuildTasksPath Condition="'$(BuildTasksPath)' == ''">..\BuildTasks\</BuildTasksPath>-->
+    <!--<BuildTasksLib>$(BuildTasksPath)BuildTasks.dll</BuildTasksLib>-->
+    <BuildTasksLib>BuildTasks.dll</BuildTasksLib>
+  </PropertyGroup>
+
+  <UsingTask AssemblyFile="$(BuildTasksLib)" TaskName="PreprocessXaml" />
+
+  <Target Name="PreparePreprocessXamlItems">
+    <ItemGroup>
+      <PreprocessedXaml Condition=" '%(PreprocessedXaml.OutputFile)' == '' ">
+        <OutputFile>$([System.String]::Concat('%(PreprocessedXaml.RelativeDir)%(Filename)%(Extension)', '').Replace('_complex.xaml', '.xaml'))</OutputFile>
+      </PreprocessedXaml>
+    </ItemGroup>
+  </Target>
+
+  <!--不使用增量生成模式-->
+  <!-- Inputs="@(PreprocessedXaml)" Outputs="@(PreprocessedXaml -> '$(ProjectDir)%(OutputFile)')"-->
+  <Target Name="PreprocessXamlForUniqueCode">
+    <PreprocessXaml SourceFile="%(PreprocessedXaml.FullPath)"
+							      DestinationFile="$(ProjectDir)%(PreprocessedXaml.OutputFile)">
+    </PreprocessXaml>
+  </Target>
+
+  <Target Name="CreateItemsForWPF">
+    <ItemGroup>
+      <Page Include="%(PreprocessedXaml.OutputFile)">
+        <Generator>MSBuild:Compile</Generator>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+  </Target>
+
+</Project>

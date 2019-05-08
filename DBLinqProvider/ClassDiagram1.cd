@@ -1,0 +1,1169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DBLinqProvider.CompoundKey" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="90.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAABAAgAAAAAAAAAAAAKAEAAAAAAAAAAA=</HashCode>
+      <FileName>CompoundKey.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DBLinqProvider.DeferredList&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAgEgAAICAABIYCAAAFAQgAAAAACAECAAAAABQIAA=</HashCode>
+      <FileName>DeferredList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DBLinqProvider.EnumerateOnce&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="86.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAIAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>EnumerateOnce.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DBLinqProvider.ExpressionComparer" Collapsed="true">
+    <Position X="11.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAoAAAAAAAAAAABICokUEADAARAgABMAAEFAAAAYAAA=</HashCode>
+      <FileName>ExpressionComparer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.ExpressionExtensions" Collapsed="true">
+    <Position X="88.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAEAAAAAAAAAiAgAAAAAAAAAAAAAAwAAAAAQRAACA=</HashCode>
+      <FileName>ExpressionExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.ExpressionReplacer" Collapsed="true">
+    <Position X="78.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAEAAEAACA=</HashCode>
+      <FileName>ExpressionReplacer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.ExpressionVisitor" Collapsed="true">
+    <Position X="42.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEDQBECAAAYwhAQAAAgAISDAIAAEIiICAHBIAAhERJA=</HashCode>
+      <FileName>ExpressionVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.ExpressionWriter" Collapsed="true">
+    <Position X="80.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEEABAKAAAY0hAAIFAAAIaCAAAAEIgACAVAAIAkEQAA=</HashCode>
+      <FileName>ExpressionWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Grouping&lt;TKey, TElement&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAABQAAAAEAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Grouping.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DBLinqProvider.SessionTableExtensions" Collapsed="true">
+    <Position X="88.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIACIAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>IEntitySession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.MostRecentlyUsedCache&lt;T&gt;" Collapsed="true">
+    <Position X="85" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAiAAAAAAAAAAACAAIAQAAAACAAAAAAAAAABAAIA=</HashCode>
+      <FileName>MostRecentlyUsedCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.PartialEvaluator" Collapsed="true">
+    <Position X="88.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PartialEvaluator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Query&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="92" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAQAAAAEABAEAAAAAQAAABAAAAAUAAAAAAAAAAA=</HashCode>
+      <FileName>Query.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DBLinqProvider.QueryCache" Collapsed="true">
+    <Position X="93.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAQAAgAAAQABAAAAAQAAAAIAAAAAAKAAABQAAA=</HashCode>
+      <FileName>QueryCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.QueryCompiler" Collapsed="true">
+    <Position X="85" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>QueryCompiler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.QueryProvider" Collapsed="true">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAQQAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QueryProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DBLinqProvider.ReadOnlyExtensions" Collapsed="true">
+    <Position X="83.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ReadOnlyExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.ReflectionExtensions" Collapsed="true">
+    <Position X="85" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ReflectionExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.ScopedDictionary&lt;TKey, TValue&gt;" Collapsed="true">
+    <Position X="86.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAEAAAAAAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScopedDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.StrongDelegate" Collapsed="true">
+    <Position X="90.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAABAAABAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>StrongDelegate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.TopologicalSorter" Collapsed="true">
+    <Position X="93.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TopologicalSort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.TypedSubtreeFinder" Collapsed="true">
+    <Position X="76.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAgAAAAAAAJAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TypedSubtreeFinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.TypeHelper" Collapsed="true">
+    <Position X="83.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggAAAAAAAAQAAAAQgAAAAAAIAAQAAAAkAAAAAQCQAAA=</HashCode>
+      <FileName>TypeHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Updatable" Collapsed="true">
+    <Position X="85" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAEAQAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Updatable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ExecutionBuilder" Collapsed="true">
+    <Position X="69.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQggQIkAwAAgFAAQAkEABDAAAAoEgABAKEIQMEA2o=</HashCode>
+      <FileName>Data\Common\ExecutionBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.Aggregator" Collapsed="true">
+    <Position X="83.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Data\Common\Expressions\Aggregator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DbExpressionComparer" Collapsed="true">
+    <Position X="11.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAFiIAAACAEoIAAABAAAABAEEAAAAEYFAJAAkTAAII=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressionComparer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DbExpressionExtensions" Collapsed="true">
+    <Position X="92" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAIAQgAAEAAKABQAACQAACABFAAAIAAABACABAAAgAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressionExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DbExpressionReplacer" Collapsed="true">
+    <Position X="17.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAEAAEAACA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressionReplacer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DbExpressionTypeExtensions" Collapsed="true">
+    <Position X="93.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DbExpression" Collapsed="true">
+    <Position X="28.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAQEAAAAAAAAAAAAAAAAAQAAAAgAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.AliasedExpression" Collapsed="true">
+    <Position X="28.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.TableExpression" Collapsed="true">
+    <Position X="30" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAAAEAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.EntityExpression" Collapsed="true">
+    <Position X="45.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ColumnExpression" Collapsed="true">
+    <Position X="48" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIQAAAEkAAAAAQAAAAEAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.TableAlias" Collapsed="true">
+    <Position X="92" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ColumnDeclaration" Collapsed="true">
+    <Position X="88.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAEAAAAAQAABAEAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.OrderExpression" Collapsed="true">
+    <Position X="86.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAIAABAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SelectExpression" Collapsed="true">
+    <Position X="27.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoACAAKAAAAAgAAAAAAAAQAAAAFAAAIACAEQAAiBEgA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.JoinExpression" Collapsed="true">
+    <Position X="12" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAYAAAACAAAgAAAAAAAAAAAAIAAAACACAAAAAgAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.OuterJoinedExpression" Collapsed="true">
+    <Position X="16.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAYAAAACAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SubqueryExpression" Collapsed="true">
+    <Position X="21" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ScalarExpression" Collapsed="true">
+    <Position X="18.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ExistsExpression" Collapsed="true">
+    <Position X="21" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.InExpression" Collapsed="true">
+    <Position X="23.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAACAQAAAgAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.AggregateExpression" Collapsed="true">
+    <Position X="50.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAAAAAAAAAAAgAAAAIAAAAAAEAgA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.AggregateSubqueryExpression" Collapsed="true">
+    <Position X="52.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABEAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAAAAQAAQAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.IsNullExpression" Collapsed="true">
+    <Position X="54.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.BetweenExpression" Collapsed="true">
+    <Position X="3" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAABAAAAAAAAAAAAABABAAAQAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.RowNumberExpression" Collapsed="true">
+    <Position X="5.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.NamedValueExpression" Collapsed="true">
+    <Position X="7.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAEAAAAAQAAAAEACAAAAAgAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ProjectionExpression" Collapsed="true">
+    <Position X="9.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAAAEAAAAAQAAAAAAAABIAAAAQAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ClientJoinExpression" Collapsed="true">
+    <Position X="14.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAQAAAAEAAAAAAAAACAAAAAgAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.BatchExpression" Collapsed="true">
+    <Position X="85" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAgAAQAIAAAAAAAEAAIABAACQEAAAgBAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.FunctionExpression" Collapsed="true">
+    <Position X="25.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAkAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.CommandExpression" Collapsed="true">
+    <Position X="37.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.InsertCommand" Collapsed="true">
+    <Position X="36.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ColumnAssignment" Collapsed="true">
+    <Position X="86.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAQBAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.UpdateCommand" Collapsed="true">
+    <Position X="39" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAAQQAAAAEAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DeleteCommand" Collapsed="true">
+    <Position X="41.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAQQAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.IFCommand" Collapsed="true">
+    <Position X="43.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAYAAAAGAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.BlockCommand" Collapsed="true">
+    <Position X="32.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DeclarationCommand" Collapsed="true">
+    <Position X="34.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAQAAAAEAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.VariableDeclaration" Collapsed="true">
+    <Position X="86.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAQAABAFAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.VariableExpression" Collapsed="true">
+    <Position X="88.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAQAAQAEAAAAAQAAAAEAAAAAQAAAAgAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DbExpressionVisitor" Collapsed="true">
+    <Position X="39" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>sQQAgAodEWwQQicAQQIAEAQRAAADoAIqgABBIgAAB0k=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressionVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DbExpressionWriter" Collapsed="true">
+    <Position X="80.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAARQAg0AEAAAAQABAAAAIEEAgAAAAAEAAgg=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressionWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.FieldReader" Collapsed="true">
+    <Position X="90.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAgBEAUiJgiQJEACAAAAjAIAAAQGK0QQIkQCEAAAIkw=</HashCode>
+      <FileName>Data\Common\FieldReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryLanguage" Collapsed="true">
+    <Position X="1.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgAAAAAgQAAGCCAAAAAgAAgAAAJAAAAAAAQAgCAAA=</HashCode>
+      <FileName>Data\Common\Language\QueryLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryLinguist" Collapsed="true">
+    <Position X="88.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAgAAAAAEAAAABgAAAAAAACEAAAAAAA=</HashCode>
+      <FileName>Data\Common\Language\QueryLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryType" Collapsed="true">
+    <Position X="3.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAAAAABAAEAA=</HashCode>
+      <FileName>Data\Common\Language\QueryTypeSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryTypeSystem" Collapsed="true">
+    <Position X="17.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Data\Common\Language\QueryTypeSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SqlFormatter" Collapsed="true">
+    <Position X="61.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QaRIggIYGRx0BC9OBSABESQxEQhAICBigBQAMQmAQQA=</HashCode>
+      <FileName>Data\Common\Language\SqlFormatter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.MappingTable" Collapsed="true">
+    <Position X="83.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Mapping\AdvancedMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.AdvancedMapping" Collapsed="true">
+    <Position X="8.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAABBAAAIAACAAAIAAAAAEEAAAgAQAI=</HashCode>
+      <FileName>Data\Common\Mapping\AdvancedMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.AdvancedMapper" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAgAAQAAABQAAEIBAAAAAAEAAAIgQACAAIAA=</HashCode>
+      <FileName>Data\Common\Mapping\AdvancedMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.BasicMapping" Collapsed="true">
+    <Position X="9.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAIRCAAAIQBCAIBIABKAFAAAACAgAEAAAACRoA=</HashCode>
+      <FileName>Data\Common\Mapping\BasicMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.BasicMapper" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCAABYABAABAAAACQAAEABCABAAAEAAAAoYADBAJAA=</HashCode>
+      <FileName>Data\Common\Mapping\BasicMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.MappingEntity" Collapsed="true">
+    <Position X="93.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Mapping\QueryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryMapping" Collapsed="true">
+    <Position X="9.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAQAADAAIBIAAKABAAIACAAAAAAAACQIA=</HashCode>
+      <FileName>Data\Common\Mapping\QueryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryMapper" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAYAAAABAAAAAAAAEAAAABAAAEAAAAgUAAAAIAA=</HashCode>
+      <FileName>Data\Common\Mapping\QueryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryCommand" Collapsed="true">
+    <Position X="83.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAIAAAACAAAA=</HashCode>
+      <FileName>Data\Common\QueryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryParameter" Collapsed="true">
+    <Position X="90.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAEAAAAAQAAAAFAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\QueryCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryExecutor" Collapsed="true">
+    <Position X="86.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgABAAAAAAAwAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\QueryExecutor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryPolicy" Collapsed="true">
+    <Position X="0.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAIQAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Data\Common\QueryPolicy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryPolice" Collapsed="true">
+    <Position X="92" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAkAACABAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Data\Common\QueryPolicy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryTranslator" Collapsed="true">
+    <Position X="93.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAIAAAACAIAAAACAAAAAAAAAAAEAAAAAEA=</HashCode>
+      <FileName>Data\Common\QueryTranslator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.AggregateChecker" Collapsed="true">
+    <Position X="20" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAEAQAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\AggregateChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.AggregateRewriter" Collapsed="true">
+    <Position X="26.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAACAAQAAgAAAIAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\AggregateRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ClientJoinedProjectionRewriter" Collapsed="true">
+    <Position X="33.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQkCICEAAAAiAABAAAAACIAgAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Data\Common\Translation\ClientJoinedProjectionRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ColumnMapper" Collapsed="true">
+    <Position X="40.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABQAAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\ColumnMapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ProjectedColumns" Collapsed="true">
+    <Position X="90.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAA=</HashCode>
+      <FileName>Data\Common\Translation\ColumnProjector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ColumnProjector" Collapsed="true">
+    <Position X="47" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAwAAIAIAAAAABACABgECCACAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\ColumnProjector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ComparisonRewriter" Collapsed="true">
+    <Position X="51.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAgACAAAAAAAAQAAACAAAAAAAAAAABBAAAAAAAE=</HashCode>
+      <FileName>Data\Common\Translation\ComparisonRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.CrossApplyRewriter" Collapsed="true">
+    <Position X="56" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\CrossApplyRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.CrossJoinIsolator" Collapsed="true">
+    <Position X="65" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAQQACAAAAAQAAAAAAAAAAAACEAAAQAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\CrossJoinIsolator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.CrossJoinRewriter" Collapsed="true">
+    <Position X="71.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAACAAQACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\CrossJoinRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.DeclaredAliasGatherer" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAQAAAAABAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\DeclaredAliasGatherer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.NamedValueGatherer" Collapsed="true">
+    <Position X="8.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAACAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\NamedValueGatherer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.OrderByRewriter" Collapsed="true">
+    <Position X="13.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAACEAQAAgAAAAAAAAAAAAAAAAAAAAAAACCAAA=</HashCode>
+      <FileName>Data\Common\Translation\OrderByRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.Parameterizer" Collapsed="true">
+    <Position X="22.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIEEAMAAAQAAgAAAAAQQAAAAAAAAAAABCAAAoAQAg=</HashCode>
+      <FileName>Data\Common\Translation\Parameterizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryBinder" Collapsed="true">
+    <Position X="29" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCAIkMgAMBC4BwwAoIAgCSQAgBAFAAQgAAgoAJpDRUA=</HashCode>
+      <FileName>Data\Common\Translation\QueryBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.QueryDuplicator" Collapsed="true">
+    <Position X="35.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAQQAAAAAQAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\QueryDuplicator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.RedundantColumnRemover" Collapsed="true">
+    <Position X="42.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAQQAAAAAAAABAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\RedundantColumnRemover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.RedundantJoinRemover" Collapsed="true">
+    <Position X="44.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAQAAAAAAAAABAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\RedundantJoinRemover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.RedundantSubqueryRemover" Collapsed="true">
+    <Position X="49.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAQACAAAAAABAABAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\RedundantSubqueryRemover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ReferencedAliasGatherer" Collapsed="true">
+    <Position X="53.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAABAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\ReferencedAliasGatherer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.ReferencedColumnGatherer" Collapsed="true">
+    <Position X="58.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQQAAAAAAEAAAAAAAAAAAIACAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\ReferencedColumnGatherer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.RelationshipBinder" Collapsed="true">
+    <Position X="67.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAA4AAgAAQAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Data\Common\Translation\RelationshipBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.RelationshipIncluder" Collapsed="true">
+    <Position X="74" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAIAgAAAAAACCACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\RelationshipIncluder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SelectGatherer" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\SelectGatherer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SingletonProjectionRewriter" Collapsed="true">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAkAICEAAAAgAAAAAACAAAAAAIAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Data\Common\Translation\SingletonProjectionRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SkipToNestedOrderByRewriter" Collapsed="true">
+    <Position X="15.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\SkipToNestedOrderByRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SkipToRowNumberRewriter" Collapsed="true">
+    <Position X="24.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\SkipToRowNumberRewriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.SubqueryRemover" Collapsed="true">
+    <Position X="31.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEACAAAQQAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Translation\SubqueryRemover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Common.UnusedColumnRemover" Collapsed="true">
+    <Position X="38" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAIAEQQAAAEAAAABAAABAAAIAAkAAAAAAAAAQA=</HashCode>
+      <FileName>Data\Common\Translation\UnusedColumnRemover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.DbEntityProvider" Collapsed="true">
+    <Position X="3" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IoTAAAAIAAAAQCEAAAABBAAAAACAAAAAAgAAAAIAgCA=</HashCode>
+      <FileName>Data\DbEntityProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.DbTypeSystem" Collapsed="true">
+    <Position X="17.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAAEAAAgAgAEAAAIAABAAAAAAAAABAAAQAAAAAAA=</HashCode>
+      <FileName>Data\DbTypeSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.DbQueryType" Collapsed="true">
+    <Position X="3.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEIAABBCIAAAACAAAACQABAAEAA=</HashCode>
+      <FileName>Data\DbTypeSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.EntityPolicy" Collapsed="true">
+    <Position X="0.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEYBAAAgAAAAACCQAAAEIAAAAAAAIAIAAAAAA=</HashCode>
+      <FileName>Data\EntityPolicy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.EntityProvider" Collapsed="true">
+    <Position X="3" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IOgAgAAgCQABAQxABQIEDAACABgIIAAAAwAgAgAAAKA=</HashCode>
+      <FileName>Data\EntityProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DBLinqProvider.Data.EntitySession" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAQQAAAgEAABABAAsAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\EntitySession.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.MappingAttribute" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.TableBaseAttribute" Collapsed="true">
+    <Position X="8.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.TableAttribute" Collapsed="true">
+    <Position X="7.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.ExtensionTableAttribute" Collapsed="true">
+    <Position X="10" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAIAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.MemberAttribute" Collapsed="true">
+    <Position X="13.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.ColumnAttribute" Collapsed="true">
+    <Position X="12.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACIAAAAAAAAAAAQAABAAACAAAAAAAAAAAgA=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.AssociationAttribute" Collapsed="true">
+    <Position X="14.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAACAAAAQAAQAAAAAAAAgAAAAEAAAAAA=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.AttributeMapping" Collapsed="true">
+    <Position X="8.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAAAAIRDCAQIQADCABIABAQNCIARAAgkEAAAgDAgI=</HashCode>
+      <FileName>Data\Mapping\AttributeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.ImplicitMapping" Collapsed="true">
+    <Position X="10.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABABAAAIRAAAQAACDAAAAICAAFQAABAAAAEAAAAAAAA=</HashCode>
+      <FileName>Data\Mapping\ImplicitMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.Mapping.XmlMapping" Collapsed="true">
+    <Position X="8.5" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAABEAAAAAAAAAAACAAAAAAQAAACAAAAAAAAA=</HashCode>
+      <FileName>Data\Mapping\XmlMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.OracleCore.AdoProvider" Collapsed="true">
+    <Position X="14.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACUABgIEAAAAAAAAAAgAABAAMgAAIRAEBAIAAoAAgE=</HashCode>
+      <FileName>Data\OracleClient\Core\AdoProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.OracleCore.OracleEntityProvider" Collapsed="true">
+    <Position X="4" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAABgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\OracleClient\Core\OracleEntityProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.OracleCore.OracleExecutor" Collapsed="true">
+    <Position X="5.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAQAAAAAAAAAAAAABAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\OracleClient\Core\OracleExecutor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.OracleCore.PLSqlFormatter" Collapsed="true">
+    <Position X="62.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAEAAwBCAEIAAAACAAEQgAAABgABAAAAgAQAA=</HashCode>
+      <FileName>Data\OracleClient\Core\PLSqlFormatter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.OracleCore.PLSqlLanguage" Collapsed="true">
+    <Position X="0.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgABAAAgAAAEIAAAAAIgAAgAAABAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\OracleClient\Core\PLSqlLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.ODP.AdoOracleDataProvider" Collapsed="true">
+    <Position X="13.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\OracleClient\ODP\AdoOracleDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.ODP.ODPExecutor" Collapsed="true">
+    <Position X="5.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Data\OracleClient\ODP\ODPExecutor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.ODP.ODPQueryProvider" Collapsed="true">
+    <Position X="3" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAABAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\OracleClient\ODP\ODPQueryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.OracleClient.AdoOracleClientProvider" Collapsed="true">
+    <Position X="15.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\OracleClient\OracleClient\AdoOracleClientProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.OracleClient.OracleQueryProvider" Collapsed="true">
+    <Position X="5.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\OracleClient\OracleClient\OracleQueryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.SqlClient.SqlQueryProvider" Collapsed="true">
+    <Position X="0.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAABAgAAAABAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\SqlClient\SqlQueryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.SqlClient.TSqlFormatter" Collapsed="true">
+    <Position X="60.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgBCAAAAAAECAgAAgAAABAABAAAAgAAQA=</HashCode>
+      <FileName>Data\SqlClient\TSqlFormatter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLinqProvider.Data.SqlClient.TSqlLanguage" Collapsed="true">
+    <Position X="2.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgABAAAgAAAEIAAAAAIgAAgAAABAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\SqlClient\TSqlLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DBLinqProvider.DeferredValue&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAgAAAAAIAIJAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>DeferredValue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="DBLinqProvider.Data.Common.EntityInfo" Collapsed="true">
+    <Position X="85" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAQAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Mapping\QueryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="DBLinqProvider.IDeferLoadable" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DeferredList.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IDeferredList" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DeferredList.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IDeferredList&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DeferredList.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IEntityProvider" Collapsed="true">
+    <Position X="85" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAIA=</HashCode>
+      <FileName>IEntityProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IEntityTable" Collapsed="true">
+    <Position X="13.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAQAAAEAAAAAAAAAAQAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>IEntityProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IEntityTable&lt;T&gt;" Collapsed="true">
+    <Position X="14.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAQAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>IEntityProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IEntitySession" Collapsed="true">
+    <Position X="86.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEntitySession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.ISessionTable" Collapsed="true">
+    <Position X="17.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAABAAAAAAEAEAAAAAAAAIA=</HashCode>
+      <FileName>IEntitySession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.ISessionTable&lt;T&gt;" Collapsed="true">
+    <Position X="17.5" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAEAEAAAAAAAAIA=</HashCode>
+      <FileName>IEntitySession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IQueryText" Collapsed="true">
+    <Position X="90.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Query.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IUpdatable" Collapsed="true">
+    <Position X="14.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Updatable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.IUpdatable&lt;T&gt;" Collapsed="true">
+    <Position X="15.75" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Updatable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.Data.Common.IHaveMappingEntity" Collapsed="true">
+    <Position X="88.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Mapping\QueryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DBLinqProvider.Data.Common.ICreateExecutor" Collapsed="true">
+    <Position X="83.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\QueryExecutor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DBLinqProvider.SubmitAction" Collapsed="true">
+    <Position X="88.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAQAgAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>IEntitySession.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DBLinqProvider.Data.Common.DbExpressionType" Collapsed="true">
+    <Position X="83.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>WYQEAuAEQAAAAAgAAABAQAIAAQEAAAAIAAQAQAEQgiA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DBLinqProvider.Data.Common.OrderType" Collapsed="true">
+    <Position X="86.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DBLinqProvider.Data.Common.JoinType" Collapsed="true">
+    <Position X="85" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAACEAAAAAAAAIAAQAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Common\Expressions\DbExpressions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

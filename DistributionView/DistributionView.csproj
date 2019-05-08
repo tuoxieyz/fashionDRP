@@ -1,0 +1,1162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{74475E85-8EFD-4AE3-811E-9251D423F2ED}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DistributionView</RootNamespace>
+    <AssemblyName>DistributionView</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\HabilimentERP\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\HabilimentERP\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.UniqueCode|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\HabilimentERP\bin\Debug.UniqueCode\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UniqueCode</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart, Version=2013.1.509.40, Culture=neutral, PublicKeyToken=d3625f8bf04286d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\备份文件\DLL\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bill\AuditingGoodReturnForSubordinate.xaml.cs">
+      <DependentUpon>AuditingGoodReturnForSubordinate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\AutoAllocate.xaml.cs">
+      <DependentUpon>AutoAllocate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\BillAllocateManage.xaml.cs">
+      <DependentUpon>BillAllocateManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\Cannibalize.xaml.cs">
+      <DependentUpon>Cannibalize.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\Delivery.xaml.cs">
+      <DependentUpon>Delivery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\DeliveryAsBuyout.xaml.cs">
+      <DependentUpon>DeliveryAsBuyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\DeliveryPackage.xaml.cs">
+      <DependentUpon>DeliveryPackage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\DeliverySend.xaml.cs">
+      <DependentUpon>DeliverySend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\GoodReturn.xaml.cs">
+      <DependentUpon>GoodReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\GoodReturnForSubordinate.xaml.cs">
+      <DependentUpon>GoodReturnForSubordinate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\MoveStock.xaml.cs">
+      <DependentUpon>MoveStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\NoOrderAllocateForSingleOrganization.xaml.cs">
+      <DependentUpon>NoOrderAllocateForSingleOrganization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\OrderForSubordinate.xaml.cs">
+      <DependentUpon>OrderForSubordinate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\OrderFromSuperior.xaml.cs">
+      <DependentUpon>OrderFromSuperior.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\OrderManage.xaml.cs">
+      <DependentUpon>OrderManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\OrderWithStyleAlbum.xaml.cs">
+      <DependentUpon>OrderWithStyleAlbum.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\OrderWithStyleAlbumPanel.xaml.cs">
+      <DependentUpon>OrderWithStyleAlbumPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\OrganizationAllocationGradeBatchSetWin.xaml.cs">
+      <DependentUpon>OrganizationAllocationGradeBatchSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\OrganizationGradeForAllocation.xaml.cs">
+      <DependentUpon>OrganizationGradeForAllocation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\RowStyleSelector.cs" />
+    <Compile Include="Bill\SetGoodReturnMoneyWin.xaml.cs">
+      <DependentUpon>SetGoodReturnMoneyWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\Stocktake.xaml.cs">
+      <DependentUpon>Stocktake.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\StockUpdateWithStocktake.xaml.cs">
+      <DependentUpon>StockUpdateWithStocktake.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\Storing.xaml.cs">
+      <DependentUpon>Storing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\StoringCannibalize.xaml.cs">
+      <DependentUpon>StoringCannibalize_complex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\StoringProductExchange.xaml.cs">
+      <DependentUpon>StoringProductExchange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\StoringReturnGood.xaml.cs">
+      <DependentUpon>StoringReturnGood_complex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\StoringReturnGoodReject.xaml.cs">
+      <DependentUpon>StoringReturnGoodReject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\StoringWhenReceiving.xaml.cs">
+      <DependentUpon>StoringWhenReceiving_complex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\UniqueCodeDetailsForStoringTemplate.xaml.cs">
+      <DependentUpon>UniqueCodeDetailsForStoringTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\FreezenStatusCvt.cs" />
+    <Compile Include="Converters\ReportCvt.cs" />
+    <Compile Include="Converters\RetailCvt.cs" />
+    <Compile Include="Converters\VIPCvt.cs" />
+    <Compile Include="Converters\VoucherItemKindIDNameCvt.cs" />
+    <Compile Include="Converters\YearDateCvt.cs" />
+    <Compile Include="Finance\DeductMoney.xaml.cs">
+      <DependentUpon>DeductMoney.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\DeductMoneyAudit.xaml.cs">
+      <DependentUpon>DeductMoneyAudit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\DeductMoneyKind.xaml.cs">
+      <DependentUpon>DeductMoneyKind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FundPaymentAccountSearch.xaml.cs">
+      <DependentUpon>FundPaymentAccountSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\OrganizationFundAccountSearch.xaml.cs">
+      <DependentUpon>OrganizationFundAccountSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\OrganizationFundAccountTotal.xaml.cs">
+      <DependentUpon>OrganizationFundAccountTotal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\ReceiveMoney.xaml.cs">
+      <DependentUpon>ReceiveMoney.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\ReceiveMoneyAudit.xaml.cs">
+      <DependentUpon>ReceiveMoneyAudit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\ReceiveMoneyKind.xaml.cs">
+      <DependentUpon>ReceiveMoneyKind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\ReceiveMoneyUnfreeze.xaml.cs">
+      <DependentUpon>ReceiveMoneyUnfreeze.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\ContractDiscount.xaml.cs">
+      <DependentUpon>ContractDiscount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\ContractDiscountBatchSetWin.xaml.cs">
+      <DependentUpon>ContractDiscountBatchSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\Credit.xaml.cs">
+      <DependentUpon>Credit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\CreditRaiseWin.xaml.cs">
+      <DependentUpon>CreditRaiseWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\OrganizationGoodReturnRateSet.xaml.cs">
+      <DependentUpon>OrganizationGoodReturnRateSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\StorageInfo.xaml.cs">
+      <DependentUpon>StorageInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Reports\AvailableStockStatistics.xaml.cs">
+      <DependentUpon>AvailableStockStatistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillAllocateSearch.xaml.cs">
+      <DependentUpon>BillAllocateSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillDeliverySearch.xaml.cs">
+      <DependentUpon>BillDeliverySearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillRetailSearch.xaml.cs">
+      <DependentUpon>BillRetailSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSelfCannibalizeSearch.xaml.cs">
+      <DependentUpon>BillSelfCannibalizeSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSelfGoodReturnSearch.xaml.cs">
+      <DependentUpon>BillSelfGoodReturnSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSelfOrderSearch.xaml.cs">
+      <DependentUpon>BillSelfOrderSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillStocktakeContrastSearch.xaml.cs">
+      <DependentUpon>BillStocktakeContrastSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillStocktakeSearch.xaml.cs">
+      <DependentUpon>BillStocktakeSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillStoreMoveSearch.xaml.cs">
+      <DependentUpon>BillStoreMoveSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillStoreOutSearch.xaml.cs">
+      <DependentUpon>BillStoreOutSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillStoringSearch.xaml.cs">
+      <DependentUpon>BillStoringSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSubordinateCannibalizeSearch.xaml.cs">
+      <DependentUpon>BillSubordinateCannibalizeSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSubordinateGoodReturnSearch.xaml.cs">
+      <DependentUpon>BillSubordinateGoodReturnSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSubordinateOrderSearch.xaml.cs">
+      <DependentUpon>BillSubordinateOrderSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSubordinateRetailSearch.xaml.cs">
+      <DependentUpon>BillSubordinateRetailSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSubordinateStocktakeContrastSearch.xaml.cs">
+      <DependentUpon>BillSubordinateStocktakeContrastSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillSubordinateStocktakeSearch.xaml.cs">
+      <DependentUpon>BillSubordinateStocktakeSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Charts\RevenueActualvsTarget.xaml.cs">
+      <DependentUpon>RevenueActualvsTarget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DeliveryAggregation.xaml.cs">
+      <DependentUpon>DeliveryAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OrderBalanceSheet.xaml.cs">
+      <DependentUpon>OrderBalanceSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OtherShopStockStatistics.xaml.cs">
+      <DependentUpon>OtherShopStockStatistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Charts\RetailABCAnalysis.xaml.cs">
+      <DependentUpon>RetailABCAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ParentStockStatistics.xaml.cs">
+      <DependentUpon>ParentStockStatistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RetailAggregation.xaml.cs">
+      <DependentUpon>RetailAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Charts\RetailDayReport.xaml.cs">
+      <DependentUpon>RetailDayReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SelfCannibalizeAggregation.xaml.cs">
+      <DependentUpon>SelfCannibalizeAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SelfGoodReturnAggregation.xaml.cs">
+      <DependentUpon>SelfGoodReturnAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SelfOrderAggregation.xaml.cs">
+      <DependentUpon>SelfOrderAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SelfOrderAggregationNew.xaml.cs">
+      <DependentUpon>SelfOrderAggregationNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SelfRetailAchievementContrail.xaml.cs">
+      <DependentUpon>SelfRetailAchievementContrail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ShopGuiderSaleAchievement.xaml.cs">
+      <DependentUpon>ShopGuiderSaleAchievement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Charts\StockABCAnalysis.xaml.cs">
+      <DependentUpon>StockABCAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ShopProfit.xaml.cs">
+      <DependentUpon>ShopProfit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StockStatistics.xaml.cs">
+      <DependentUpon>StockStatistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StocktakeAggregation.xaml.cs">
+      <DependentUpon>StocktakeAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StocktakeContrastAggregation.xaml.cs">
+      <DependentUpon>StocktakeContrastAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StoingSaleStockContrail.xaml.cs">
+      <DependentUpon>StoingSaleStockContrail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StoreMoveAggregation.xaml.cs">
+      <DependentUpon>StoreMoveAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StoreOutAggregation.xaml.cs">
+      <DependentUpon>StoreOutAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StoringAggregation.xaml.cs">
+      <DependentUpon>StoringAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateCannibalizeAggregation.xaml.cs">
+      <DependentUpon>SubordinateCannibalizeAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateCannibalizeDistribution.xaml.cs">
+      <DependentUpon>SubordinateCannibalizeDistribution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateGoodReturnAggregation.xaml.cs">
+      <DependentUpon>SubordinateGoodReturnAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateOrderAggregation.xaml.cs">
+      <DependentUpon>SubordinateOrderAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateOrderAggregationNew.xaml.cs">
+      <DependentUpon>SubordinateOrderAggregationNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateOrderDistribution.xaml.cs">
+      <DependentUpon>SubordinateOrderDistribution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateRetailAchievementContrail.xaml.cs">
+      <DependentUpon>SubordinateRetailAchievementContrail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateRetailAggregation.xaml.cs">
+      <DependentUpon>SubordinateRetailAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateRetailDayReport.xaml.cs">
+      <DependentUpon>SubordinateRetailDayReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateShopGuiderSaleAchievement.xaml.cs">
+      <DependentUpon>SubordinateShopGuiderSaleAchievement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateStockDistribution.xaml.cs">
+      <DependentUpon>SubordinateStockDistribution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateStocktakeAggregation.xaml.cs">
+      <DependentUpon>SubordinateStocktakeAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateStocktakeContrastAggregation.xaml.cs">
+      <DependentUpon>SubordinateStocktakeContrastAggregation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SubordinateStoingSaleStockContrail.xaml.cs">
+      <DependentUpon>SubordinateStoingSaleStockContrail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\UniqueCodeTransTrack.xaml.cs">
+      <DependentUpon>UniqueCodeTransTrack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\BaseRetail.xaml.cs">
+      <DependentUpon>BaseRetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\CashCouponWin.xaml.cs">
+      <DependentUpon>CashCouponWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\CashPrintHelper.cs" />
+    <Compile Include="RetailManage\CashWin.xaml.cs">
+      <DependentUpon>CashWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\FetchRetailBillWin.xaml.cs">
+      <DependentUpon>FetchRetailBillWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\MonthSaleTaget.xaml.cs">
+      <DependentUpon>MonthSaleTaget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\MonthSaleTargetBatchSetWin.xaml.cs">
+      <DependentUpon>MonthSaleTargetBatchSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\Retail.cs" />
+    <Compile Include="RetailManage\RetailCodeInputWin.xaml.cs">
+      <DependentUpon>RetailCodeInputWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\RetailForSubordinate.xaml.cs">
+      <DependentUpon>RetailForSubordinate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\RetailShiftSet.xaml.cs">
+      <DependentUpon>RetailShiftSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\RetailShoppingGuideSet.xaml.cs">
+      <DependentUpon>RetailShoppingGuideSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\RetailTacticSet.xaml.cs">
+      <DependentUpon>RetailTacticSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\ShopExpenseKindSet.xaml.cs">
+      <DependentUpon>ShopExpenseKindSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\ShopExpenseSet.xaml.cs">
+      <DependentUpon>ShopExpenseSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\ShoppingGuideSelector.xaml.cs">
+      <DependentUpon>ShoppingGuideSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\ShoppingGuideSelectWin.xaml.cs">
+      <DependentUpon>ShoppingGuideSelectWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\VIPInputWin.xaml.cs">
+      <DependentUpon>VIPInputWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailManage\VIPUpgradeWin.xaml.cs">
+      <DependentUpon>VIPUpgradeWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TotalPriceFunction.cs" />
+    <Compile Include="VIP\PrestorePasswordSetWin.xaml.cs">
+      <DependentUpon>PrestorePasswordSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\PreStoreSearch.xaml.cs">
+      <DependentUpon>PreStoreSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPBirthdayRemind.xaml.cs">
+      <DependentUpon>VIPBirthdayRemind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPBirthdayTacticSet.xaml.cs">
+      <DependentUpon>VIPBirthdayTacticSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPConsumeSort.xaml.cs">
+      <DependentUpon>VIPConsumeSort.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPInformationSet.xaml.cs">
+      <DependentUpon>VIPInformationSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPKindSet.xaml.cs">
+      <DependentUpon>VIPKindSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPPointSetWin.xaml.cs">
+      <DependentUpon>VIPPointSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPPredepositSetWin.xaml.cs">
+      <DependentUpon>VIPPredepositSetWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPProportion.xaml.cs">
+      <DependentUpon>VIPProportion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIP\VIPUpTacticSet.xaml.cs">
+      <DependentUpon>VIPUpTacticSet.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ABCChartRes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill\AuditingGoodReturnForSubordinate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill\AutoAllocate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Bill\BillAllocateManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill\CannibalizePrintTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Bill\DeliveryAsBuyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill\GoodReturnForSubordinate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Bill\NoOrderAllocateForSingleOrganization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill\OrderWithStyleAlbum.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill\OrderWithStyleAlbumPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <PreprocessedXaml Include="Bill\StoringCannibalize_complex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </PreprocessedXaml>
+    <PreprocessedXaml Include="Bill\StoringReturnGood_complex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </PreprocessedXaml>
+    <PreprocessedXaml Include="Bill\StoringWhenReceiving_complex.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </PreprocessedXaml>
+    <Page Include="Bill\StoringReturnGoodReject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill\UniqueCodeDetailsForStoringTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finance\DeductMoney.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\DeductMoneyAudit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\DeductMoneyKind.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\FundPaymentAccountSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\OrganizationFundAccountSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\OrganizationFundAccountTotal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\ReceiveMoney.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\ReceiveMoneyAudit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\ReceiveMoneyKind.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Finance\ReceiveMoneyUnfreeze.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Organization\CreditRaiseWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Organization\OrganizationGoodReturnRateSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\BillAllocateSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Charts\RetailABCAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Charts\RetailDayReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\ParentStockStatistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\SelfOrderAggregationNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\ShopGuiderSaleAchievement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Charts\StockABCAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\ShopProfit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\SubordinateOrderAggregationNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\SubordinateRetailDayReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\SubordinateShopGuiderSaleAchievement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\SubordinateStoingSaleStockContrail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\UniqueCodeTransTrack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RetailManage\BaseRetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RetailManage\RetailForSubordinate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\ShopExpenseKindSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RetailManage\ShopExpenseSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIP\PreStorePrintTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="VIP\PrestorePasswordSetWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIP\PreStoreSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIP\VIPBirthdayRemind.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VIP\VIPBirthdayTacticSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VIP\VIPConsumeSort.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIP\VIPInformationSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VIP\VIPKindSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VIP\VIPPointSetWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VIP\VIPPredepositSetWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIP\VIPProportion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIP\VIPUpTacticSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\ContractDiscount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\ContractDiscountBatchSetWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\Credit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Organization\StorageInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\AvailableStockStatistics.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillDeliverySearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillRetailSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSelfCannibalizeSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSelfGoodReturnSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSelfOrderSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillStocktakeContrastSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillStocktakeSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillStoreMoveSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillStoreOutSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillStoringSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSubordinateCannibalizeSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSubordinateGoodReturnSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSubordinateOrderSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSubordinateRetailSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSubordinateStocktakeContrastSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\BillSubordinateStocktakeSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Charts\RevenueActualvsTarget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\DeliveryAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\OrderBalanceSheet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\OtherShopStockStatistics.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\RetailAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SelfCannibalizeAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SelfGoodReturnAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SelfOrderAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SelfRetailAchievementContrail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\StockStatistics.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\StocktakeAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\StocktakeContrastAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\StoingSaleStockContrail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\StoreMoveAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\StoreOutAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\StoringAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateCannibalizeAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateCannibalizeDistribution.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateGoodReturnAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateOrderAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateOrderDistribution.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateRetailAchievementContrail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateRetailAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateStockDistribution.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateStocktakeAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\SubordinateStocktakeContrastAggregation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\CashCouponWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\CashPrintTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="RetailManage\CashWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\FetchRetailBillWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\MonthSaleTaget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\MonthSaleTargetBatchSetWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\RetailCodeInputWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\RetailShiftSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\RetailShoppingGuideSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\RetailTacticSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\ShoppingGuideSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\ShoppingGuideSelectWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\VIPInputWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RetailManage\VIPUpgradeWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\Cannibalize.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\Delivery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\DeliveryPackage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\DeliverySend.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\GoodReturn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\MoveStock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\OrderForSubordinate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\OrderFromSuperior.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\OrderManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\OrganizationAllocationGradeBatchSetWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\OrganizationGradeForAllocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\SetGoodReturnMoneyWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\Stocktake.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\StockUpdateWithStocktake.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\Storing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Bill\StoringProductExchange.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBOperator\DBAccess.csproj">
+      <Project>{0659B2B4-E322-47B8-B5BC-C1FCDF23A820}</Project>
+      <Name>DBAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DistributionModel\DistributionModel.csproj">
+      <Project>{6C3FD41B-92E6-43F2-93A9-21685917BDAD}</Project>
+      <Name>DistributionModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DistributionViewModel\DistributionViewModel.csproj">
+      <Project>{1CE10888-2818-4318-BAD1-1D95290CDA2B}</Project>
+      <Name>DistributionViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainLogicEncap\DomainLogicEncap.csproj">
+      <Project>{ECABAC61-5112-406E-B5F8-D898A996AB4C}</Project>
+      <Name>DomainLogicEncap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERPModelBO\ERPModelBO.csproj">
+      <Project>{a6ba9012-1b18-4d83-b3db-8864cc6721f8}</Project>
+      <Name>ERPModelBO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FactoryProductionModel\ManufacturingModel.csproj">
+      <Project>{34BB9EA6-0350-4482-BCCE-347EEE501DE8}</Project>
+      <Name>ManufacturingModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kernel.Extension\Kernel.csproj">
+      <Project>{A0726815-AFFD-4636-A64A-8BA7A7612FA8}</Project>
+      <Name>Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufacturing.ViewModel\Manufacturing.ViewModel.csproj">
+      <Project>{243CF4E8-08AB-4DAC-A9B2-CD460E983195}</Project>
+      <Name>Manufacturing.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Extension\Model.Extension.csproj">
+      <Project>{3E5D357D-E7A9-4BF5-9079-0484E303FB6E}</Project>
+      <Name>Model.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessModel\SysProcessModel.csproj">
+      <Project>{522D227D-139F-4E59-983B-339198A9FDAD}</Project>
+      <Name>SysProcessModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessViewModel\SysProcessViewModel.csproj">
+      <Project>{1B328CA3-BFF9-4FFD-8214-EF603465355E}</Project>
+      <Name>SysProcessViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysProcessView\SysProcessView.csproj">
+      <Project>{55AB3F23-DC57-44CC-9B78-111F6ABA936F}</Project>
+      <Name>SysProcessView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\View.Extension\View.Extension.csproj">
+      <Project>{D0FB639A-65F2-47C9-9DBB-B61BB8ED13E7}</Project>
+      <Name>View.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModelBase\ViewModelBasic.csproj">
+      <Project>{3D521D68-094F-46C8-9877-A2009EA1CAD5}</Project>
+      <Name>ViewModelBasic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ERPViewModelBasic.csproj">
+      <Project>{2E97B0FB-10A1-4241-A4E0-ABC60A7D51E7}</Project>
+      <Name>ERPViewModelBasic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Project="..\BuildTasks\BuildTasks.targets" />
+</Project>

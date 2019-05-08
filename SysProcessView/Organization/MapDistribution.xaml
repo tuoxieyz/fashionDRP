@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="SysProcessView.Organization.MapDistribution"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:SysProcessView.Organization"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <local:HotSpotImageCvt x:Key="hotSpotImageCvt" />
+            <local:HotSpotLocationCvt x:Key="hotSpotLocationCvt" />
+        </Grid.Resources>
+        <telerik:RadMap x:Name="RadMap1"
+                    Background="#D9E1FF"
+                        UseDefaultLayout="False"
+                    MouseClickMode="None" 
+                    MouseDoubleClickMode="None"
+                        Center="36, 105"
+                        ZoomLevel="4"
+                        MinZoomLevel="4" 
+                    MaxZoomLevel="8">
+            <telerik:RadMap.Provider>
+                <telerik:EmptyProvider />
+            </telerik:RadMap.Provider>
+            <telerik:InformationLayer x:Name="StateLayer" Opacity="0.5">
+                <telerik:InformationLayer.Reader>
+                    <!--component首字母一定要小写，我了个去-->
+                    <telerik:MapShapeReader Source="/SysProcessView;component/Map/China/bou2_4p.shp" 
+                                            DataSource="/SysProcessView;component/Map/China/bou2_4p.dbf" />
+                </telerik:InformationLayer.Reader>
+                <telerik:InformationLayer.ShapeFill>
+                    <telerik:MapShapeFill Fill="#FFF0D9" Stroke="#B1946D" StrokeThickness="1" />
+                </telerik:InformationLayer.ShapeFill>
+                <telerik:InformationLayer.HighlightFill>
+                    <telerik:MapShapeFill Fill="#FFEEA6" Stroke="#B1946D" StrokeThickness="1" />
+                </telerik:InformationLayer.HighlightFill>
+            </telerik:InformationLayer>
+            <telerik:InformationLayer x:Name="locationLayer" ItemsSource="{Binding Entities}">
+                <telerik:InformationLayer.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Converter={StaticResource hotSpotImageCvt}}"
+                               telerik:MapLayer.Location="{Binding Converter={StaticResource hotSpotLocationCvt}}"
+                               ToolTip="{Binding Name}"
+                               Width="9" Height="9">
+                            <telerik:MapLayer.HotSpot>
+                                <telerik:HotSpot X="0.5" Y="1" />
+                            </telerik:MapLayer.HotSpot>
+                        </Image>
+                    </DataTemplate>
+                </telerik:InformationLayer.ItemTemplate>
+            </telerik:InformationLayer>
+        </telerik:RadMap>
+    </Grid>
+</UserControl>
